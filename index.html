@@ -1,51 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Equally Poor — a scholarly research platform visualizing wealth, inequality, and law in America.">
-  <title>Home | Equally Poor</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Crimson+Text:ital,wght@0,400;0,600;1,400;1,600&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/main.css">
-</head>
-<body>
 
-  <!-- Navigation -->
-  <nav class="site-nav" role="navigation" aria-label="Main navigation">
-    <div class="nav-container">
-      <a href="{{ site.baseurl }}/" class="nav-logo" aria-label="Equally Poor — Home">
-        <span class="nav-logo-text">EQUALLY POOR</span>
-        <span class="nav-logo-sub">Wealth · Inequality · Law</span>
-      </a>
-      <button class="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="nav-menu">
-        <span class="nav-toggle-bar"></span>
-        <span class="nav-toggle-bar"></span>
-        <span class="nav-toggle-bar"></span>
-      </button>
-      <ul class="nav-menu" id="nav-menu" role="list">
-        <li class="nav-item">
-          <a href="{{ site.baseurl }}/" class="nav-link active" aria-current="page">Home</a>
-        </li>
-        <li class="nav-item">
-          <a href="{{ site.baseurl }}/explore" class="nav-link">Data Explorer</a>
-        </li>
-        <li class="nav-item">
-          <a href="{{ site.baseurl }}/legal" class="nav-link">Legal Landscape</a>
-        </li>
-        <li class="nav-item">
-          <a href="{{ site.baseurl }}/methodology" class="nav-link">Methodology</a>
-        </li>
-        <li class="nav-item">
-          <a href="{{ site.baseurl }}/about" class="nav-link">About</a>
-        </li>
-      </ul>
-    </div>
-  </nav>
+---
+layout: default
+title: Home
+description: Equally Poor — a scholarly research platform visualizing wealth, inequality, and law in America.
+---
 
-  <!-- Main Content -->
-  <main id="main-content" role="main">
+<!-- Main Content -->
+<main id="main-content" role="main">
 
     <!-- Hero -->
     <section class="hero" aria-labelledby="hero-title">
@@ -88,53 +49,7 @@
           </div>
         </div>
       </div>
-    </section>
-
-    <!-- Quick Chart -->
-    <section aria-labelledby="overview-chart-title" style="background:var(--white);">
-      <div class="container">
-        <div class="section-header">
-          <p class="section-eyebrow">Data Overview</p>
-          <h2 class="section-title" id="overview-chart-title">Three Measures of Inequality, 1967–2024</h2>
-          <p class="section-desc">The overlapping period for all three primary series. Top 10% income share (left axis) has nearly returned to Gilded Age levels. The Gini coefficient has risen steadily. Poverty has fallen substantially since the 1960s but remains persistently above 10%.</p>
-        </div>
-        <div class="chart-container">
-          <div class="chart-title">Income Share, Gini &amp; Poverty — 1967 to 2024</div>
-          <div class="chart-subtitle">Left axis: Top 10% income share &amp; official poverty rate (as %). Right axis: Gini coefficient (0–1 scale).</div>
-          <div class="chart-wrapper" id="home-chart-wrapper">
-            <svg id="home-chart" aria-label="Line chart showing three inequality measures from 1967 to 2024" role="img"></svg>
-          </div>
-          <div class="chart-legend" id="home-legend" aria-label="Chart legend"></div>
-          <p class="chart-source">Sources: Piketty &amp; Saez (2024 update); Census Bureau CPS ASEC (FRED GINIALLRH); Shrider et al., P60-287 (2025). See <a href="/methodology.html">Methodology</a> for caveats.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Platform Tools Grid -->
-    <section aria-labelledby="tools-title" style="background:var(--off-white);">
-      <div class="container">
-        <div class="section-header">
-          <p class="section-eyebrow">Platform Tools</p>
-          <h2 class="section-title" id="tools-title">Explore the Platform</h2>
-        </div>
-        <div class="grid-4">
-          <a href="/explore.html" class="card card--red" style="text-decoration:none;" aria-label="Data Explorer — interactive visualization tool">
-            <div style="font-size:1.8rem;margin-bottom:0.6rem;">&#x1F4CA;</div>
-            <div class="card-title">Data Explorer</div>
-            <p class="card-text">Interactive time-series visualization of inequality metrics from 1913 to today. Toggle series, filter by era, and export data.</p>
-            <span class="card-link">Open Explorer &rarr;</span>
-          </a>
-          <a href="/legal.html" class="card card--blue" style="text-decoration:none;" aria-label="Legal Landscape — legislation and inequality">
-            <div style="font-size:1.8rem;margin-bottom:0.6rem;">&#x2696;&#xFE0F;</div>
-            <div class="card-title">Legal Landscape</div>
-            <p class="card-text">Explore how major legislation shaped inequality trends over 110 years. Interactive timeline with D3 overlay chart.</p>
-            <span class="card-link">View Timeline &rarr;</span>
-          </a>
-          <a href="/methodology.html" class="card card--yellow" style="text-decoration:none;" aria-label="Methodology — data sources and limitations">
-            <div style="font-size:1.8rem;margin-bottom:0.6rem;">&#x1F4D0;</div>
-            <div class="card-title">Methodology</div>
-            <p class="card-text">Data sources, measurement approaches, series breaks, and known limitations. Scholarly transparency is central to this platform.</p>
-            <span class="card-link">Read Methods &rarr;</span>
+    </main>
           </a>
           <a href="/about.html" class="card card--green" style="text-decoration:none;" aria-label="About — platform mission and goals">
             <div style="font-size:1.8rem;margin-bottom:0.6rem;">&#x1F3DB;&#xFE0F;</div>

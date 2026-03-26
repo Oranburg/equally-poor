@@ -1,51 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Equally Poor Data Explorer — interactive visualization of U.S. income inequality and poverty, 1913–2024.">
-  <title>Data Explorer | Equally Poor</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Crimson+Text:ital,wght@0,400;0,600;1,400;1,600&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/main.css">
-</head>
-<body>
 
-  <!-- Navigation -->
-  <nav class="site-nav" role="navigation" aria-label="Main navigation">
-    <div class="nav-container">
-      <a href="{{ site.baseurl }}/" class="nav-logo" aria-label="Equally Poor — Home">
-        <span class="nav-logo-text">EQUALLY POOR</span>
-        <span class="nav-logo-sub">Wealth · Inequality · Law</span>
-      </a>
-      <button class="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="nav-menu">
-        <span class="nav-toggle-bar"></span>
-        <span class="nav-toggle-bar"></span>
-        <span class="nav-toggle-bar"></span>
-      </button>
-      <ul class="nav-menu" id="nav-menu" role="list">
-        <li class="nav-item">
-          <a href="{{ site.baseurl }}/" class="nav-link">Home</a>
-        </li>
-        <li class="nav-item">
-          <a href="{{ site.baseurl }}/explore" class="nav-link active" aria-current="page">Data Explorer</a>
-        </li>
-        <li class="nav-item">
-          <a href="{{ site.baseurl }}/legal" class="nav-link">Legal Landscape</a>
-        </li>
-        <li class="nav-item">
-          <a href="{{ site.baseurl }}/methodology" class="nav-link">Methodology</a>
-        </li>
-        <li class="nav-item">
-          <a href="{{ site.baseurl }}/about" class="nav-link">About</a>
-        </li>
-      </ul>
-    </div>
-  </nav>
+---
+layout: default
+title: Data Explorer
+description: Equally Poor Data Explorer — interactive visualization of U.S. income inequality and poverty, 1913–2024.
+---
 
-  <!-- Main Content -->
-  <main id="main-content" role="main">
+<!-- Main Content -->
+<main id="main-content" role="main">
 
     <section class="hero hero--short" aria-labelledby="explore-hero-title">
       <div class="container">
@@ -257,53 +218,7 @@
   // ── State ──
   const state = {
     active: { top10: true, top1: true, gini: true, poverty: true, povertyPre: false },
-    startYear: 1913,
-    endYear: 2024,
-    showAnnotations: true,
-    giniRightAxis: true,
-  };
-
-  const COLORS = {
-    top10:      '#B21F2C',
-    top1:       '#E96955',
-    gini:       '#2459A9',
-    poverty:    '#0A3255',
-    povertyPre: '#6DACDE',
-  };
-
-  const LABELS = {
-    top10:      'Top 10% Income Share (excl. cap gains)',
-    top1:       'Top 1% Income Share (incl. cap gains)',
-    gini:       'Gini Coefficient',
-    poverty:    'Official Poverty Rate',
-    povertyPre: 'Pre-1959 Estimates (unofficial)',
-  };
-
-  const MARGIN = { top: 24, right: 80, bottom: 45, left: 65 };
-  const wrapper = document.getElementById('explore-chart-wrapper');
-  const svgEl   = document.getElementById('explore-chart');
-  const legendEl = document.getElementById('explore-legend');
-
-  // Tooltip
-  const tip = document.getElementById('explore-tip');
-  function showTip(html, ev) {
-    tip.innerHTML = html;
-    tip.classList.add('visible');
-    moveTip(ev);
-  }
-  function moveTip(ev) {
-    tip.style.left = Math.min(ev.clientX + 14, window.innerWidth - 240) + 'px';
-    tip.style.top  = (ev.clientY - 28) + 'px';
-  }
-  function hideTip() { tip.classList.remove('visible'); }
-
-  function getSeriesData(key) {
-    const sy = state.startYear, ey = state.endYear;
-    switch(key) {
-      case 'top10':      return top10Data.filter(d => d.year >= sy && d.year <= ey);
-      case 'top1':       return top1Data.filter(d => d.year >= sy && d.year <= ey);
-      case 'gini':       return giniData.filter(d => d.year >= sy && d.year <= ey);
-      case 'poverty':    return povertyData.filter(d => d.year >= sy && d.year <= ey);
+    </main>
       case 'povertyPre': return povertyPre.filter(d => d.year >= sy && d.year <= ey);
       default: return [];
     }

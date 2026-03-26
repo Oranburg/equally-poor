@@ -1,51 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="About Equally Poor — a scholarly research platform at the intersection of law, economics, and sociology.">
-  <title>About | Equally Poor</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Crimson+Text:ital,wght@0,400;0,600;1,400;1,600&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/main.css">
-</head>
-<body>
 
-  <!-- Navigation -->
-  <nav class="site-nav" role="navigation" aria-label="Main navigation">
-    <div class="nav-container">
-      <a href="{{ site.baseurl }}/" class="nav-logo" aria-label="Equally Poor — Home">
-        <span class="nav-logo-text">EQUALLY POOR</span>
-        <span class="nav-logo-sub">Wealth · Inequality · Law</span>
-      </a>
-      <button class="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="nav-menu">
-        <span class="nav-toggle-bar"></span>
-        <span class="nav-toggle-bar"></span>
-        <span class="nav-toggle-bar"></span>
-      </button>
-      <ul class="nav-menu" id="nav-menu" role="list">
-        <li class="nav-item">
-          <a href="{{ site.baseurl }}/" class="nav-link">Home</a>
-        </li>
-        <li class="nav-item">
-          <a href="{{ site.baseurl }}/explore" class="nav-link">Data Explorer</a>
-        </li>
-        <li class="nav-item">
-          <a href="{{ site.baseurl }}/legal" class="nav-link">Legal Landscape</a>
-        </li>
-        <li class="nav-item">
-          <a href="{{ site.baseurl }}/methodology" class="nav-link">Methodology</a>
-        </li>
-        <li class="nav-item">
-          <a href="{{ site.baseurl }}/about" class="nav-link active" aria-current="page">About</a>
-        </li>
-      </ul>
-    </div>
-  </nav>
+---
+layout: default
+title: "About"
+description: "About Equally Poor — a scholarly research platform at the intersection of law, economics, and sociology."
+permalink: /about
+---
 
-  <!-- Main Content -->
-  <main id="main-content" role="main">
+<!-- Main Content -->
+<main id="main-content" role="main">
 
     <!-- Hero -->
     <section class="hero hero--short" aria-labelledby="about-hero-title">
@@ -200,64 +162,3 @@
     </section>
 
   </main>
-
-  <!-- Footer -->
-  <footer class="site-footer" role="contentinfo">
-    <div class="footer-container">
-      <div class="footer-grid">
-        <div class="footer-brand">
-          <div class="footer-logo">EQUALLY POOR</div>
-          <p class="footer-tagline">Visualizing wealth, inequality &amp; law in America — a scholarly research platform at the intersection of economics, law, and social policy.</p>
-        </div>
-        <div class="footer-links">
-          <h3 class="footer-heading">Platform</h3>
-          <ul class="footer-nav" role="list">
-            <li><a href="/index.html">Home</a></li>
-            <li><a href="/explore.html">Data Explorer</a></li>
-            <li><a href="/legal.html">Legal Landscape</a></li>
-            <li><a href="/methodology.html">Methodology</a></li>
-            <li><a href="/about.html">About</a></li>
-          </ul>
-        </div>
-        <div class="footer-sources">
-          <h3 class="footer-heading">Primary Sources</h3>
-          <ul class="footer-nav" role="list">
-            <li><a href="https://gabriel-zucman.eu/usdina/" target="_blank" rel="noopener noreferrer">Piketty-Saez Data</a></li>
-            <li><a href="https://fred.stlouisfed.org/series/GINIALLRH" target="_blank" rel="noopener noreferrer">Census Gini (FRED)</a></li>
-            <li><a href="https://www.census.gov/topics/income-poverty/poverty.html" target="_blank" rel="noopener noreferrer">Census Poverty Data</a></li>
-            <li><a href="/methodology.html">Methodology &amp; Caveats</a></li>
-          </ul>
-        </div>
-        <div class="footer-affiliation">
-          <h3 class="footer-heading">Affiliation</h3>
-          <p>A research initiative in the tradition of law-and-economics scholarship. Data updated through 2024. All visualizations subject to the methodological limitations documented in the <a href="/methodology.html">Methodology</a> section.</p>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <p class="footer-attribution">
-          Data sources: Piketty &amp; Saez (updated 2024); U.S. Census Bureau CPS ASEC; FRED.
-          Charts built with <a href="https://d3js.org" target="_blank" rel="noopener noreferrer">D3.js v7</a>.
-          Not legal or financial advice.
-        </p>
-        <p class="footer-copyright">&copy; Equally Poor Research Platform. For scholarly and educational use.</p>
-      </div>
-    </div>
-  </footer>
-
-  <script src="https://d3js.org/d3.v7.min.js"></script>
-  <script src="/assets/js/shared-data.js"></script>
-  <script>
-    // Mobile nav toggle
-    const navToggle = document.querySelector('.nav-toggle');
-    const navMenu = document.querySelector('.nav-menu');
-    if (navToggle && navMenu) {
-      navToggle.addEventListener('click', function() {
-        const expanded = this.getAttribute('aria-expanded') === 'true';
-        this.setAttribute('aria-expanded', !expanded);
-        navMenu.classList.toggle('open');
-      });
-    }
-  </script>
-
-</body>
-</html>
