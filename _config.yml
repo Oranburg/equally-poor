@@ -1,6 +1,6 @@
 title: "Equally Poor"
 description: "Visualizing wealth, inequality & law in America"
-baseurl: ""
-url: ""
+baseurl: "/equally-poor"
+url: "https://oranburg.law"
 markdown: kramdown
 permalink: pretty
