@@ -8,14 +8,14 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Crimson+Text:ital,wght@0,400;0,600;1,400;1,600&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/equally-poor/assets/css/main.css">
+  <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/main.css">
 </head>
 <body>
 
   <!-- Navigation -->
   <nav class="site-nav" role="navigation" aria-label="Main navigation">
     <div class="nav-container">
-      <a href="/equally-poor/index.html" class="nav-logo" aria-label="Equally Poor — Home">
+      <a href="{{ site.baseurl }}/" class="nav-logo" aria-label="Equally Poor — Home">
         <span class="nav-logo-text">EQUALLY POOR</span>
         <span class="nav-logo-sub">Wealth · Inequality · Law</span>
       </a>
@@ -26,19 +26,19 @@
       </button>
       <ul class="nav-menu" id="nav-menu" role="list">
         <li class="nav-item">
-          <a href="/equally-poor/index.html" class="nav-link">Home</a>
+          <a href="{{ site.baseurl }}/" class="nav-link">Home</a>
         </li>
         <li class="nav-item">
-          <a href="/equally-poor/explore.html" class="nav-link">Data Explorer</a>
+          <a href="{{ site.baseurl }}/explore" class="nav-link">Data Explorer</a>
         </li>
         <li class="nav-item">
-          <a href="/equally-poor/legal.html" class="nav-link active" aria-current="page">Legal Landscape</a>
+          <a href="{{ site.baseurl }}/legal" class="nav-link active" aria-current="page">Legal Landscape</a>
         </li>
         <li class="nav-item">
-          <a href="/equally-poor/methodology.html" class="nav-link">Methodology</a>
+          <a href="{{ site.baseurl }}/methodology" class="nav-link">Methodology</a>
         </li>
         <li class="nav-item">
-          <a href="/equally-poor/about.html" class="nav-link">About</a>
+          <a href="{{ site.baseurl }}/about" class="nav-link">About</a>
         </li>
       </ul>
     </div>
@@ -70,6 +70,7 @@
         <p>Law is the primary mechanism through which societies structure the distribution of income and wealth. Property rights determine what can be owned and by whom; contract law governs the terms on which labor and capital may be exchanged; tax law specifies how much of each dollar of income the state claims from earners at different points in the distribution; and social insurance law determines who receives transfers and under what conditions. These are not neutral background rules — they are distributive choices made through political processes and enforced through public institutions. The historical record examined on this platform reflects over a century of such choices, with measurable consequences for the income shares held by the wealthy and the poverty rates experienced by those at the bottom.</p>
         <p>The relationship between law and inequality is bidirectional, and this is what makes inequality a distinctively legal and political problem rather than a purely economic one. Concentrated wealth generates concentrated political power, which shapes the legal institutions that in turn protect and extend that concentration. As Jacob Hacker and Paul Pierson documented in <em>Winner-Take-All Politics</em> (2010), the rise in top income shares since the 1970s was not the product of impersonal market forces alone but of organized political action by economic elites who shaped tax law, financial regulation, corporate governance rules, and labor law to their advantage. Legal realists from Robert Hale to Duncan Kennedy had long argued that private law — property, contract, tort — was never neutral but always reflected and reinforced underlying power distributions. The data now available allow us to test these claims quantitatively.</p>
         <p>This platform documents key legal interventions from 1913 to the present and situates them against measurable trends in income concentration and poverty. The timeline below codes legislation by type — tax law, welfare and social insurance, and labor regulation — because these three domains have historically been the most consequential for the distribution of primary and secondary income. The chart below the timeline overlays major legislation against the Piketty-Saez top-income series, allowing visual inspection of the relationship between legal change and distributional outcome. Causation is difficult to establish from aggregate data alone; readers are encouraged to consult the primary empirical literature cited in the <a href="/methodology.html">Methodology</a> section for more rigorous analyses.</p>
+      <p>This platform documents key legal interventions from 1913 to the present and situates them against measurable trends in income concentration and poverty. The timeline below codes legislation by type — tax law, welfare and social insurance, and labor regulation — because these three domains have historically been the most consequential for the distribution of primary and secondary income. The chart below the timeline overlays major legislation against the Piketty-Saez top-income series, allowing visual inspection of the relationship between legal change and distributional outcome. Causation is difficult to establish from aggregate data alone; readers are encouraged to consult the primary empirical literature cited in the <a href="{{ site.baseurl }}/methodology">Methodology</a> section for more rigorous analyses.</p>
       </div>
     </section>
 

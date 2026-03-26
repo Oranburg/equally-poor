@@ -8,14 +8,14 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Crimson+Text:ital,wght@0,400;0,600;1,400;1,600&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/equally-poor/assets/css/main.css">
+  <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/main.css">
 </head>
 <body>
 
   <!-- Navigation -->
   <nav class="site-nav" role="navigation" aria-label="Main navigation">
     <div class="nav-container">
-      <a href="/equally-poor/index.html" class="nav-logo" aria-label="Equally Poor — Home">
+      <a href="{{ site.baseurl }}/" class="nav-logo" aria-label="Equally Poor — Home">
         <span class="nav-logo-text">EQUALLY POOR</span>
         <span class="nav-logo-sub">Wealth · Inequality · Law</span>
       </a>
@@ -26,19 +26,19 @@
       </button>
       <ul class="nav-menu" id="nav-menu" role="list">
         <li class="nav-item">
-          <a href="/equally-poor/index.html" class="nav-link">Home</a>
+          <a href="{{ site.baseurl }}/" class="nav-link">Home</a>
         </li>
         <li class="nav-item">
-          <a href="/equally-poor/explore.html" class="nav-link active" aria-current="page">Data Explorer</a>
+          <a href="{{ site.baseurl }}/explore" class="nav-link active" aria-current="page">Data Explorer</a>
         </li>
         <li class="nav-item">
-          <a href="/equally-poor/legal.html" class="nav-link">Legal Landscape</a>
+          <a href="{{ site.baseurl }}/legal" class="nav-link">Legal Landscape</a>
         </li>
         <li class="nav-item">
-          <a href="/equally-poor/methodology.html" class="nav-link">Methodology</a>
+          <a href="{{ site.baseurl }}/methodology" class="nav-link">Methodology</a>
         </li>
         <li class="nav-item">
-          <a href="/equally-poor/about.html" class="nav-link">About</a>
+          <a href="{{ site.baseurl }}/about" class="nav-link">About</a>
         </li>
       </ul>
     </div>
@@ -51,7 +51,7 @@
       <div class="container">
         <p class="hero-eyebrow">Interactive Visualization</p>
         <h1 id="explore-hero-title">Data Explorer</h1>
-        <p>Explore four decades-spanning measures of income inequality and poverty in the United States. Toggle series, filter by historical period, and overlay legislative milestones. All data sourced from peer-reviewed and government sources — see <a href="/methodology.html" style="color:var(--light-blue);">Methodology</a> for full caveats.</p>
+        <p>Explore four decades-spanning measures of income inequality and poverty in the United States. Toggle series, filter by historical period, and overlay legislative milestones. All data sourced from peer-reviewed and government sources — see <a href="{{ site.baseurl }}/methodology" style="color:var(--light-blue);">Methodology</a> for full caveats.</p>
       </div>
     </section>
 
