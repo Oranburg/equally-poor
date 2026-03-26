@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Equally Poor Legal Landscape — how legislation has shaped economic inequality in America since 1913.">
+  <title>Legal Landscape | Equally Poor</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Crimson+Text:ital,wght@0,400;0,600;1,400;1,600&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/main.css">
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="site-nav" role="navigation" aria-label="Main navigation">
+    <div class="nav-container">
+      <a href="/index.html" class="nav-logo" aria-label="Equally Poor — Home">
+        <span class="nav-logo-text">EQUALLY POOR</span>
+        <span class="nav-logo-sub">Wealth · Inequality · Law</span>
+      </a>
+      <button class="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="nav-menu">
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+      </button>
+      <ul class="nav-menu" id="nav-menu" role="list">
+        <li class="nav-item">
+          <a href="/index.html" class="nav-link">Home</a>
+        </li>
+        <li class="nav-item">
+          <a href="/explore.html" class="nav-link">Data Explorer</a>
+        </li>
+        <li class="nav-item">
+          <a href="/legal.html" class="nav-link active" aria-current="page">Legal Landscape</a>
+        </li>
+        <li class="nav-item">
+          <a href="/methodology.html" class="nav-link">Methodology</a>
+        </li>
+        <li class="nav-item">
+          <a href="/about.html" class="nav-link">About</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <main id="main-content" role="main">
+
+    <!-- Hero -->
+    <section class="hero" aria-labelledby="legal-hero-title">
+      <div class="container">
+        <p class="hero-eyebrow">Law &amp; Economic Distribution</p>
+        <h1 id="legal-hero-title">Law &amp; Inequality</h1>
+        <p>How legislation, taxation, and regulation have shaped — and been shaped by — economic inequality in America. An interactive timeline of major legal interventions from the 16th Amendment through the American Rescue Plan.</p>
+        <div class="btn-group">
+          <a href="#timeline" class="btn btn-primary">View Timeline</a>
+          <a href="#legislation-chart" class="btn btn-secondary">Legislation &amp; Trends Chart</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Intro Text -->
+    <section aria-labelledby="legal-intro-title">
+      <div class="container--narrow">
+        <div class="section-header">
+          <p class="section-eyebrow">Conceptual Framework</p>
+          <h2 class="section-title" id="legal-intro-title">Law as the Architecture of Distribution</h2>
+        </div>
+        <p>Law is the primary mechanism through which societies structure the distribution of income and wealth. Property rights determine what can be owned and by whom; contract law governs the terms on which labor and capital may be exchanged; tax law specifies how much of each dollar of income the state claims from earners at different points in the distribution; and social insurance law determines who receives transfers and under what conditions. These are not neutral background rules — they are distributive choices made through political processes and enforced through public institutions. The historical record examined on this platform reflects over a century of such choices, with measurable consequences for the income shares held by the wealthy and the poverty rates experienced by those at the bottom.</p>
+        <p>The relationship between law and inequality is bidirectional, and this is what makes inequality a distinctively legal and political problem rather than a purely economic one. Concentrated wealth generates concentrated political power, which shapes the legal institutions that in turn protect and extend that concentration. As Jacob Hacker and Paul Pierson documented in <em>Winner-Take-All Politics</em> (2010), the rise in top income shares since the 1970s was not the product of impersonal market forces alone but of organized political action by economic elites who shaped tax law, financial regulation, corporate governance rules, and labor law to their advantage. Legal realists from Robert Hale to Duncan Kennedy had long argued that private law — property, contract, tort — was never neutral but always reflected and reinforced underlying power distributions. The data now available allow us to test these claims quantitatively.</p>
+        <p>This platform documents key legal interventions from 1913 to the present and situates them against measurable trends in income concentration and poverty. The timeline below codes legislation by type — tax law, welfare and social insurance, and labor regulation — because these three domains have historically been the most consequential for the distribution of primary and secondary income. The chart below the timeline overlays major legislation against the Piketty-Saez top-income series, allowing visual inspection of the relationship between legal change and distributional outcome. Causation is difficult to establish from aggregate data alone; readers are encouraged to consult the primary empirical literature cited in the <a href="/methodology.html">Methodology</a> section for more rigorous analyses.</p>
+      </div>
+    </section>
+
+    <!-- Interactive Legal Timeline -->
+    <section id="timeline" aria-labelledby="timeline-title" style="background:var(--off-white);">
+      <div class="container">
+        <div class="section-header">
+          <p class="section-eyebrow">1913 – 2021</p>
+          <h2 class="section-title" id="timeline-title">Key Legal Interventions</h2>
+          <p class="section-desc">Major federal legislation affecting the distribution of income and wealth. Color-coded by legal domain.</p>
+          <div style="display:flex;flex-wrap:wrap;gap:0.75rem;margin-top:1rem;" role="list" aria-label="Legend">
+            <span style="display:flex;align-items:center;gap:0.4rem;font-family:var(--font-ui);font-size:0.82rem;">
+              <span style="width:12px;height:12px;border-radius:50%;background:var(--catholic-red);display:inline-block;"></span> Tax Legislation
+            </span>
+            <span style="display:flex;align-items:center;gap:0.4rem;font-family:var(--font-ui);font-size:0.82rem;">
+              <span style="width:12px;height:12px;border-radius:50%;background:var(--bright-blue);display:inline-block;"></span> Welfare &amp; Social Policy
+            </span>
+            <span style="display:flex;align-items:center;gap:0.4rem;font-family:var(--font-ui);font-size:0.82rem;">
+              <span style="width:12px;height:12px;border-radius:50%;background:#8a6500;display:inline-block;"></span> Labor Law
+            </span>
+          </div>
+          <!-- Filter buttons -->
+          <div class="toggle-group" style="margin-top:1rem;" role="group" aria-label="Filter timeline by type">
+            <button class="toggle-btn active" id="filter-all"     data-filter="all"    style="background:var(--catholic-blue);color:#fff;border-color:var(--catholic-blue);">All</button>
+            <button class="toggle-btn" id="filter-tax"     data-filter="tax"    >Tax</button>
+            <button class="toggle-btn" id="filter-welfare" data-filter="welfare">Welfare</button>
+            <button class="toggle-btn" id="filter-labor"   data-filter="labor"  >Labor</button>
+          </div>
+        </div>
+
+        <div class="timeline" id="legislation-timeline" aria-label="Legislative timeline">
+          <!-- Items rendered by JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Legislation & Inequality Chart -->
+    <section id="legislation-chart" aria-labelledby="leg-chart-title">
+      <div class="container">
+        <div class="section-header">
+          <p class="section-eyebrow">Data Visualization</p>
+          <h2 class="section-title" id="leg-chart-title">Legislation &amp; Top Income Share, 1913–2022</h2>
+          <p class="section-desc">The Piketty-Saez Top 10% income share (excl. capital gains) overlaid with major legislative milestones. Red lines mark tax cuts or regressive legislation; blue lines mark progressive taxes or social programs.</p>
+        </div>
+        <div class="chart-container">
+          <div class="chart-title">Top 10% Income Share with Legislative Markers</div>
+          <div class="chart-subtitle">Vertical lines = major legislation. Hover over lines for details. Shaded bands = major economic disruptions.</div>
+          <div class="chart-wrapper" id="legal-chart-wrapper">
+            <svg id="legal-chart" role="img" aria-label="Top 10% income share with legislative markers overlaid"></svg>
+          </div>
+          <div style="display:flex;flex-wrap:wrap;gap:0.75rem 1.5rem;margin-top:0.75rem;font-family:var(--font-ui);font-size:0.82rem;">
+            <span style="display:flex;align-items:center;gap:0.4rem;"><span style="width:20px;height:3px;background:var(--catholic-red);display:inline-block;"></span> Top 10% Income Share</span>
+            <span style="display:flex;align-items:center;gap:0.4rem;"><span style="width:20px;height:2px;background:var(--catholic-red);display:inline-block;border-top:2px dashed var(--catholic-red);"></span> Tax Cut / Regressive</span>
+            <span style="display:flex;align-items:center;gap:0.4rem;"><span style="width:20px;height:2px;background:var(--bright-blue);display:inline-block;border-top:2px dashed var(--bright-blue);"></span> Progressive Tax / Social Program</span>
+            <span style="display:flex;align-items:center;gap:0.4rem;"><span style="width:20px;height:2px;background:#8a6500;display:inline-block;border-top:2px dashed #8a6500;"></span> Labor Law</span>
+          </div>
+          <p class="chart-source">Source: Piketty &amp; Saez (2024 update); legislation from U.S. Statutes at Large. See <a href="/methodology.html">Methodology</a> for caveats on causal interpretation.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Key Legal Concepts -->
+    <section aria-labelledby="concepts-title" style="background:var(--off-white);">
+      <div class="container">
+        <div class="section-header">
+          <p class="section-eyebrow">Legal Analysis</p>
+          <h2 class="section-title" id="concepts-title">Key Legal Domains</h2>
+        </div>
+        <div class="grid-3">
+          <div class="concept-card concept-card--red">
+            <span class="concept-icon" aria-hidden="true">&#x1F4B0;</span>
+            <h3>Tax Law &amp; Distribution</h3>
+            <p style="font-size:0.975rem;color:var(--text-gray);">The progressivity of the federal income tax has fluctuated dramatically since the 16th Amendment. Top marginal rates reached 94% during World War II and fell to 28% following the 1986 Tax Reform Act. Research by Emmanuel Saez and Gabriel Zucman shows that the U.S. tax system as a whole (including payroll taxes, state and local taxes, and consumption taxes) is now roughly proportional across most of the income distribution, with the very wealthy facing lower effective rates than the upper-middle class. This shift from a progressive to a roughly flat effective structure coincides precisely with the rise in top income shares documented in the Piketty-Saez data.</p>
+          </div>
+          <div class="concept-card concept-card--blue">
+            <span class="concept-icon" aria-hidden="true">&#x1F3ED;</span>
+            <h3>Labor Law &amp; Wages</h3>
+            <p style="font-size:0.975rem;color:var(--text-gray);">The Fair Labor Standards Act (1938) established the federal minimum wage and overtime protections, compressing the wage distribution from the bottom. The real value of the federal minimum wage peaked in 1968 at approximately $12.50 in 2024 dollars; it has not been increased since 2009. David Card and Alan Krueger's seminal 1994 study showed that state minimum wage increases did not reduce employment as classical theory predicted, opening a large empirical literature on wage-setting in monopsonistic labor markets. Arindrajit Dube's 2019 NBER paper finds that minimum wage increases reduce poverty and compress wages at the bottom of the distribution. The decline of union density — from ~35% in the mid-1950s to under 10% today — has been linked by Lawrence Katz and Alan Krueger to a substantial portion of the rise in wage inequality.</p>
+          </div>
+          <div class="concept-card concept-card--teal">
+            <span class="concept-icon" aria-hidden="true">&#x1F3E5;</span>
+            <h3>Social Insurance &amp; Transfers</h3>
+            <p style="font-size:0.975rem;color:var(--text-gray);">Social insurance programs — Social Security, Medicare, Medicaid, SNAP, housing vouchers, and the EITC — substantially redistribute income below what market outcomes would produce. The official poverty rate, which counts only pre-tax cash income, does not capture most of these transfers and therefore understates their effect. When the Supplemental Poverty Measure is used, social insurance programs lift tens of millions above the poverty line annually. The 2021 expansion of the Child Tax Credit under the American Rescue Plan reduced child poverty by approximately 30% in 2021; its expiration in January 2022 reversed much of that gain within months, providing a natural experiment in the distributional effects of social insurance design.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SCOTUS Cases -->
+    <section aria-labelledby="scotus-title">
+      <div class="container">
+        <div class="section-header">
+          <p class="section-eyebrow">Constitutional Law</p>
+          <h2 class="section-title" id="scotus-title">Key Supreme Court Decisions</h2>
+          <p class="section-desc">Selected Supreme Court cases that have shaped the legal framework for taxation, labor regulation, and social insurance.</p>
+        </div>
+        <div style="overflow-x:auto;">
+          <table class="scotus-table" aria-label="Key Supreme Court decisions affecting inequality">
+            <thead>
+              <tr>
+                <th scope="col">Case</th>
+                <th scope="col">Year</th>
+                <th scope="col">Issue</th>
+                <th scope="col">Holding &amp; Significance</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><span class="case-name">Pollock v. Farmers' Loan &amp; Trust Co.</span></td>
+                <td>1895</td>
+                <td>Constitutionality of federal income tax</td>
+                <td>Held that a tax on income from property was a direct tax requiring apportionment among states by population. Effectively invalidated the federal income tax; reversed by the 16th Amendment (1913). Enabled the concentration of wealth that characterizes the Gilded Age portion of the Piketty-Saez series.</td>
+              </tr>
+              <tr>
+                <td><span class="case-name">Lochner v. New York</span></td>
+                <td>1905</td>
+                <td>State regulation of working hours</td>
+                <td>Struck down a New York law limiting bakers to 10-hour days as an infringement of "freedom of contract" under the 14th Amendment. Inaugurated the "Lochner era" of judicial hostility to labor regulation; effectively ended by <em>West Coast Hotel v. Parrish</em> (1937). Illustrates how constitutional doctrine can protect the distribution of market power.</td>
+              </tr>
+              <tr>
+                <td><span class="case-name">Steward Machine Co. v. Davis</span></td>
+                <td>1937</td>
+                <td>Constitutionality of Social Security unemployment tax</td>
+                <td>Upheld the Social Security Act's unemployment insurance provisions as a valid exercise of the taxing and spending power. Together with <em>Helvering v. Davis</em> (1937), established broad federal authority to create social insurance programs, clearing the constitutional path for the post-war welfare state.</td>
+              </tr>
+              <tr>
+                <td><span class="case-name">NFIB v. Sebelius</span></td>
+                <td>2012</td>
+                <td>Constitutionality of Affordable Care Act</td>
+                <td>Upheld the ACA's individual mandate as a valid exercise of Congress's taxing power (5-4). Struck down the mandatory Medicaid expansion as coercive to states. The resulting "Medicaid gap" left millions of low-income adults in non-expanding states without coverage, with distributional consequences that persist.</td>
+              </tr>
+              <tr>
+                <td><span class="case-name">King v. Burwell</span></td>
+                <td>2015</td>
+                <td>ACA premium subsidies on federal exchanges</td>
+                <td>Held (6-3) that the ACA's premium tax credits applied to insurance purchased on federally facilitated exchanges as well as state-run exchanges. Preserved subsidies for approximately 6.4 million low- and middle-income Americans who would otherwise have lost coverage and income support.</td>
+              </tr>
+              <tr>
+                <td><span class="case-name">Janus v. AFSCME</span></td>
+                <td>2018</td>
+                <td>Public-sector union agency fees</td>
+                <td>Overruled <em>Abood v. Detroit Board of Education</em> (1977), holding that mandatory agency fees from non-members violate the First Amendment. Expected to reduce public-sector union density and bargaining power; contributes to the long-term trend of union decline that researchers link to rising wage inequality.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="footer-container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="footer-logo">EQUALLY POOR</div>
+          <p class="footer-tagline">Visualizing wealth, inequality &amp; law in America — a scholarly research platform at the intersection of economics, law, and social policy.</p>
+        </div>
+        <div class="footer-links">
+          <h3 class="footer-heading">Platform</h3>
+          <ul class="footer-nav" role="list">
+            <li><a href="/index.html">Home</a></li>
+            <li><a href="/explore.html">Data Explorer</a></li>
+            <li><a href="/legal.html">Legal Landscape</a></li>
+            <li><a href="/methodology.html">Methodology</a></li>
+            <li><a href="/about.html">About</a></li>
+          </ul>
+        </div>
+        <div class="footer-sources">
+          <h3 class="footer-heading">Primary Sources</h3>
+          <ul class="footer-nav" role="list">
+            <li><a href="https://gabriel-zucman.eu/usdina/" target="_blank" rel="noopener noreferrer">Piketty-Saez Data</a></li>
+            <li><a href="https://fred.stlouisfed.org/series/GINIALLRH" target="_blank" rel="noopener noreferrer">Census Gini (FRED)</a></li>
+            <li><a href="https://www.census.gov/topics/income-poverty/poverty.html" target="_blank" rel="noopener noreferrer">Census Poverty Data</a></li>
+            <li><a href="/methodology.html">Methodology &amp; Caveats</a></li>
+          </ul>
+        </div>
+        <div class="footer-affiliation">
+          <h3 class="footer-heading">Affiliation</h3>
+          <p>A research initiative in the tradition of law-and-economics scholarship. Data updated through 2024. All visualizations subject to the methodological limitations documented in the <a href="/methodology.html">Methodology</a> section.</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-attribution">
+          Data sources: Piketty &amp; Saez (updated 2024); U.S. Census Bureau CPS ASEC; FRED.
+          Charts built with <a href="https://d3js.org" target="_blank" rel="noopener noreferrer">D3.js v7</a>.
+          Not legal or financial advice.
+        </p>
+        <p class="footer-copyright">&copy; Equally Poor Research Platform. For scholarly and educational use.</p>
+      </div>
+    </div>
+  </footer>
+
+  <div class="chart-tooltip" id="legal-tip"></div>
+
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <script src="/assets/js/shared-data.js"></script>
+  <script>
+(function() {
+  // ── Timeline ──
+  const timeline = document.getElementById('legislation-timeline');
+  let activeFilter = 'all';
+
+  function renderTimeline(filter) {
+    timeline.innerHTML = '';
+    const items = filter === 'all' ? keyLegislation : keyLegislation.filter(d => d.type === filter);
+    items.forEach(item => {
+      const dotClass = `timeline-dot--${item.type}`;
+      const badgeClass = `timeline-badge--${item.type}`;
+      const effectLabel = item.effect === 'increase'
+        ? '<span class="timeline-effect effect--increase">&#8593; Associated with rising inequality</span>'
+        : '<span class="timeline-effect effect--decrease">&#8595; Associated with reducing inequality</span>';
+
+      const div = document.createElement('div');
+      div.className = 'timeline-item';
+      div.innerHTML = `
+        <div class="timeline-dot ${dotClass}" aria-hidden="true"></div>
+        <div class="timeline-year">${item.year}</div>
+        <span class="timeline-badge ${badgeClass}">${item.type === 'tax' ? 'Tax Law' : item.type === 'welfare' ? 'Social Policy' : 'Labor Law'}</span>
+        <div class="timeline-title">${item.title}</div>
+        <div class="timeline-desc">${item.description}</div>
+        ${effectLabel}
+      `;
+      timeline.appendChild(div);
+    });
+  }
+
+  renderTimeline('all');
+
+  document.querySelectorAll('[data-filter]').forEach(btn => {
+    btn.addEventListener('click', function() {
+      activeFilter = this.dataset.filter;
+      document.querySelectorAll('[data-filter]').forEach(b => {
+        b.classList.remove('active');
+        b.style.background = b.style.color = b.style.borderColor = '';
+      });
+      this.classList.add('active');
+      this.style.background = 'var(--catholic-blue)';
+      this.style.color = '#fff';
+      this.style.borderColor = 'var(--catholic-blue)';
+      renderTimeline(activeFilter);
+    });
+  });
+
+  // ── Legislation + Trend Chart ──
+  const wrapper = document.getElementById('legal-chart-wrapper');
+  const svgEl   = document.getElementById('legal-chart');
+  const tip     = document.getElementById('legal-tip');
+
+  function showTip(html, ev) {
+    tip.innerHTML = html;
+    tip.classList.add('visible');
+    tip.style.left = Math.min(ev.clientX + 14, window.innerWidth - 260) + 'px';
+    tip.style.top  = (ev.clientY - 28) + 'px';
+  }
+  function hideTip() { tip.classList.remove('visible'); }
+
+  const LEG_COLORS = { tax: '#B21F2C', welfare: '#2459A9', labor: '#8a6500' };
+
+  // Effect on chart line color: increase (inequality goes up) = red, decrease = blue
+  function legLineColor(item) {
+    if (item.type === 'labor') return '#8a6500';
+    return item.effect === 'increase' ? '#B21F2C' : '#2459A9';
+  }
+
+  const MARGIN = { top: 28, right: 30, bottom: 45, left: 60 };
+
+  function buildLegalChart() {
+    const totalW = Math.max(wrapper.clientWidth || 900, 480);
+    const totalH = 460;
+    const W = totalW - MARGIN.left - MARGIN.right;
+    const H = totalH - MARGIN.top  - MARGIN.bottom;
+
+    d3.select(svgEl).selectAll('*').remove();
+
+    const svg = d3.select(svgEl).attr('width', totalW).attr('height', totalH);
+    const g   = svg.append('g').attr('transform', `translate(${MARGIN.left},${MARGIN.top})`);
+
+    const xScale = d3.scaleLinear().domain([1913, 2022]).range([0, W]);
+    const yScale = d3.scaleLinear().domain([0.28, 0.55]).range([H, 0]);
+
+    // Grid
+    g.append('g').selectAll('line').data(yScale.ticks(6)).join('line')
+      .attr('x1', 0).attr('x2', W)
+      .attr('y1', d => yScale(d)).attr('y2', d => yScale(d))
+      .attr('stroke', '#e8e8e8').attr('stroke-dasharray', '3 3');
+
+    // Shaded disruption bands
+    const bands = [
+      {start:1929,end:1933,color:'#E96955',label:'Great Depression'},
+      {start:1941,end:1945,color:'#6DACDE',label:'WWII'},
+      {start:2007,end:2009,color:'#E96955',label:'Great Recession'},
+      {start:2020,end:2021,color:'#FFD65C',label:'COVID-19'},
+    ];
+    bands.forEach(b => {
+      g.append('rect')
+        .attr('x', xScale(b.start)).attr('y', 0)
+        .attr('width', xScale(b.end) - xScale(b.start))
+        .attr('height', H)
+        .attr('fill', b.color).attr('opacity', 0.1);
+      g.append('text')
+        .attr('x', (xScale(b.start)+xScale(b.end))/2).attr('y', H - 8)
+        .attr('text-anchor','middle')
+        .attr('font-family','Roboto,sans-serif').attr('font-size','9px')
+        .attr('fill', b.color === '#FFD65C' ? '#8a6500' : b.color).attr('font-weight','600')
+        .text(b.label);
+    });
+
+    // Axes
+    g.append('g').attr('class','axis').attr('transform',`translate(0,${H})`)
+      .call(d3.axisBottom(xScale).tickFormat(d3.format('d')).ticks(11));
+    g.append('g').attr('class','axis')
+      .call(d3.axisLeft(yScale).ticks(6).tickFormat(d => (d*100).toFixed(0)+'%'));
+
+    // Axis label
+    svg.append('text')
+      .attr('x',-(MARGIN.top+H/2)).attr('y',16)
+      .attr('transform','rotate(-90)')
+      .attr('text-anchor','middle')
+      .attr('font-family','Roboto,sans-serif').attr('font-size','11px').attr('fill','#555')
+      .text('Top 10% Income Share (%)');
+
+    // Top 10% line
+    const lineGen = d3.line()
+      .x(d => xScale(d.year)).y(d => yScale(d.value))
+      .curve(d3.curveMonotoneX);
+    g.append('path')
+      .datum(top10Data)
+      .attr('d', lineGen)
+      .attr('stroke','#B21F2C').attr('stroke-width',2.5).attr('fill','none');
+
+    // Legislation vertical lines
+    keyLegislation.forEach(item => {
+      const x = xScale(item.year);
+      const col = legLineColor(item);
+      g.append('line')
+        .attr('x1',x).attr('x2',x)
+        .attr('y1',0).attr('y2',H)
+        .attr('stroke',col).attr('stroke-width',1.5)
+        .attr('stroke-dasharray','5 3').attr('opacity',0.75)
+        .style('cursor','pointer')
+        .on('mouseover', function(event) {
+          const typeLabel = item.type === 'tax' ? 'Tax Law' : item.type === 'welfare' ? 'Social Policy' : 'Labor Law';
+          showTip(`<strong>${item.year}: ${item.title}</strong><br><em>${typeLabel}</em><br>${item.description}`, event);
+          d3.select(this).attr('stroke-width',3).attr('opacity',1);
+        })
+        .on('mouseout', function() {
+          hideTip();
+          d3.select(this).attr('stroke-width',1.5).attr('opacity',0.75);
+        })
+        .on('mousemove', function(event) {
+          tip.style.left = Math.min(event.clientX+14, window.innerWidth-260)+'px';
+          tip.style.top  = (event.clientY-28)+'px';
+        });
+    });
+
+    // Hover overlay for line
+    const bisect = d3.bisector(d => d.year).left;
+    const hLine = g.append('line').attr('stroke','#aaa').attr('stroke-width',1)
+      .attr('stroke-dasharray','4 2').attr('y1',0).attr('y2',H).style('opacity',0);
+
+    g.append('rect').attr('width',W).attr('height',H).attr('fill','none').attr('pointer-events','all')
+      .on('mousemove', function(event) {
+        const [mx] = d3.pointer(event, g.node());
+        const yr = Math.round(xScale.invert(mx));
+        hLine.attr('x1',xScale(yr)).attr('x2',xScale(yr)).style('opacity',1);
+        const idx = bisect(top10Data, yr);
+        const candidates = [top10Data[idx-1], top10Data[idx]].filter(Boolean);
+        if (!candidates.length) return;
+        const d = candidates.reduce((a,b) => Math.abs(b.year-yr)<Math.abs(a.year-yr)?b:a);
+        showTip(`<strong>${d.year}</strong><br>Top 10% Share: <b>${(d.value*100).toFixed(1)}%</b>`, event);
+      })
+      .on('mouseleave', () => { hLine.style('opacity',0); hideTip(); });
+  }
+
+  buildLegalChart();
+  let rTimer;
+  window.addEventListener('resize', () => { clearTimeout(rTimer); rTimer = setTimeout(buildLegalChart, 120); });
+
+})();
+  </script>
+
+  <script>
+    // Mobile nav toggle
+    const navToggle = document.querySelector('.nav-toggle');
+    const navMenu = document.querySelector('.nav-menu');
+    if (navToggle && navMenu) {
+      navToggle.addEventListener('click', function() {
+        const expanded = this.getAttribute('aria-expanded') === 'true';
+        this.setAttribute('aria-expanded', !expanded);
+        navMenu.classList.toggle('open');
+      });
+    }
+  </script>
+
+</body>
+</html>
