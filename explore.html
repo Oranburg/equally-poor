@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Equally Poor Data Explorer — interactive visualization of U.S. income inequality and poverty, 1913–2024.">
+  <title>Data Explorer | Equally Poor</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Crimson+Text:ital,wght@0,400;0,600;1,400;1,600&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/main.css">
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="site-nav" role="navigation" aria-label="Main navigation">
+    <div class="nav-container">
+      <a href="/index.html" class="nav-logo" aria-label="Equally Poor — Home">
+        <span class="nav-logo-text">EQUALLY POOR</span>
+        <span class="nav-logo-sub">Wealth · Inequality · Law</span>
+      </a>
+      <button class="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="nav-menu">
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+      </button>
+      <ul class="nav-menu" id="nav-menu" role="list">
+        <li class="nav-item">
+          <a href="/index.html" class="nav-link">Home</a>
+        </li>
+        <li class="nav-item">
+          <a href="/explore.html" class="nav-link active" aria-current="page">Data Explorer</a>
+        </li>
+        <li class="nav-item">
+          <a href="/legal.html" class="nav-link">Legal Landscape</a>
+        </li>
+        <li class="nav-item">
+          <a href="/methodology.html" class="nav-link">Methodology</a>
+        </li>
+        <li class="nav-item">
+          <a href="/about.html" class="nav-link">About</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <main id="main-content" role="main">
+
+    <section class="hero hero--short" aria-labelledby="explore-hero-title">
+      <div class="container">
+        <p class="hero-eyebrow">Interactive Visualization</p>
+        <h1 id="explore-hero-title">Data Explorer</h1>
+        <p>Explore four decades-spanning measures of income inequality and poverty in the United States. Toggle series, filter by historical period, and overlay legislative milestones. All data sourced from peer-reviewed and government sources — see <a href="/methodology.html" style="color:var(--light-blue);">Methodology</a> for full caveats.</p>
+      </div>
+    </section>
+
+    <section aria-labelledby="explorer-section-title" style="background:var(--off-white); padding-top:2rem; padding-bottom:3rem;">
+      <div class="container--wide">
+        <h2 class="sr-only" id="explorer-section-title">Interactive Chart Controls</h2>
+
+        <!-- Control Panel -->
+        <div class="control-panel" role="region" aria-label="Chart controls">
+
+          <div class="control-row">
+            <span class="control-label" id="series-label">Series</span>
+            <div class="toggle-group" role="group" aria-labelledby="series-label">
+              <button class="toggle-btn active" data-series="top10"   style="--active-color:#B21F2C;" aria-pressed="true">Top 10% Share</button>
+              <button class="toggle-btn active" data-series="top1"    style="--active-color:#E96955;" aria-pressed="true">Top 1% Share</button>
+              <button class="toggle-btn active" data-series="gini"    style="--active-color:#2459A9;" aria-pressed="true">Gini Coefficient</button>
+              <button class="toggle-btn active" data-series="poverty" style="--active-color:#0A3255;" aria-pressed="true">Poverty Rate</button>
+              <button class="toggle-btn" data-series="povertyPre"     style="--active-color:#6DACDE;" aria-pressed="false">Pre-1959 Estimates*</button>
+            </div>
+          </div>
+
+          <div class="control-row">
+            <span class="control-label" id="period-label">Period</span>
+            <div class="preset-group" role="group" aria-labelledby="period-label">
+              <button class="preset-btn active" data-start="1913" data-end="2024">All (1913–)</button>
+              <button class="preset-btn" data-start="1946" data-end="2024">Post-WWII</button>
+              <button class="preset-btn" data-start="1967" data-end="2024">1967+ (All series)</button>
+              <button class="preset-btn" data-start="1981" data-end="2024">Post-Reagan</button>
+              <button class="preset-btn" data-start="2000" data-end="2024">Since 2000</button>
+            </div>
+            <div class="range-input" aria-label="Custom year range">
+              <label for="year-start" class="control-label" style="min-width:auto;font-size:0.72rem;">From</label>
+              <input type="range" id="year-start" min="1913" max="2023" value="1913" step="1" aria-label="Start year">
+              <span class="range-value" id="year-start-val">1913</span>
+              <label for="year-end" class="control-label" style="min-width:auto;font-size:0.72rem;">To</label>
+              <input type="range" id="year-end" min="1914" max="2024" value="2024" step="1" aria-label="End year">
+              <span class="range-value" id="year-end-val">2024</span>
+            </div>
+          </div>
+
+          <div class="control-row">
+            <span class="control-label" id="annot-label">Annotations</span>
+            <div class="toggle-group" role="group" aria-labelledby="annot-label">
+              <button class="toggle-btn active" id="annot-toggle" aria-pressed="true">Show Historical Events</button>
+            </div>
+            <span class="control-label" style="margin-left:1.5rem;" id="axis-label">Right Axis</span>
+            <div class="toggle-group" role="group" aria-labelledby="axis-label">
+              <button class="toggle-btn active" id="gini-axis-toggle" aria-pressed="true">Gini on Right Axis</button>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="caveat-box" id="pre1959-caveat" style="display:none;">
+          <strong>Warning — Unofficial Estimates:</strong> Pre-1959 poverty data are econometric backcasts with no underlying household survey. The 1947–1958 estimates (Fisher 1986) were withdrawn by their author in 1999. The 1914–1946 estimates (Plotnick et al. 2000) are highly uncertain. Do not use for quantitative analysis without reading the full <a href="/methodology.html">methodology</a>.
+        </div>
+
+        <!-- Main Chart -->
+        <div class="chart-container" style="padding:1.5rem 1rem;">
+          <div class="chart-title">U.S. Income Inequality &amp; Poverty, 1913–2024</div>
+          <div class="chart-subtitle">Hover over the chart to see values. Click legend items to toggle individual series.</div>
+          <div class="chart-wrapper" id="explore-chart-wrapper">
+            <svg id="explore-chart" role="img" aria-label="Multi-series inequality chart with interactive controls"></svg>
+          </div>
+          <div class="chart-legend" id="explore-legend" aria-label="Chart series legend"></div>
+          <p class="chart-source">Sources: Piketty &amp; Saez (2024); Census Bureau CPS ASEC; Shrider, P60-287 (2025); Plotnick et al. (2000) [pre-1959, unofficial]. <a href="/methodology.html">Full methodology &rarr;</a></p>
+        </div>
+
+        <!-- Data Table -->
+        <div style="margin-top:2.5rem;">
+          <div class="table-controls">
+            <h2 style="font-size:1.2rem;color:var(--catholic-blue);font-family:var(--font-headline);">Data Table</h2>
+            <div style="display:flex;gap:0.75rem;flex-wrap:wrap;align-items:center;">
+              <input type="text" class="table-search" id="table-search" placeholder="Filter by year…" aria-label="Filter table by year">
+              <button class="btn btn-outline btn-sm" id="download-csv" aria-label="Download data as CSV">Download CSV</button>
+            </div>
+          </div>
+          <div class="data-table-wrapper">
+            <table class="data-table" id="data-table" aria-label="Inequality data by year">
+              <thead>
+                <tr>
+                  <th scope="col" data-col="year">Year</th>
+                  <th scope="col" data-col="top10">Top 10% Share</th>
+                  <th scope="col" data-col="top1">Top 1% Share</th>
+                  <th scope="col" data-col="gini">Gini</th>
+                  <th scope="col" data-col="poverty">Poverty Rate</th>
+                </tr>
+              </thead>
+              <tbody id="table-body"></tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Caveats Accordion -->
+        <div style="margin-top:2.5rem;">
+          <h2 style="font-size:1.2rem;color:var(--catholic-blue);font-family:var(--font-headline);margin-bottom:1rem;">Data Caveats &amp; Series Notes</h2>
+
+          <div class="accordion">
+            <button class="accordion-trigger" aria-expanded="false" aria-controls="caveat-1">
+              Piketty-Saez: Income-Timing Artifacts
+              <span class="accordion-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="accordion-body" id="caveat-1" role="region">
+              The 1986 Tax Reform Act reduced the top marginal rate from 50% to 28% effective in 1987. High-income taxpayers accelerated income realization into 1986, producing an artificial spike in top income shares that year. Similarly, before the 2013 rate increase, income was pulled forward into 2012, causing another spike. These are measurement artifacts, not genuine changes in inequality.
+            </div>
+          </div>
+
+          <div class="accordion">
+            <button class="accordion-trigger" aria-expanded="false" aria-controls="caveat-2">
+              Piketty-Saez vs. Auten-Splinter: A Contested Measurement
+              <span class="accordion-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="accordion-body" id="caveat-2" role="region">
+              Gerald Auten and David Splinter, in <em>Income Inequality in the United States: Using Tax Data to Measure Long-Term Trends</em> (Journal of Political Economy, 2024), argue that after accounting for taxes paid, government transfers received, and adjustments for non-filers, post-tax-and-transfer inequality has increased far less than Piketty-Saez indicate. The debate turns on how to allocate corporate retained earnings, government transfers, and non-cash benefits. This platform presents the Piketty-Saez series because it is the most widely cited and internally consistent over the longest time horizon, but readers should consult the Auten-Splinter series for a contrasting view.
+            </div>
+          </div>
+
+          <div class="accordion">
+            <button class="accordion-trigger" aria-expanded="false" aria-controls="caveat-3">
+              Census Gini: Series Breaks (1993, 2013-14, 2017-18)
+              <span class="accordion-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="accordion-body" id="caveat-3" role="region">
+              The Census Gini series contains three documented discontinuities. In 1993, the Census Bureau switched to computer-assisted telephone interviewing (CATI), which increased reported income. In 2013–14, the income questions in the CPS ASEC were redesigned, producing a measurable upward shift in reported income inequality. In 2017–18, processing updates changed how certain income items were coded. These breaks mean that long-run trend comparisons should be made with caution. The Census Bureau publishes estimates on both old and new processing bases at transition points.
+            </div>
+          </div>
+
+          <div class="accordion">
+            <button class="accordion-trigger" aria-expanded="false" aria-controls="caveat-4">
+              Official Poverty Measure: Known Limitations
+              <span class="accordion-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="accordion-body" id="caveat-4" role="region">
+              The Official Poverty Measure (OPM) uses thresholds developed by Mollie Orshansky in 1963–64, based on the cost of a USDA Economy Food Plan multiplied by three (reflecting that food then consumed ~1/3 of family budgets). Updated only for CPI since 1969, these thresholds have not been adjusted for changes in living standards. The OPM counts only pre-tax cash income, excluding SNAP, Medicaid, housing subsidies, and the Earned Income Tax Credit (EITC) — which means it cannot capture the full effect of anti-poverty programs. The Supplemental Poverty Measure (SPM), published annually by the Census Bureau since 2009, is widely preferred by researchers as it counts more income sources and uses updated thresholds. Readers should consult SPM data for policy analysis.
+            </div>
+          </div>
+
+          <div class="accordion">
+            <button class="accordion-trigger" aria-expanded="false" aria-controls="caveat-5">
+              Pre-1959 Poverty Estimates: Unofficial &amp; Uncertain
+              <span class="accordion-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="accordion-body" id="caveat-5" role="region">
+              No household survey capable of supporting official poverty estimates existed before 1947. The pre-1959 estimates displayed here when selected come from two sources: (1) Gordon M. Fisher (ASPE/HHS, 1986), covering 1947–1958 — these estimates were withdrawn by Fisher himself in 1999 and should not be cited as authoritative; and (2) Robert D. Plotnick, Eugene Smolensky, Eirik Evenhouse, and Siobhan Reilly, "The Twentieth-Century Record of Inequality and Poverty in the United States," in <em>The Cambridge Economic History of the United States</em>, vol. III (2000), covering 1914–1946. Plotnick et al. themselves caution: "It strikes us as unreasonable to assert that 60% of Americans were poor in 1920" — the numbers depend entirely on how Orshansky thresholds are backdated. These figures are displayed for illustrative historical context only.
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="footer-container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="footer-logo">EQUALLY POOR</div>
+          <p class="footer-tagline">Visualizing wealth, inequality &amp; law in America — a scholarly research platform at the intersection of economics, law, and social policy.</p>
+        </div>
+        <div class="footer-links">
+          <h3 class="footer-heading">Platform</h3>
+          <ul class="footer-nav" role="list">
+            <li><a href="/index.html">Home</a></li>
+            <li><a href="/explore.html">Data Explorer</a></li>
+            <li><a href="/legal.html">Legal Landscape</a></li>
+            <li><a href="/methodology.html">Methodology</a></li>
+            <li><a href="/about.html">About</a></li>
+          </ul>
+        </div>
+        <div class="footer-sources">
+          <h3 class="footer-heading">Primary Sources</h3>
+          <ul class="footer-nav" role="list">
+            <li><a href="https://gabriel-zucman.eu/usdina/" target="_blank" rel="noopener noreferrer">Piketty-Saez Data</a></li>
+            <li><a href="https://fred.stlouisfed.org/series/GINIALLRH" target="_blank" rel="noopener noreferrer">Census Gini (FRED)</a></li>
+            <li><a href="https://www.census.gov/topics/income-poverty/poverty.html" target="_blank" rel="noopener noreferrer">Census Poverty Data</a></li>
+            <li><a href="/methodology.html">Methodology &amp; Caveats</a></li>
+          </ul>
+        </div>
+        <div class="footer-affiliation">
+          <h3 class="footer-heading">Affiliation</h3>
+          <p>A research initiative in the tradition of law-and-economics scholarship. Data updated through 2024. All visualizations subject to the methodological limitations documented in the <a href="/methodology.html">Methodology</a> section.</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-attribution">
+          Data sources: Piketty &amp; Saez (updated 2024); U.S. Census Bureau CPS ASEC; FRED.
+          Charts built with <a href="https://d3js.org" target="_blank" rel="noopener noreferrer">D3.js v7</a>.
+          Not legal or financial advice.
+        </p>
+        <p class="footer-copyright">&copy; Equally Poor Research Platform. For scholarly and educational use.</p>
+      </div>
+    </div>
+  </footer>
+
+  <div class="chart-tooltip" id="explore-tip"></div>
+
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <script src="/assets/js/shared-data.js"></script>
+  <script>
+(function() {
+  // ── State ──
+  const state = {
+    active: { top10: true, top1: true, gini: true, poverty: true, povertyPre: false },
+    startYear: 1913,
+    endYear: 2024,
+    showAnnotations: true,
+    giniRightAxis: true,
+  };
+
+  const COLORS = {
+    top10:      '#B21F2C',
+    top1:       '#E96955',
+    gini:       '#2459A9',
+    poverty:    '#0A3255',
+    povertyPre: '#6DACDE',
+  };
+
+  const LABELS = {
+    top10:      'Top 10% Income Share (excl. cap gains)',
+    top1:       'Top 1% Income Share (incl. cap gains)',
+    gini:       'Gini Coefficient',
+    poverty:    'Official Poverty Rate',
+    povertyPre: 'Pre-1959 Estimates (unofficial)',
+  };
+
+  const MARGIN = { top: 24, right: 80, bottom: 45, left: 65 };
+  const wrapper = document.getElementById('explore-chart-wrapper');
+  const svgEl   = document.getElementById('explore-chart');
+  const legendEl = document.getElementById('explore-legend');
+
+  // Tooltip
+  const tip = document.getElementById('explore-tip');
+  function showTip(html, ev) {
+    tip.innerHTML = html;
+    tip.classList.add('visible');
+    moveTip(ev);
+  }
+  function moveTip(ev) {
+    tip.style.left = Math.min(ev.clientX + 14, window.innerWidth - 240) + 'px';
+    tip.style.top  = (ev.clientY - 28) + 'px';
+  }
+  function hideTip() { tip.classList.remove('visible'); }
+
+  function getSeriesData(key) {
+    const sy = state.startYear, ey = state.endYear;
+    switch(key) {
+      case 'top10':      return top10Data.filter(d => d.year >= sy && d.year <= ey);
+      case 'top1':       return top1Data.filter(d => d.year >= sy && d.year <= ey);
+      case 'gini':       return giniData.filter(d => d.year >= sy && d.year <= ey);
+      case 'poverty':    return povertyData.filter(d => d.year >= sy && d.year <= ey);
+      case 'povertyPre': return povertyPre.filter(d => d.year >= sy && d.year <= ey);
+      default: return [];
+    }
+  }
+
+  function buildChart() {
+    const totalW = Math.max(wrapper.clientWidth || 900, 480);
+    const totalH = 520;
+    const W = totalW - MARGIN.left - MARGIN.right;
+    const H = totalH - MARGIN.top  - MARGIN.bottom;
+
+    d3.select(svgEl).selectAll('*').remove();
+
+    const svg = d3.select(svgEl)
+      .attr('width', totalW)
+      .attr('height', totalH);
+
+    const g = svg.append('g')
+      .attr('transform', `translate(${MARGIN.left},${MARGIN.top})`);
+
+    // Collect all active data for domain calc
+    const activeKeys = Object.keys(state.active).filter(k => state.active[k]);
+
+    // X scale
+    const allYears = [];
+    activeKeys.forEach(k => getSeriesData(k).forEach(d => allYears.push(d.year)));
+    if (allYears.length === 0) return;
+    const xScale = d3.scaleLinear()
+      .domain([Math.min(...allYears), Math.max(...allYears)])
+      .range([0, W]);
+
+    // Separate gini from others for dual axis
+    const nonGiniKeys = activeKeys.filter(k => k !== 'gini');
+    const giniActive  = activeKeys.includes('gini') && state.giniRightAxis;
+
+    // Left y-scale: income share + poverty (0-0.7)
+    let leftMin = 0.05, leftMax = 0.6;
+    nonGiniKeys.forEach(k => {
+      getSeriesData(k).forEach(d => {
+        leftMin = Math.min(leftMin, d.value * 0.95);
+        leftMax = Math.max(leftMax, d.value * 1.05);
+      });
+    });
+    if (!giniActive && activeKeys.includes('gini')) {
+      getSeriesData('gini').forEach(d => {
+        leftMin = Math.min(leftMin, d.value * 0.95);
+        leftMax = Math.max(leftMax, d.value * 1.05);
+      });
+    }
+    const yLeft = d3.scaleLinear().domain([leftMin, leftMax]).range([H, 0]).nice();
+
+    // Right y-scale: Gini
+    const yRight = d3.scaleLinear().domain([0.35, 0.55]).range([H, 0]);
+
+    // Gridlines
+    g.append('g').attr('class', 'grid')
+      .selectAll('line')
+      .data(yLeft.ticks(7))
+      .join('line')
+        .attr('x1', 0).attr('x2', W)
+        .attr('y1', d => yLeft(d)).attr('y2', d => yLeft(d))
+        .attr('stroke', '#e8e8e8').attr('stroke-dasharray', '3 3');
+
+    // Vertical decade ticks
+    const decadeTicks = d3.range(
+      Math.ceil(state.startYear / 10) * 10,
+      state.endYear + 1, 10
+    );
+    g.append('g').attr('class', 'grid')
+      .selectAll('line.vline')
+      .data(decadeTicks)
+      .join('line')
+        .attr('x1', d => xScale(d)).attr('x2', d => xScale(d))
+        .attr('y1', 0).attr('y2', H)
+        .attr('stroke', '#f0f0f0').attr('stroke-dasharray', '2 4');
+
+    // Annotations
+    if (state.showAnnotations) {
+      annotations.forEach(ann => {
+        if (ann.year < state.startYear || ann.year > state.endYear) return;
+        if (ann.type === 'band' && ann.end) {
+          const x1 = xScale(ann.year);
+          const x2 = xScale(Math.min(ann.end, state.endYear));
+          g.append('rect')
+            .attr('x', x1).attr('y', 0)
+            .attr('width', x2 - x1).attr('height', H)
+            .attr('fill', ann.color).attr('opacity', 0.08);
+          g.append('text')
+            .attr('x', (x1 + x2) / 2).attr('y', 12)
+            .attr('text-anchor', 'middle')
+            .attr('font-family', 'Roboto, sans-serif')
+            .attr('font-size', '9px')
+            .attr('fill', ann.color)
+            .attr('font-weight', '600')
+            .text(ann.label);
+        } else {
+          const x = xScale(ann.year);
+          g.append('line')
+            .attr('x1', x).attr('x2', x)
+            .attr('y1', 0).attr('y2', H)
+            .attr('stroke', ann.color)
+            .attr('stroke-width', 1)
+            .attr('stroke-dasharray', '5 3')
+            .attr('opacity', 0.7);
+          g.append('text')
+            .attr('x', x + 3).attr('y', 12)
+            .attr('font-family', 'Roboto, sans-serif')
+            .attr('font-size', '9px')
+            .attr('fill', ann.color)
+            .attr('font-weight', '600')
+            .text(ann.label);
+        }
+      });
+    }
+
+    // Axes
+    const xTicks = W < 500 ? 5 : 10;
+    g.append('g').attr('class', 'axis')
+      .attr('transform', `translate(0,${H})`)
+      .call(d3.axisBottom(xScale).tickFormat(d3.format('d')).ticks(xTicks));
+
+    g.append('g').attr('class', 'axis')
+      .call(d3.axisLeft(yLeft).ticks(7)
+        .tickFormat(d => (d*100).toFixed(0)+'%'));
+
+    if (giniActive) {
+      g.append('g').attr('class', 'axis')
+        .attr('transform', `translate(${W},0)`)
+        .call(d3.axisRight(yRight).ticks(6).tickFormat(d => d.toFixed(2)));
+
+      svg.append('text')
+        .attr('x', MARGIN.left + W + 70)
+        .attr('y', MARGIN.top + H / 2)
+        .attr('transform', `rotate(90,${MARGIN.left+W+70},${MARGIN.top+H/2})`)
+        .attr('text-anchor', 'middle')
+        .attr('font-family', 'Roboto, sans-serif')
+        .attr('font-size', '11px')
+        .attr('fill', '#555')
+        .text('Gini Coefficient');
+    }
+
+    svg.append('text')
+      .attr('x', -(MARGIN.top + H / 2))
+      .attr('y', 15)
+      .attr('transform', 'rotate(-90)')
+      .attr('text-anchor', 'middle')
+      .attr('font-family', 'Roboto, sans-serif')
+      .attr('font-size', '11px')
+      .attr('fill', '#555')
+      .text('Share / Rate (%)');
+
+    // Draw series lines
+    const seriesDefs = [
+      { key:'top10',      yScale: yLeft,  dashed: false },
+      { key:'top1',       yScale: yLeft,  dashed: false },
+      { key:'gini',       yScale: giniActive ? yRight : yLeft, dashed: false },
+      { key:'poverty',    yScale: yLeft,  dashed: false },
+      { key:'povertyPre', yScale: yLeft,  dashed: true  },
+    ];
+
+    seriesDefs.forEach(s => {
+      if (!state.active[s.key]) return;
+      const data = getSeriesData(s.key);
+      if (!data.length) return;
+      const lineGen = d3.line()
+        .defined(d => d.value != null)
+        .x(d => xScale(d.year))
+        .y(d => s.yScale(d.value))
+        .curve(d3.curveMonotoneX);
+
+      g.append('path')
+        .datum(data)
+        .attr('class', 'line')
+        .attr('d', lineGen)
+        .attr('stroke', COLORS[s.key])
+        .attr('stroke-width', s.key === 'povertyPre' ? 2 : 2.5)
+        .attr('stroke-dasharray', s.dashed ? '6 4' : null)
+        .attr('fill', 'none')
+        .attr('data-key', s.key);
+    });
+
+    // Hover overlay
+    const bisect = d3.bisector(d => d.year).left;
+    const overlay = g.append('rect')
+      .attr('width', W).attr('height', H)
+      .attr('fill', 'none')
+      .attr('pointer-events', 'all')
+      .style('cursor', 'crosshair');
+
+    const hLine = g.append('line')
+      .attr('stroke', '#999').attr('stroke-width', 1)
+      .attr('stroke-dasharray', '4 2')
+      .attr('y1', 0).attr('y2', H)
+      .style('opacity', 0);
+
+    overlay
+      .on('mousemove', function(event) {
+        const [mx] = d3.pointer(event, g.node());
+        const yr = Math.round(xScale.invert(mx));
+        hLine.attr('x1', xScale(yr)).attr('x2', xScale(yr)).style('opacity', 1);
+        let html = `<strong>${yr}</strong><br>`;
+        seriesDefs.forEach(s => {
+          if (!state.active[s.key]) return;
+          const data = getSeriesData(s.key);
+          const idx = bisect(data, yr);
+          const candidates = [data[idx-1], data[idx]].filter(Boolean);
+          if (!candidates.length) return;
+          const d = candidates.reduce((a, b) => Math.abs(b.year-yr) < Math.abs(a.year-yr) ? b : a);
+          if (Math.abs(d.year - yr) > 2) return;
+          const isGini = s.key === 'gini';
+          const fmt = isGini ? v => v.toFixed(3) : v => (v*100).toFixed(1)+'%';
+          html += `<span style="color:${COLORS[s.key]}">&#9632;</span> ${LABELS[s.key].split(' ').slice(0,3).join(' ')}: <b>${fmt(d.value)}</b><br>`;
+        });
+        showTip(html, event);
+      })
+      .on('mouseleave', () => { hLine.style('opacity', 0); hideTip(); })
+      .on('mousemove.move', ev => moveTip(ev));
+
+    // Build legend
+    legendEl.innerHTML = '';
+    seriesDefs.forEach(s => {
+      if (!state.active[s.key]) return;
+      const item = document.createElement('div');
+      item.className = 'legend-item';
+      item.dataset.key = s.key;
+      item.style.cursor = 'pointer';
+      const swatch = `<span class="legend-swatch" style="background:${COLORS[s.key]};${s.dashed ? 'background:none;border-top:3px dashed '+COLORS[s.key]+';' : ''}"></span>`;
+      item.innerHTML = `${swatch} <span>${LABELS[s.key]}</span>`;
+      item.setAttribute('aria-label', `Toggle ${LABELS[s.key]}`);
+      legendEl.appendChild(item);
+    });
+  }
+
+  // ── Controls ──
+
+  // Series toggles
+  document.querySelectorAll('.toggle-btn[data-series]').forEach(btn => {
+    btn.addEventListener('click', function() {
+      const key = this.dataset.series;
+      state.active[key] = !state.active[key];
+      this.classList.toggle('active', state.active[key]);
+      this.setAttribute('aria-pressed', state.active[key]);
+      this.style.background = state.active[key] ? COLORS[key] : '';
+      this.style.color      = state.active[key] ? '#fff' : '';
+      this.style.borderColor= state.active[key] ? COLORS[key] : '';
+      if (key === 'povertyPre') {
+        document.getElementById('pre1959-caveat').style.display = state.active[key] ? 'block' : 'none';
+      }
+      buildChart();
+      buildTable();
+    });
+    // Initial style for active
+    if (state.active[btn.dataset.series]) {
+      const key = btn.dataset.series;
+      btn.style.background  = COLORS[key];
+      btn.style.color       = '#fff';
+      btn.style.borderColor = COLORS[key];
+    }
+  });
+
+  // Preset period buttons
+  document.querySelectorAll('.preset-btn').forEach(btn => {
+    btn.addEventListener('click', function() {
+      document.querySelectorAll('.preset-btn').forEach(b => b.classList.remove('active'));
+      this.classList.add('active');
+      state.startYear = parseInt(this.dataset.start);
+      state.endYear   = parseInt(this.dataset.end);
+      document.getElementById('year-start').value = state.startYear;
+      document.getElementById('year-end').value   = state.endYear;
+      document.getElementById('year-start-val').textContent = state.startYear;
+      document.getElementById('year-end-val').textContent   = state.endYear;
+      buildChart();
+      buildTable();
+    });
+  });
+
+  // Range sliders
+  const startSlider = document.getElementById('year-start');
+  const endSlider   = document.getElementById('year-end');
+  const startVal    = document.getElementById('year-start-val');
+  const endVal      = document.getElementById('year-end-val');
+
+  startSlider.addEventListener('input', function() {
+    state.startYear = parseInt(this.value);
+    if (state.startYear >= state.endYear) state.startYear = state.endYear - 1;
+    this.value = state.startYear;
+    startVal.textContent = state.startYear;
+    document.querySelectorAll('.preset-btn').forEach(b => b.classList.remove('active'));
+    buildChart(); buildTable();
+  });
+
+  endSlider.addEventListener('input', function() {
+    state.endYear = parseInt(this.value);
+    if (state.endYear <= state.startYear) state.endYear = state.startYear + 1;
+    this.value = state.endYear;
+    endVal.textContent = state.endYear;
+    document.querySelectorAll('.preset-btn').forEach(b => b.classList.remove('active'));
+    buildChart(); buildTable();
+  });
+
+  // Annotations toggle
+  document.getElementById('annot-toggle').addEventListener('click', function() {
+    state.showAnnotations = !state.showAnnotations;
+    this.classList.toggle('active', state.showAnnotations);
+    this.setAttribute('aria-pressed', state.showAnnotations);
+    if (state.showAnnotations) {
+      this.style.background = '#0A3255'; this.style.color = '#fff'; this.style.borderColor = '#0A3255';
+    } else {
+      this.style.background = ''; this.style.color = ''; this.style.borderColor = '';
+    }
+    buildChart();
+  });
+  // Initial style for annot
+  const annotBtn = document.getElementById('annot-toggle');
+  annotBtn.style.background = '#0A3255'; annotBtn.style.color = '#fff'; annotBtn.style.borderColor = '#0A3255';
+
+  // Gini axis toggle
+  document.getElementById('gini-axis-toggle').addEventListener('click', function() {
+    state.giniRightAxis = !state.giniRightAxis;
+    this.classList.toggle('active', state.giniRightAxis);
+    this.setAttribute('aria-pressed', state.giniRightAxis);
+    if (state.giniRightAxis) {
+      this.style.background = '#0A3255'; this.style.color = '#fff'; this.style.borderColor = '#0A3255';
+    } else {
+      this.style.background = ''; this.style.color = ''; this.style.borderColor = '';
+    }
+    buildChart();
+  });
+  const giniAxisBtn = document.getElementById('gini-axis-toggle');
+  giniAxisBtn.style.background = '#0A3255'; giniAxisBtn.style.color = '#fff'; giniAxisBtn.style.borderColor = '#0A3255';
+
+  // Accordion
+  document.querySelectorAll('.accordion-trigger').forEach(trigger => {
+    trigger.addEventListener('click', function() {
+      const bodyId = this.getAttribute('aria-controls');
+      const body   = document.getElementById(bodyId);
+      const open   = this.getAttribute('aria-expanded') === 'true';
+      this.setAttribute('aria-expanded', !open);
+      body.classList.toggle('open', !open);
+    });
+  });
+
+  // ── Data Table ──
+  function getAllYears() {
+    const years = new Set();
+    [top10Data, top1Data, giniData, povertyData].forEach(arr =>
+      arr.forEach(d => { if (d.year >= state.startYear && d.year <= state.endYear) years.add(d.year); })
+    );
+    return [...years].sort((a,b) => b - a);
+  }
+
+  function lookup(arr, year) {
+    const d = arr.find(r => r.year === year);
+    return d ? d.value : null;
+  }
+
+  function buildTable(filter) {
+    const tbody = document.getElementById('table-body');
+    tbody.innerHTML = '';
+    const years = getAllYears();
+    const q = (filter || '').trim();
+    years.forEach(yr => {
+      if (q && !String(yr).includes(q)) return;
+      const t10 = lookup(top10Data, yr);
+      const t1  = lookup(top1Data, yr);
+      const gin = lookup(giniData, yr);
+      const pov = lookup(povertyData, yr);
+      const tr = document.createElement('tr');
+      tr.innerHTML = `
+        <td>${yr}</td>
+        <td>${t10 !== null ? (t10*100).toFixed(1)+'%' : '—'}</td>
+        <td>${t1  !== null ? (t1*100).toFixed(1)+'%'  : '—'}</td>
+        <td>${gin !== null ? gin.toFixed(3)            : '—'}</td>
+        <td>${pov !== null ? (pov*100).toFixed(1)+'%' : '—'}</td>
+      `;
+      tbody.appendChild(tr);
+    });
+  }
+
+  document.getElementById('table-search').addEventListener('input', function() {
+    buildTable(this.value);
+  });
+
+  // Download CSV
+  document.getElementById('download-csv').addEventListener('click', function() {
+    const years = getAllYears();
+    let csv = 'Year,Top10PctShare,Top1PctShare,GiniCoefficient,PovertyRate\n';
+    years.forEach(yr => {
+      const t10 = lookup(top10Data, yr);
+      const t1  = lookup(top1Data, yr);
+      const gin = lookup(giniData, yr);
+      const pov = lookup(povertyData, yr);
+      csv += `${yr},${t10 !== null ? t10.toFixed(4) : ''},${t1 !== null ? t1.toFixed(4) : ''},${gin !== null ? gin.toFixed(4) : ''},${pov !== null ? pov.toFixed(4) : ''}\n`;
+    });
+    const blob = new Blob([csv], { type: 'text/csv' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'equally-poor-data.csv';
+    a.click();
+    URL.revokeObjectURL(url);
+  });
+
+  // ── Init ──
+  buildChart();
+  buildTable();
+
+  let rTimer;
+  window.addEventListener('resize', () => {
+    clearTimeout(rTimer);
+    rTimer = setTimeout(buildChart, 120);
+  });
+})();
+  </script>
+
+  <script>
+    // Mobile nav toggle
+    const navToggle = document.querySelector('.nav-toggle');
+    const navMenu = document.querySelector('.nav-menu');
+    if (navToggle && navMenu) {
+      navToggle.addEventListener('click', function() {
+        const expanded = this.getAttribute('aria-expanded') === 'true';
+        this.setAttribute('aria-expanded', !expanded);
+        navMenu.classList.toggle('open');
+      });
+    }
+  </script>
+
+</body>
+</html>
