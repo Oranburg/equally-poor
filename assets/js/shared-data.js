@@ -157,6 +157,96 @@ const povertyPre = [
   {year:1958,value:0.25},{year:1959,value:0.224}
 ];
 
+// S&P 500 Index — Year-end close
+// Source: S&P Dow Jones Indices; Yale/Shiller CAPE dataset for pre-1957 data
+const sp500Data = [
+  {year:1957,value:39.99},{year:1958,value:55.21},{year:1959,value:59.89},
+  {year:1960,value:58.11},{year:1961,value:71.55},{year:1962,value:63.10},
+  {year:1963,value:75.02},{year:1964,value:84.75},{year:1965,value:92.43},
+  {year:1966,value:80.33},{year:1967,value:96.47},{year:1968,value:103.86},
+  {year:1969,value:92.06},{year:1970,value:92.15},{year:1971,value:102.09},
+  {year:1972,value:118.05},{year:1973,value:97.55},{year:1974,value:68.56},
+  {year:1975,value:90.19},{year:1976,value:107.46},{year:1977,value:95.10},
+  {year:1978,value:96.11},{year:1979,value:107.94},{year:1980,value:135.76},
+  {year:1981,value:122.55},{year:1982,value:140.64},{year:1983,value:164.93},
+  {year:1984,value:167.24},{year:1985,value:211.28},{year:1986,value:242.17},
+  {year:1987,value:247.08},{year:1988,value:277.72},{year:1989,value:353.40},
+  {year:1990,value:330.22},{year:1991,value:417.09},{year:1992,value:435.71},
+  {year:1993,value:466.45},{year:1994,value:459.27},{year:1995,value:615.93},
+  {year:1996,value:740.74},{year:1997,value:970.43},{year:1998,value:1229.23},
+  {year:1999,value:1469.25},{year:2000,value:1320.28},{year:2001,value:1148.08},
+  {year:2002,value:879.82},{year:2003,value:1111.92},{year:2004,value:1211.92},
+  {year:2005,value:1248.29},{year:2006,value:1418.30},{year:2007,value:1468.36},
+  {year:2008,value:903.25},{year:2009,value:1115.10},{year:2010,value:1257.64},
+  {year:2011,value:1257.60},{year:2012,value:1426.19},{year:2013,value:1848.36},
+  {year:2014,value:2058.90},{year:2015,value:2043.94},{year:2016,value:2238.83},
+  {year:2017,value:2673.61},{year:2018,value:2506.85},{year:2019,value:3230.78},
+  {year:2020,value:3756.07},{year:2021,value:4766.18},{year:2022,value:3839.50},
+  {year:2023,value:4769.83},{year:2024,value:5881.63}
+];
+
+// Dow Jones Industrial Average — Year-end close
+// Source: S&P Dow Jones Indices; Macrotrends historical data
+const djiaData = [
+  {year:1920,value:71.95},{year:1921,value:78.59},{year:1922,value:98.73},{year:1923,value:95.52},
+  {year:1924,value:120.51},{year:1925,value:156.66},{year:1926,value:157.44},
+  {year:1927,value:200.70},{year:1928,value:300.01},{year:1929,value:248.48},
+  {year:1930,value:164.58},{year:1931,value:77.90},{year:1932,value:59.93},
+  {year:1933,value:99.90},{year:1934,value:104.04},{year:1935,value:144.13},
+  {year:1936,value:183.26},{year:1937,value:120.85},{year:1938,value:154.36},
+  {year:1939,value:150.24},{year:1940,value:131.13},{year:1941,value:110.96},
+  {year:1942,value:119.71},{year:1943,value:135.89},{year:1944,value:152.32},
+  {year:1945,value:192.91},{year:1946,value:177.20},{year:1947,value:181.16},
+  {year:1948,value:177.30},{year:1949,value:200.13},{year:1950,value:235.42},
+  {year:1951,value:269.23},{year:1952,value:292.00},{year:1953,value:280.90},
+  {year:1954,value:404.39},{year:1955,value:488.40},{year:1956,value:499.47},
+  {year:1957,value:435.69},{year:1958,value:583.65},{year:1959,value:679.36},
+  {year:1960,value:615.89},{year:1961,value:731.14},{year:1962,value:646.79},
+  {year:1963,value:762.95},{year:1964,value:874.13},{year:1965,value:969.26},
+  {year:1966,value:785.69},{year:1967,value:905.11},{year:1968,value:943.75},
+  {year:1969,value:800.36},{year:1970,value:838.92},{year:1971,value:890.20},
+  {year:1972,value:1020.02},{year:1973,value:850.86},{year:1974,value:616.24},
+  {year:1975,value:852.41},{year:1976,value:1004.65},{year:1977,value:831.17},
+  {year:1978,value:805.01},{year:1979,value:838.74},{year:1980,value:963.99},
+  {year:1981,value:875.00},{year:1982,value:1046.54},{year:1983,value:1258.64},
+  {year:1984,value:1211.57},{year:1985,value:1546.67},{year:1986,value:1895.95},
+  {year:1987,value:1938.83},{year:1988,value:2168.57},{year:1989,value:2753.20},
+  {year:1990,value:2633.66},{year:1991,value:3168.83},{year:1992,value:3301.11},
+  {year:1993,value:3754.09},{year:1994,value:3834.44},{year:1995,value:5117.12},
+  {year:1996,value:6448.27},{year:1997,value:7908.25},{year:1998,value:9181.43},
+  {year:1999,value:11497.12},{year:2000,value:10786.85},{year:2001,value:10021.57},
+  {year:2002,value:8341.63},{year:2003,value:10453.92},{year:2004,value:10783.01},
+  {year:2005,value:10717.50},{year:2006,value:12463.15},{year:2007,value:13264.82},
+  {year:2008,value:8776.39},{year:2009,value:10428.05},{year:2010,value:11577.51},
+  {year:2011,value:12217.56},{year:2012,value:13104.14},{year:2013,value:16576.66},
+  {year:2014,value:17823.07},{year:2015,value:17425.03},{year:2016,value:19762.60},
+  {year:2017,value:24719.22},{year:2018,value:23327.46},{year:2019,value:28538.44},
+  {year:2020,value:30606.48},{year:2021,value:36338.30},{year:2022,value:33147.25},
+  {year:2023,value:37689.54},{year:2024,value:42544.22}
+];
+
+// Wilshire 5000 Total Market Index — Year-end close
+// Source: Wilshire Associates via FRED (WILL5000IND)
+const wilshire5000Data = [
+  {year:1974,value:406.60},{year:1975,value:525.30},{year:1976,value:612.30},
+  {year:1977,value:533.10},{year:1978,value:536.60},{year:1979,value:603.50},
+  {year:1980,value:761.00},{year:1981,value:690.60},{year:1982,value:813.40},
+  {year:1983,value:987.80},{year:1984,value:993.60},{year:1985,value:1271.00},
+  {year:1986,value:1441.70},{year:1987,value:1460.60},{year:1988,value:1629.30},
+  {year:1989,value:2082.00},{year:1990,value:1879.50},{year:1991,value:2407.50},
+  {year:1992,value:2557.40},{year:1993,value:2758.50},{year:1994,value:2664.40},
+  {year:1995,value:3614.50},{year:1996,value:4336.20},{year:1997,value:5691.80},
+  {year:1998,value:7148.60},{year:1999,value:8696.90},{year:2000,value:7661.20},
+  {year:2001,value:6650.80},{year:2002,value:5117.70},{year:2003,value:6536.30},
+  {year:2004,value:7178.10},{year:2005,value:7486.00},{year:2006,value:8581.80},
+  {year:2007,value:8892.40},{year:2008,value:5323.50},{year:2009,value:6653.10},
+  {year:2010,value:7597.40},{year:2011,value:7549.90},{year:2012,value:8603.20},
+  {year:2013,value:11255.20},{year:2014,value:12655.40},{year:2015,value:12629.40},
+  {year:2016,value:13979.00},{year:2017,value:16884.00},{year:2018,value:15575.10},
+  {year:2019,value:20264.40},{year:2020,value:23818.40},{year:2021,value:30296.00},
+  {year:2022,value:24250.80},{year:2023,value:30170.60},{year:2024,value:37020.50}
+];
+
 // Key historical annotations
 const annotations = [
   {year:1929, label:"Great Depression", type:"band", end:1933, color:"#E96955"},

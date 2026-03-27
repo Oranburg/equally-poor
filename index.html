@@ -126,6 +126,10 @@ description: Equally Poor — a scholarly research platform visualizing wealth, 
 
   if (!wrapper || !svgEl) return;
 
+  function cssVar(name) {
+    return getComputedStyle(document.documentElement).getPropertyValue(name).trim();
+  }
+
   const MARGIN = { top: 20, right: 70, bottom: 40, left: 60 };
 
   function getWidth() {
@@ -183,7 +187,7 @@ description: Equally Poor — a scholarly research platform visualizing wealth, 
       .join('line')
       .attr('x1', 0).attr('x2', W)
       .attr('y1', d => yLeft(d)).attr('y2', d => yLeft(d))
-      .attr('stroke', '#e8e8e8')
+      .attr('stroke', cssVar('--chart-grid'))
       .attr('stroke-dasharray', '3 3');
 
     // Axes
@@ -206,7 +210,7 @@ description: Equally Poor — a scholarly research platform visualizing wealth, 
       .attr('text-anchor', 'middle')
       .attr('font-family', 'Roboto, sans-serif')
       .attr('font-size', '11px')
-      .attr('fill', '#555')
+      .attr('fill', cssVar('--chart-axis-text'))
       .text('Percentage (%)');
 
     svg.append('text')
@@ -216,7 +220,7 @@ description: Equally Poor — a scholarly research platform visualizing wealth, 
       .attr('text-anchor', 'middle')
       .attr('font-family', 'Roboto, sans-serif')
       .attr('font-size', '11px')
-      .attr('fill', '#555')
+      .attr('fill', cssVar('--chart-axis-text'))
       .text('Gini Coefficient');
 
     // Series definitions
@@ -253,7 +257,7 @@ description: Equally Poor — a scholarly research platform visualizing wealth, 
       .style('cursor', 'crosshair');
 
     const hoverLine = g.append('line')
-      .attr('stroke', '#aaa')
+      .attr('stroke', cssVar('--chart-hover-line'))
       .attr('stroke-width', 1)
       .attr('stroke-dasharray', '4 2')
       .attr('y1', 0).attr('y2', H)
@@ -299,6 +303,10 @@ description: Equally Poor — a scholarly research platform visualizing wealth, 
   window.addEventListener('resize', () => {
     clearTimeout(resizeTimer);
     resizeTimer = setTimeout(buildChart, 120);
+  });
+
+  window.addEventListener('themechange', () => {
+    buildChart();
   });
 })();
 </script>

@@ -60,6 +60,15 @@ description: Equally Poor Data Explorer — interactive visualization of U.S. in
         </div>
       </div>
 
+      <div class="control-row">
+        <span class="control-label" id="market-label">Markets</span>
+        <div class="toggle-group" role="group" aria-labelledby="market-label">
+          <button class="toggle-btn" data-series="sp500"    style="--active-color:#16a34a;" aria-pressed="false">S&amp;P 500</button>
+          <button class="toggle-btn" data-series="djia"     style="--active-color:#ea580c;" aria-pressed="false">DJIA</button>
+          <button class="toggle-btn" data-series="wilshire" style="--active-color:#7c3aed;" aria-pressed="false">Wilshire 5000</button>
+        </div>
+      </div>
+
     </div>
 
     <div class="caveat-box" id="pre1959-caveat" style="display:none;">
@@ -168,7 +177,7 @@ description: Equally Poor Data Explorer — interactive visualization of U.S. in
 (function() {
   // ── State ──
   const state = {
-    active: { top10: true, top1: true, gini: true, poverty: true, povertyPre: false },
+    active: { top10: true, top1: true, gini: true, poverty: true, povertyPre: false, sp500: false, djia: false, wilshire: false },
     startYear: 1913,
     endYear: 2024,
     showAnnotations: true,
@@ -181,6 +190,9 @@ description: Equally Poor Data Explorer — interactive visualization of U.S. in
     gini:       '#2459A9',
     poverty:    '#0A3255',
     povertyPre: '#6DACDE',
+    sp500:      '#16a34a',
+    djia:       '#ea580c',
+    wilshire:   '#7c3aed',
   };
 
   const LABELS = {
@@ -189,7 +201,16 @@ description: Equally Poor Data Explorer — interactive visualization of U.S. in
     gini:       'Gini Coefficient',
     poverty:    'Official Poverty Rate',
     povertyPre: 'Pre-1959 Estimates (unofficial)',
+    sp500:      'S&P 500',
+    djia:       'Dow Jones (DJIA)',
+    wilshire:   'Wilshire 5000',
   };
+
+  const MARKET_KEYS = ['sp500', 'djia', 'wilshire'];
+
+  function cssVar(name) {
+    return getComputedStyle(document.documentElement).getPropertyValue(name).trim();
+  }
 
   const MARGIN = { top: 24, right: 80, bottom: 45, left: 65 };
   const wrapper = document.getElementById('explore-chart-wrapper');
@@ -217,6 +238,9 @@ description: Equally Poor Data Explorer — interactive visualization of U.S. in
       case 'gini':       return giniData.filter(d => d.year >= sy && d.year <= ey);
       case 'poverty':    return povertyData.filter(d => d.year >= sy && d.year <= ey);
       case 'povertyPre': return povertyPre.filter(d => d.year >= sy && d.year <= ey);
+      case 'sp500':      return sp500Data.filter(d => d.year >= sy && d.year <= ey);
+      case 'djia':       return djiaData.filter(d => d.year >= sy && d.year <= ey);
+      case 'wilshire':   return wilshire5000Data.filter(d => d.year >= sy && d.year <= ey);
       default: return [];
     }
   }
@@ -247,13 +271,14 @@ description: Equally Poor Data Explorer — interactive visualization of U.S. in
       .domain([Math.min(...allYears), Math.max(...allYears)])
       .range([0, W]);
 
-    // Separate gini from others for dual axis
-    const nonGiniKeys = activeKeys.filter(k => k !== 'gini');
+    // Separate gini and market series from left axis
+    const inequalityKeys = activeKeys.filter(k => k !== 'gini' && !MARKET_KEYS.includes(k));
     const giniActive  = activeKeys.includes('gini') && state.giniRightAxis;
+    const activeMarketKeys = activeKeys.filter(k => MARKET_KEYS.includes(k));
 
     // Left y-scale: income share + poverty (0-0.7)
     let leftMin = 0.05, leftMax = 0.6;
-    nonGiniKeys.forEach(k => {
+    inequalityKeys.forEach(k => {
       getSeriesData(k).forEach(d => {
         leftMin = Math.min(leftMin, d.value * 0.95);
         leftMax = Math.max(leftMax, d.value * 1.05);
@@ -270,6 +295,20 @@ description: Equally Poor Data Explorer — interactive visualization of U.S. in
     // Right y-scale: Gini
     const yRight = d3.scaleLinear().domain([0.35, 0.55]).range([H, 0]);
 
+    // Market y-scale: normalized (index rebased to 1.0 at start of visible range)
+    // Each market series is divided by its first visible value, so they all start at 1.0
+    // Plotted on a separate scale that maps to the full chart height
+    const marketNormData = {};
+    let marketMax = 1;
+    activeMarketKeys.forEach(k => {
+      const raw = getSeriesData(k);
+      if (!raw.length) return;
+      const base = raw[0].value;
+      marketNormData[k] = raw.map(d => ({ year: d.year, value: d.value / base, rawValue: d.value }));
+      marketNormData[k].forEach(d => { marketMax = Math.max(marketMax, d.value); });
+    });
+    const yMarket = d3.scaleLinear().domain([0, marketMax * 1.05]).range([H, 0]).nice();
+
     // Gridlines
     g.append('g').attr('class', 'grid')
       .selectAll('line')
@@ -277,7 +316,7 @@ description: Equally Poor Data Explorer — interactive visualization of U.S. in
       .join('line')
         .attr('x1', 0).attr('x2', W)
         .attr('y1', d => yLeft(d)).attr('y2', d => yLeft(d))
-        .attr('stroke', '#e8e8e8').attr('stroke-dasharray', '3 3');
+        .attr('stroke', cssVar('--chart-grid')).attr('stroke-dasharray', '3 3');
 
     // Vertical decade ticks
     const decadeTicks = d3.range(
@@ -290,7 +329,7 @@ description: Equally Poor Data Explorer — interactive visualization of U.S. in
       .join('line')
         .attr('x1', d => xScale(d)).attr('x2', d => xScale(d))
         .attr('y1', 0).attr('y2', H)
-        .attr('stroke', '#f0f0f0').attr('stroke-dasharray', '2 4');
+        .attr('stroke', cssVar('--chart-grid-v')).attr('stroke-dasharray', '2 4');
 
     // Annotations
     if (state.showAnnotations) {
@@ -353,7 +392,7 @@ description: Equally Poor Data Explorer — interactive visualization of U.S. in
         .attr('text-anchor', 'middle')
         .attr('font-family', 'Roboto, sans-serif')
         .attr('font-size', '11px')
-        .attr('fill', '#555')
+        .attr('fill', cssVar('--chart-axis-text'))
         .text('Gini Coefficient');
     }
 
@@ -364,21 +403,41 @@ description: Equally Poor Data Explorer — interactive visualization of U.S. in
       .attr('text-anchor', 'middle')
       .attr('font-family', 'Roboto, sans-serif')
       .attr('font-size', '11px')
-      .attr('fill', '#555')
+      .attr('fill', cssVar('--chart-axis-text'))
       .text('Share / Rate (%)');
+
+    // Market index axis (right side, only when markets active and gini not on right)
+    if (activeMarketKeys.length > 0 && !giniActive) {
+      g.append('g').attr('class', 'axis')
+        .attr('transform', `translate(${W},0)`)
+        .call(d3.axisRight(yMarket).ticks(6).tickFormat(d => d.toFixed(1)+'x'));
+
+      svg.append('text')
+        .attr('x', MARGIN.left + W + 70)
+        .attr('y', MARGIN.top + H / 2)
+        .attr('transform', `rotate(90,${MARGIN.left+W+70},${MARGIN.top+H/2})`)
+        .attr('text-anchor', 'middle')
+        .attr('font-family', 'Roboto, sans-serif')
+        .attr('font-size', '11px')
+        .attr('fill', cssVar('--chart-axis-text'))
+        .text('Market Index (normalized)');
+    }
 
     // Draw series lines
     const seriesDefs = [
-      { key:'top10',      yScale: yLeft,  dashed: false },
-      { key:'top1',       yScale: yLeft,  dashed: false },
-      { key:'gini',       yScale: giniActive ? yRight : yLeft, dashed: false },
-      { key:'poverty',    yScale: yLeft,  dashed: false },
-      { key:'povertyPre', yScale: yLeft,  dashed: true  },
+      { key:'top10',      yScale: yLeft,  dashed: false, isMarket: false },
+      { key:'top1',       yScale: yLeft,  dashed: false, isMarket: false },
+      { key:'gini',       yScale: giniActive ? yRight : yLeft, dashed: false, isMarket: false },
+      { key:'poverty',    yScale: yLeft,  dashed: false, isMarket: false },
+      { key:'povertyPre', yScale: yLeft,  dashed: true,  isMarket: false },
+      { key:'sp500',      yScale: yMarket, dashed: false, isMarket: true },
+      { key:'djia',       yScale: yMarket, dashed: false, isMarket: true },
+      { key:'wilshire',   yScale: yMarket, dashed: false, isMarket: true },
     ];
 
     seriesDefs.forEach(s => {
       if (!state.active[s.key]) return;
-      const data = getSeriesData(s.key);
+      const data = s.isMarket ? (marketNormData[s.key] || []) : getSeriesData(s.key);
       if (!data.length) return;
       const lineGen = d3.line()
         .defined(d => d.value != null)
@@ -406,7 +465,7 @@ description: Equally Poor Data Explorer — interactive visualization of U.S. in
       .style('cursor', 'crosshair');
 
     const hLine = g.append('line')
-      .attr('stroke', '#999').attr('stroke-width', 1)
+      .attr('stroke', cssVar('--chart-hover-line')).attr('stroke-width', 1)
       .attr('stroke-dasharray', '4 2')
       .attr('y1', 0).attr('y2', H)
       .style('opacity', 0);
@@ -419,14 +478,20 @@ description: Equally Poor Data Explorer — interactive visualization of U.S. in
         let html = `<strong>${yr}</strong><br>`;
         seriesDefs.forEach(s => {
           if (!state.active[s.key]) return;
-          const data = getSeriesData(s.key);
+          const data = s.isMarket ? getSeriesData(s.key) : getSeriesData(s.key);
           const idx = bisect(data, yr);
           const candidates = [data[idx-1], data[idx]].filter(Boolean);
           if (!candidates.length) return;
           const d = candidates.reduce((a, b) => Math.abs(b.year-yr) < Math.abs(a.year-yr) ? b : a);
           if (Math.abs(d.year - yr) > 2) return;
-          const isGini = s.key === 'gini';
-          const fmt = isGini ? v => v.toFixed(3) : v => (v*100).toFixed(1)+'%';
+          let fmt;
+          if (s.isMarket) {
+            fmt = v => v.toLocaleString('en-US', {maximumFractionDigits: 0});
+          } else if (s.key === 'gini') {
+            fmt = v => v.toFixed(3);
+          } else {
+            fmt = v => (v*100).toFixed(1)+'%';
+          }
           html += `<span style="color:${COLORS[s.key]}">&#9632;</span> ${LABELS[s.key].split(' ').slice(0,3).join(' ')}: <b>${fmt(d.value)}</b><br>`;
         });
         showTip(html, event);
@@ -627,6 +692,10 @@ description: Equally Poor Data Explorer — interactive visualization of U.S. in
   window.addEventListener('resize', () => {
     clearTimeout(rTimer);
     rTimer = setTimeout(buildChart, 120);
+  });
+
+  window.addEventListener('themechange', () => {
+    buildChart();
   });
 })();
 </script>
