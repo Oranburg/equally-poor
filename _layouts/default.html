@@ -9,6 +9,13 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Crimson+Text:ital,wght@0,400;0,600;1,400;1,600&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
+  <script>
+    // Apply theme immediately to prevent flash of wrong theme
+    (function() {
+      var theme = localStorage.getItem('theme') || 'dark';
+      document.documentElement.setAttribute('data-theme', theme);
+    })();
+  </script>
 </head>
 <body>
 
@@ -19,6 +26,10 @@
         <span class="nav-logo-text">EQUALLY POOR</span>
         <span class="nav-logo-sub">Wealth · Inequality · Law</span>
       </a>
+      <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode" title="Toggle dark/light mode">
+        <svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 7a5 5 0 100 10 5 5 0 000-10zm0-3a1 1 0 01-1-1V1a1 1 0 112 0v2a1 1 0 01-1 1zm0 18a1 1 0 01-1-1v-2a1 1 0 112 0v2a1 1 0 01-1 1zm9-9a1 1 0 01-1 1h-2a1 1 0 110-2h2a1 1 0 011 1zM4 13H2a1 1 0 110-2h2a1 1 0 110 2zm14.36-5.95a1 1 0 01-.71-.29l-1.41-1.41a1 1 0 111.41-1.41l1.41 1.41a1 1 0 01-.7 1.7zM7.05 18.36a1 1 0 01-.7-.29l-1.42-1.42a1 1 0 111.42-1.41l1.41 1.41a1 1 0 01-.71 1.71zm11.31 0a1 1 0 01-.71-1.71l1.41-1.41a1 1 0 111.42 1.41l-1.42 1.42a1 1 0 01-.7.29zM7.05 7.05a1 1 0 01-.7-.29L4.93 5.35a1 1 0 111.41-1.41L7.76 5.35a1 1 0 01-.71 1.7z"/></svg>
+        <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21.64 13a1 1 0 00-1.05-.14 8.05 8.05 0 01-3.37.73A8.15 8.15 0 019.08 5.49a8.59 8.59 0 01.25-2 1 1 0 00-1.28-1.18A10.1 10.1 0 0012 22a10.06 10.06 0 009.88-8 1 1 0 00-.24-1z"/></svg>
+      </button>
       <button class="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="nav-menu">
         <span class="nav-toggle-bar"></span>
         <span class="nav-toggle-bar"></span>
@@ -94,13 +105,26 @@
 
   <script>
     // Mobile nav toggle
-    const navToggle = document.querySelector('.nav-toggle');
-    const navMenu = document.querySelector('.nav-menu');
+    var navToggle = document.querySelector('.nav-toggle');
+    var navMenu = document.querySelector('.nav-menu');
     if (navToggle && navMenu) {
       navToggle.addEventListener('click', function() {
-        const expanded = this.getAttribute('aria-expanded') === 'true';
+        var expanded = this.getAttribute('aria-expanded') === 'true';
         this.setAttribute('aria-expanded', !expanded);
         navMenu.classList.toggle('open');
+      });
+    }
+
+    // Theme toggle
+    var themeToggle = document.getElementById('theme-toggle');
+    if (themeToggle) {
+      themeToggle.addEventListener('click', function() {
+        var current = document.documentElement.getAttribute('data-theme');
+        var next = current === 'dark' ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', next);
+        localStorage.setItem('theme', next);
+        // Dispatch event so charts can rebuild
+        window.dispatchEvent(new CustomEvent('themechange', { detail: { theme: next } }));
       });
     }
   </script>

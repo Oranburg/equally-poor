@@ -4,125 +4,129 @@ title: Home
 description: Equally Poor — a scholarly research platform visualizing wealth, inequality, and law in America.
 ---
 
-    <!-- Hero -->
-    <section class="hero" aria-labelledby="hero-title">
-      <div class="container">
-        <p class="hero-eyebrow">Scholarly Research Platform</p>
-        <h1 id="hero-title">Wealth, Inequality &amp; Law<br>in America</h1>
-        <p>A scholarly platform for visualizing and analyzing the relationship between economic inequality, poverty, and legal structures — for lawyers, economists, and social scientists. Built on primary data from Piketty-Saez, the U.S. Census Bureau, and the Federal Reserve.</p>
-        <div class="btn-group">
-          <a href="{{ '/explore.html' | relative_url }}" class="btn btn-primary">Explore the Data</a>
-          <a href="{{ '/legal.html' | relative_url }}" class="btn btn-secondary">Legal Landscape</a>
-        </div>
-      </div>
-    </section>
+<!-- Hero -->
+<section class="hero" aria-labelledby="hero-title">
+  <div class="container">
+    <p class="hero-eyebrow">Scholarly Research Platform</p>
+    <h1 id="hero-title">Wealth, Inequality &amp; Law<br>in America</h1>
+    <p>A scholarly platform for visualizing and analyzing the relationship between economic inequality, poverty, and legal structures — for lawyers, economists, and social scientists. Built on primary data from Piketty-Saez, the U.S. Census Bureau, and the Federal Reserve.</p>
+    <div class="btn-group">
+      <a href="{{ '/explore.html' | relative_url }}" class="btn btn-primary">Explore the Data</a>
+      <a href="{{ '/legal.html' | relative_url }}" class="btn btn-secondary">Legal Landscape</a>
+    </div>
+  </div>
+</section>
 
-    <!-- Key Metrics Strip -->
-    <section class="metrics-strip" aria-label="Key inequality metrics">
-      <div class="container">
-        <div class="section-header" style="margin-bottom:1.5rem;">
-          <p class="section-eyebrow">Current Indicators</p>
-          <h2 class="section-title" style="font-size:1.4rem;">Where We Stand Today</h2>
-        </div>
-        <div class="grid-3">
-          <div class="stat-card">
-            <div class="stat-label">Top 10% Income Share</div>
-            <div class="stat-number">46.1%</div>
-            <div class="stat-source">Piketty-Saez (excl. cap gains)</div>
-            <div class="stat-year">2022 — latest available</div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-label">Gini Coefficient</div>
-            <div class="stat-number">0.485</div>
-            <div class="stat-source">U.S. Census Bureau, CPS ASEC</div>
-            <div class="stat-year">2024 — near historic high</div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-label">Official Poverty Rate</div>
-            <div class="stat-number">11.5%</div>
-            <div class="stat-source">Census Bureau, P60-287 (2025)</div>
-            <div class="stat-year">2024 — ~37.3 million people</div>
-          </div>
-        </div>
+<!-- Key Metrics Strip -->
+<section class="metrics-strip" aria-label="Key inequality metrics">
+  <div class="container">
+    <div class="section-header" style="margin-bottom:1.5rem;">
+      <p class="section-eyebrow">Current Indicators</p>
+      <h2 class="section-title" style="font-size:1.4rem;">Where We Stand Today</h2>
+    </div>
+    <div class="grid-3">
+      <div class="stat-card">
+        <div class="stat-label">Top 10% Income Share</div>
+        <div class="stat-number">46.1%</div>
+        <div class="stat-source">Piketty-Saez (excl. cap gains)</div>
+        <div class="stat-year">2022 — latest available</div>
       </div>
-    </section>
-
-    <!-- Quick Chart -->
-    <section aria-labelledby="overview-chart-title" style="background:var(--white);">
-      <div class="container">
-        <div class="section-header">
-          <p class="section-eyebrow">Data Overview</p>
-          <h2 class="section-title" id="overview-chart-title">Three Measures of Inequality, 1967–2024</h2>
-          <p class="section-desc">The overlapping period for all three primary series. Top 10% income share (left axis) has nearly returned to Gilded Age levels. The Gini coefficient has risen steadily. Poverty has fallen substantially since the 1960s but remains persistently above 10%.</p>
-        </div>
-        <div class="chart-container">
-          <div class="chart-title">Income Share, Gini &amp; Poverty — 1967 to 2024</div>
-          <div class="chart-subtitle">Left axis: Top 10% income share &amp; official poverty rate (as %). Right axis: Gini coefficient (0–1 scale).</div>
-          <div class="chart-wrapper" id="home-chart-wrapper">
-            <svg id="home-chart" aria-label="Line chart showing three inequality measures from 1967 to 2024" role="img"></svg>
-          </div>
-          <div class="chart-legend" id="home-legend" aria-label="Chart legend"></div>
-          <p class="chart-source">Sources: Piketty &amp; Saez (2024 update); Census Bureau CPS ASEC (FRED GINIALLRH); Shrider et al., P60-287 (2025). See <a href="{{ '/methodology.html' | relative_url }}">Methodology</a> for caveats.</p>
-        </div>
+      <div class="stat-card">
+        <div class="stat-label">Gini Coefficient</div>
+        <div class="stat-number">0.485</div>
+        <div class="stat-source">U.S. Census Bureau, CPS ASEC</div>
+        <div class="stat-year">2024 — near historic high</div>
       </div>
-    </section>
-
-    <!-- Platform Tools Grid -->
-    <section aria-labelledby="tools-title" style="background:var(--off-white);">
-      <div class="container">
-        <div class="section-header">
-          <p class="section-eyebrow">Platform Tools</p>
-          <h2 class="section-title" id="tools-title">Explore the Platform</h2>
-        </div>
-        <div class="grid-4">
-          <a href="{{ '/explore.html' | relative_url }}" class="card card--red" style="text-decoration:none;" aria-label="Data Explorer — interactive visualization tool">
-            <div style="font-size:1.8rem;margin-bottom:0.6rem;">&#x1F4CA;</div>
-            <div class="card-title">Data Explorer</div>
-            <p class="card-text">Interactive time-series visualization of inequality metrics from 1913 to today. Toggle series, filter by era, and export data.</p>
-            <span class="card-link">Open Explorer &rarr;</span>
-          </a>
-          <a href="{{ '/legal.html' | relative_url }}" class="card card--blue" style="text-decoration:none;" aria-label="Legal Landscape — legislation and inequality">
-            <div style="font-size:1.8rem;margin-bottom:0.6rem;">&#x2696;&#xFE0F;</div>
-            <div class="card-title">Legal Landscape</div>
-            <p class="card-text">Explore how major legislation shaped inequality trends over 110 years. Interactive timeline with D3 overlay chart.</p>
-            <span class="card-link">View Timeline &rarr;</span>
-          </a>
-          <a href="{{ '/methodology.html' | relative_url }}" class="card card--yellow" style="text-decoration:none;" aria-label="Methodology — data sources and limitations">
-            <div style="font-size:1.8rem;margin-bottom:0.6rem;">&#x1F4D0;</div>
-            <div class="card-title">Methodology</div>
-            <p class="card-text">Data sources, measurement approaches, series breaks, and known limitations. Scholarly transparency is central to this platform.</p>
-            <span class="card-link">Read Methods &rarr;</span>
-          </a>
-          <a href="{{ '/about.html' | relative_url }}" class="card card--green" style="text-decoration:none;" aria-label="About — platform mission and goals">
-            <div style="font-size:1.8rem;margin-bottom:0.6rem;">&#x1F3DB;&#xFE0F;</div>
-            <div class="card-title">About</div>
-            <p class="card-text">About this research platform, its scholarly mission, intended audience, and the core research questions it addresses.</p>
-            <span class="card-link">Learn More &rarr;</span>
-          </a>
-        </div>
+      <div class="stat-card">
+        <div class="stat-label">Official Poverty Rate</div>
+        <div class="stat-number">11.5%</div>
+        <div class="stat-source">Census Bureau, P60-287 (2025)</div>
+        <div class="stat-year">2024 — ~37.3 million people</div>
       </div>
-    </section>
+    </div>
+  </div>
+</section>
 
-    <!-- Featured Insight -->
-    <section aria-labelledby="insight-title">
-      <div class="container--narrow">
-        <div class="insight-box">
-          <p class="section-eyebrow">Featured Insight</p>
-          <h2 id="insight-title">Why This Matters for Law</h2>
-          <p>Law is not merely a response to economic conditions — it is the primary mechanism through which societies structure the distribution of income and wealth in the first place. Property rights define what can be owned and by whom. Tax law determines how much of each dollar an earner keeps across the income distribution. Labor law sets the floor on wages and the terms under which workers can organize. Social insurance law determines who receives transfers and on what conditions. As Thomas Piketty argued in <em>Capital in the Twenty-First Century</em> (2014), the compression of inequality during the mid-twentieth century was not an inevitable feature of capitalism but the product of deliberate legal and political choices — choices that were subsequently reversed.</p>
-          <p>The relationship is bidirectional, and this is what makes inequality a distinctively legal problem. Concentrated wealth generates concentrated political power, which shapes the legal institutions that in turn protect that concentration. The legal realists of the early twentieth century understood that private law — contract, property, tort — was never neutral but always reflected and reinforced underlying power distributions. Contemporary law-and-economics scholarship has refined but largely confirmed this insight: the rules of market exchange are themselves distributional choices. Access to courts, to legal counsel, and to administrative processes is itself stratified by income in ways that compound primary market inequality.</p>
-          <p>This platform documents the quantitative relationship between legal change and economic outcomes. It does not take a political position on what the appropriate level of inequality is — that is a question for democratic deliberation. It does insist that the data be read with methodological honesty. Each series has known limitations; each spike and trough has plausible legal explanations that deserve scrutiny. The juxtaposition of Piketty-Saez income share data, Census Gini coefficients, and official poverty rates against a timeline of major legislation is not meant to establish causation mechanically, but to prompt the kind of careful, interdisciplinary inquiry that the intersection of law, economics, and sociology demands.</p>
-        </div>
+<!-- Quick Chart -->
+<section aria-labelledby="overview-chart-title" style="background:var(--white);">
+  <div class="container">
+    <div class="section-header">
+      <p class="section-eyebrow">Data Overview</p>
+      <h2 class="section-title" id="overview-chart-title">Three Measures of Inequality, 1967–2024</h2>
+      <p class="section-desc">The overlapping period for all three primary series. Top 10% income share (left axis) has nearly returned to Gilded Age levels. The Gini coefficient has risen steadily. Poverty has fallen substantially since the 1960s but remains persistently above 10%.</p>
+    </div>
+    <div class="chart-container">
+      <div class="chart-title">Income Share, Gini &amp; Poverty — 1967 to 2024</div>
+      <div class="chart-subtitle">Left axis: Top 10% income share &amp; official poverty rate (as %). Right axis: Gini coefficient (0–1 scale).</div>
+      <div class="chart-wrapper" id="home-chart-wrapper">
+        <svg id="home-chart" aria-label="Line chart showing three inequality measures from 1967 to 2024" role="img"></svg>
       </div>
-    </section>
+      <div class="chart-legend" id="home-legend" aria-label="Chart legend"></div>
+      <p class="chart-source">Sources: Piketty &amp; Saez (2024 update); Census Bureau CPS ASEC (FRED GINIALLRH); Shrider et al., P60-287 (2025). See <a href="{{ '/methodology.html' | relative_url }}">Methodology</a> for caveats.</p>
+    </div>
+  </div>
+</section>
 
-  <script src="https://d3js.org/d3.v7.min.js"></script>
-  <script src="{{ '/assets/js/shared-data.js' | relative_url }}"></script>
-  <script>
+<!-- Platform Tools Grid -->
+<section aria-labelledby="tools-title" style="background:var(--off-white);">
+  <div class="container">
+    <div class="section-header">
+      <p class="section-eyebrow">Platform Tools</p>
+      <h2 class="section-title" id="tools-title">Explore the Platform</h2>
+    </div>
+    <div class="grid-4">
+      <a href="{{ '/explore.html' | relative_url }}" class="card card--red" style="text-decoration:none;" aria-label="Data Explorer — interactive visualization tool">
+        <div style="font-size:1.8rem;margin-bottom:0.6rem;">&#x1F4CA;</div>
+        <div class="card-title">Data Explorer</div>
+        <p class="card-text">Interactive time-series visualization of inequality metrics from 1913 to today. Toggle series, filter by era, and export data.</p>
+        <span class="card-link">Open Explorer &rarr;</span>
+      </a>
+      <a href="{{ '/legal.html' | relative_url }}" class="card card--blue" style="text-decoration:none;" aria-label="Legal Landscape — legislation and inequality">
+        <div style="font-size:1.8rem;margin-bottom:0.6rem;">&#x2696;&#xFE0F;</div>
+        <div class="card-title">Legal Landscape</div>
+        <p class="card-text">Explore how major legislation shaped inequality trends over 110 years. Interactive timeline with D3 overlay chart.</p>
+        <span class="card-link">View Timeline &rarr;</span>
+      </a>
+      <a href="{{ '/methodology.html' | relative_url }}" class="card card--yellow" style="text-decoration:none;" aria-label="Methodology — data sources and limitations">
+        <div style="font-size:1.8rem;margin-bottom:0.6rem;">&#x1F4D0;</div>
+        <div class="card-title">Methodology</div>
+        <p class="card-text">Data sources, measurement approaches, series breaks, and known limitations. Scholarly transparency is central to this platform.</p>
+        <span class="card-link">Read Methods &rarr;</span>
+      </a>
+      <a href="{{ '/about.html' | relative_url }}" class="card card--green" style="text-decoration:none;" aria-label="About — platform mission and goals">
+        <div style="font-size:1.8rem;margin-bottom:0.6rem;">&#x1F3DB;&#xFE0F;</div>
+        <div class="card-title">About</div>
+        <p class="card-text">About this research platform, its scholarly mission, intended audience, and the core research questions it addresses.</p>
+        <span class="card-link">Learn More &rarr;</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Featured Insight -->
+<section aria-labelledby="insight-title">
+  <div class="container--narrow">
+    <div class="insight-box">
+      <p class="section-eyebrow">Featured Insight</p>
+      <p>Law is not merely a response to economic conditions — it is the primary mechanism through which societies structure the distribution of income and wealth in the first place. Property rights define what can be owned and by whom. Tax law determines how much of each dollar an earner keeps across the income distribution. Labor law sets the floor on wages and the terms under which workers can organize. Social insurance law determines who receives transfers and on what conditions. As Thomas Piketty argued in <em>Capital in the Twenty-First Century</em> (2014), the compression of inequality during the mid-twentieth century was not an inevitable feature of capitalism but the product of deliberate legal and political choices — choices that were subsequently reversed.</p>
+      <p>The relationship is bidirectional, and this is what makes inequality a distinctively legal problem. Concentrated wealth generates concentrated political power, which shapes the legal institutions that in turn protect that concentration. The legal realists of the early twentieth century understood that private law — contract, property, tort — was never neutral but always reflected and reinforced underlying power distributions. Contemporary law-and-economics scholarship has refined but largely confirmed this insight: the rules of market exchange are themselves distributional choices. Access to courts, to legal counsel, and to administrative processes is itself stratified by income in ways that compound primary market inequality.</p>
+      <p>This platform documents the quantitative relationship between legal change and economic outcomes. It does not take a political position on what the appropriate level of inequality is — that is a question for democratic deliberation. It does insist that the data be read with methodological honesty. Each series has known limitations; each spike and trough has plausible legal explanations that deserve scrutiny. The juxtaposition of Piketty-Saez income share data, Census Gini coefficients, and official poverty rates against a timeline of major legislation is not meant to establish causation mechanically, but to prompt the kind of careful, interdisciplinary inquiry that the intersection of law, economics, and sociology demands.</p>
+  </div>
+</section>
+
+<script src="https://d3js.org/d3.v7.min.js"></script>
+<script src="{{ '/assets/js/shared-data.js' | relative_url }}"></script>
+<script>
 (function() {
   const wrapper = document.getElementById('home-chart-wrapper');
   const svgEl   = document.getElementById('home-chart');
   const legendEl = document.getElementById('home-legend');
+
+  if (!wrapper || !svgEl) return;
+
+  function cssVar(name) {
+    return getComputedStyle(document.documentElement).getPropertyValue(name).trim();
+  }
 
   const MARGIN = { top: 20, right: 70, bottom: 40, left: 60 };
 
@@ -181,7 +185,7 @@ description: Equally Poor — a scholarly research platform visualizing wealth, 
       .join('line')
       .attr('x1', 0).attr('x2', W)
       .attr('y1', d => yLeft(d)).attr('y2', d => yLeft(d))
-      .attr('stroke', '#e8e8e8')
+      .attr('stroke', cssVar('--chart-grid'))
       .attr('stroke-dasharray', '3 3');
 
     // Axes
@@ -204,7 +208,7 @@ description: Equally Poor — a scholarly research platform visualizing wealth, 
       .attr('text-anchor', 'middle')
       .attr('font-family', 'Roboto, sans-serif')
       .attr('font-size', '11px')
-      .attr('fill', '#555')
+      .attr('fill', cssVar('--chart-axis-text'))
       .text('Percentage (%)');
 
     svg.append('text')
@@ -214,7 +218,7 @@ description: Equally Poor — a scholarly research platform visualizing wealth, 
       .attr('text-anchor', 'middle')
       .attr('font-family', 'Roboto, sans-serif')
       .attr('font-size', '11px')
-      .attr('fill', '#555')
+      .attr('fill', cssVar('--chart-axis-text'))
       .text('Gini Coefficient');
 
     // Series definitions
@@ -251,7 +255,7 @@ description: Equally Poor — a scholarly research platform visualizing wealth, 
       .style('cursor', 'crosshair');
 
     const hoverLine = g.append('line')
-      .attr('stroke', '#aaa')
+      .attr('stroke', cssVar('--chart-hover-line'))
       .attr('stroke-width', 1)
       .attr('stroke-dasharray', '4 2')
       .attr('y1', 0).attr('y2', H)
@@ -298,5 +302,9 @@ description: Equally Poor — a scholarly research platform visualizing wealth, 
     clearTimeout(resizeTimer);
     resizeTimer = setTimeout(buildChart, 120);
   });
+
+  window.addEventListener('themechange', () => {
+    buildChart();
+  });
 })();
-  </script>
+</script>
