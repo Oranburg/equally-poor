@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Crimson+Text:ital,wght@0,400;0,600;1,400;1,600&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/main.css">
+  <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
   <script>
     // Apply theme immediately to prevent flash of wrong theme
     (function() {
@@ -22,7 +22,7 @@
   <!-- Navigation -->
   <nav class="site-nav" role="navigation" aria-label="Main navigation">
     <div class="nav-container">
-      <a href="{{ site.baseurl }}/" class="nav-logo" aria-label="Equally Poor — Home">
+      <a href="{{ '/' | relative_url }}" class="nav-logo" aria-label="Equally Poor — Home">
         <span class="nav-logo-text">EQUALLY POOR</span>
         <span class="nav-logo-sub">Wealth · Inequality · Law</span>
       </a>
@@ -37,19 +37,19 @@
       </button>
       <ul class="nav-menu" id="nav-menu" role="list">
         <li class="nav-item">
-          <a href="{{ site.baseurl }}/" class="nav-link{% if page.url == '/' %} active{% endif %}" aria-current="{% if page.url == '/' %}page{% endif %}">Home</a>
+          <a href="{{ '/' | relative_url }}" class="nav-link{% if page.url == '/' %} active{% endif %}" aria-current="{% if page.url == '/' %}page{% endif %}">Home</a>
         </li>
         <li class="nav-item">
-          <a href="{{ site.baseurl }}/explore" class="nav-link{% if page.url contains 'explore' %} active{% endif %}" aria-current="{% if page.url contains 'explore' %}page{% endif %}">Data Explorer</a>
+          <a href="{{ '/explore.html' | relative_url }}" class="nav-link{% if page.url contains 'explore' %} active{% endif %}" aria-current="{% if page.url contains 'explore' %}page{% endif %}">Data Explorer</a>
         </li>
         <li class="nav-item">
-          <a href="{{ site.baseurl }}/legal" class="nav-link{% if page.url contains 'legal' %} active{% endif %}" aria-current="{% if page.url contains 'legal' %}page{% endif %}">Legal Landscape</a>
+          <a href="{{ '/legal.html' | relative_url }}" class="nav-link{% if page.url contains 'legal' %} active{% endif %}" aria-current="{% if page.url contains 'legal' %}page{% endif %}">Legal Landscape</a>
         </li>
         <li class="nav-item">
-          <a href="{{ site.baseurl }}/methodology" class="nav-link{% if page.url contains 'methodology' %} active{% endif %}" aria-current="{% if page.url contains 'methodology' %}page{% endif %}">Methodology</a>
+          <a href="{{ '/methodology.html' | relative_url }}" class="nav-link{% if page.url contains 'methodology' %} active{% endif %}" aria-current="{% if page.url contains 'methodology' %}page{% endif %}">Methodology</a>
         </li>
         <li class="nav-item">
-          <a href="{{ site.baseurl }}/about" class="nav-link{% if page.url contains 'about' %} active{% endif %}" aria-current="{% if page.url contains 'about' %}page{% endif %}">About</a>
+          <a href="{{ '/about.html' | relative_url }}" class="nav-link{% if page.url contains 'about' %} active{% endif %}" aria-current="{% if page.url contains 'about' %}page{% endif %}">About</a>
         </li>
       </ul>
     </div>
@@ -71,11 +71,11 @@
         <div class="footer-links">
           <h3 class="footer-heading">Platform</h3>
           <ul class="footer-nav" role="list">
-            <li><a href="{{ site.baseurl }}/">Home</a></li>
-            <li><a href="{{ site.baseurl }}/explore">Data Explorer</a></li>
-            <li><a href="{{ site.baseurl }}/legal">Legal Landscape</a></li>
-            <li><a href="{{ site.baseurl }}/methodology">Methodology</a></li>
-            <li><a href="{{ site.baseurl }}/about">About</a></li>
+            <li><a href="{{ '/' | relative_url }}">Home</a></li>
+            <li><a href="{{ '/explore.html' | relative_url }}">Data Explorer</a></li>
+            <li><a href="{{ '/legal.html' | relative_url }}">Legal Landscape</a></li>
+            <li><a href="{{ '/methodology.html' | relative_url }}">Methodology</a></li>
+            <li><a href="{{ '/about.html' | relative_url }}">About</a></li>
           </ul>
         </div>
         <div class="footer-sources">
@@ -84,12 +84,12 @@
             <li><a href="https://gabriel-zucman.eu/usdina/" target="_blank" rel="noopener noreferrer">Piketty-Saez Data</a></li>
             <li><a href="https://fred.stlouisfed.org/series/GINIALLRH" target="_blank" rel="noopener noreferrer">Census Gini (FRED)</a></li>
             <li><a href="https://www.census.gov/topics/income-poverty/poverty.html" target="_blank" rel="noopener noreferrer">Census Poverty Data</a></li>
-            <li><a href="{{ site.baseurl }}/methodology">Methodology &amp; Caveats</a></li>
+            <li><a href="{{ '/methodology.html' | relative_url }}">Methodology &amp; Caveats</a></li>
           </ul>
         </div>
         <div class="footer-affiliation">
           <h3 class="footer-heading">Affiliation</h3>
-          <p>A research initiative in the tradition of law-and-economics scholarship. Data updated through 2024. All visualizations subject to the methodological limitations documented in the <a href="{{ site.baseurl }}/methodology">Methodology</a> section.</p>
+          <p>A research initiative in the tradition of law-and-economics scholarship. Data updated through 2024. All visualizations subject to the methodological limitations documented in the <a href="{{ '/methodology.html' | relative_url }}">Methodology</a> section.</p>
         </div>
       </div>
       <div class="footer-bottom">

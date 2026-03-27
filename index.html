@@ -11,8 +11,8 @@ description: Equally Poor — a scholarly research platform visualizing wealth, 
     <h1 id="hero-title">Wealth, Inequality &amp; Law<br>in America</h1>
     <p>A scholarly platform for visualizing and analyzing the relationship between economic inequality, poverty, and legal structures — for lawyers, economists, and social scientists. Built on primary data from Piketty-Saez, the U.S. Census Bureau, and the Federal Reserve.</p>
     <div class="btn-group">
-      <a href="{{ site.baseurl }}/explore" class="btn btn-primary">Explore the Data</a>
-      <a href="{{ site.baseurl }}/legal" class="btn btn-secondary">Legal Landscape</a>
+      <a href="{{ '/explore.html' | relative_url }}" class="btn btn-primary">Explore the Data</a>
+      <a href="{{ '/legal.html' | relative_url }}" class="btn btn-secondary">Legal Landscape</a>
     </div>
   </div>
 </section>
@@ -62,7 +62,7 @@ description: Equally Poor — a scholarly research platform visualizing wealth, 
         <svg id="home-chart" aria-label="Line chart showing three inequality measures from 1967 to 2024" role="img"></svg>
       </div>
       <div class="chart-legend" id="home-legend" aria-label="Chart legend"></div>
-      <p class="chart-source">Sources: Piketty &amp; Saez (2024 update); Census Bureau CPS ASEC (FRED GINIALLRH); Shrider et al., P60-287 (2025). See <a href="{{ site.baseurl }}/methodology">Methodology</a> for caveats.</p>
+      <p class="chart-source">Sources: Piketty &amp; Saez (2024 update); Census Bureau CPS ASEC (FRED GINIALLRH); Shrider et al., P60-287 (2025). See <a href="{{ '/methodology.html' | relative_url }}">Methodology</a> for caveats.</p>
     </div>
   </div>
 </section>
@@ -75,25 +75,25 @@ description: Equally Poor — a scholarly research platform visualizing wealth, 
       <h2 class="section-title" id="tools-title">Explore the Platform</h2>
     </div>
     <div class="grid-4">
-      <a href="{{ site.baseurl }}/explore" class="card card--red" style="text-decoration:none;" aria-label="Data Explorer — interactive visualization tool">
+      <a href="{{ '/explore.html' | relative_url }}" class="card card--red" style="text-decoration:none;" aria-label="Data Explorer — interactive visualization tool">
         <div style="font-size:1.8rem;margin-bottom:0.6rem;">&#x1F4CA;</div>
         <div class="card-title">Data Explorer</div>
         <p class="card-text">Interactive time-series visualization of inequality metrics from 1913 to today. Toggle series, filter by era, and export data.</p>
         <span class="card-link">Open Explorer &rarr;</span>
       </a>
-      <a href="{{ site.baseurl }}/legal" class="card card--blue" style="text-decoration:none;" aria-label="Legal Landscape — legislation and inequality">
+      <a href="{{ '/legal.html' | relative_url }}" class="card card--blue" style="text-decoration:none;" aria-label="Legal Landscape — legislation and inequality">
         <div style="font-size:1.8rem;margin-bottom:0.6rem;">&#x2696;&#xFE0F;</div>
         <div class="card-title">Legal Landscape</div>
         <p class="card-text">Explore how major legislation shaped inequality trends over 110 years. Interactive timeline with D3 overlay chart.</p>
         <span class="card-link">View Timeline &rarr;</span>
       </a>
-      <a href="{{ site.baseurl }}/methodology" class="card card--yellow" style="text-decoration:none;" aria-label="Methodology — data sources and limitations">
+      <a href="{{ '/methodology.html' | relative_url }}" class="card card--yellow" style="text-decoration:none;" aria-label="Methodology — data sources and limitations">
         <div style="font-size:1.8rem;margin-bottom:0.6rem;">&#x1F4D0;</div>
         <div class="card-title">Methodology</div>
         <p class="card-text">Data sources, measurement approaches, series breaks, and known limitations. Scholarly transparency is central to this platform.</p>
         <span class="card-link">Read Methods &rarr;</span>
       </a>
-      <a href="{{ site.baseurl }}/about" class="card card--green" style="text-decoration:none;" aria-label="About — platform mission and goals">
+      <a href="{{ '/about.html' | relative_url }}" class="card card--green" style="text-decoration:none;" aria-label="About — platform mission and goals">
         <div style="font-size:1.8rem;margin-bottom:0.6rem;">&#x1F3DB;&#xFE0F;</div>
         <div class="card-title">About</div>
         <p class="card-text">About this research platform, its scholarly mission, intended audience, and the core research questions it addresses.</p>
@@ -117,7 +117,7 @@ description: Equally Poor — a scholarly research platform visualizing wealth, 
 </section>
 
 <script src="https://d3js.org/d3.v7.min.js"></script>
-<script src="{{ site.baseurl }}/assets/js/shared-data.js"></script>
+<script src="{{ '/assets/js/shared-data.js' | relative_url }}"></script>
 <script>
 (function() {
   const wrapper = document.getElementById('home-chart-wrapper');

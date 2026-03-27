@@ -8,7 +8,7 @@ description: Equally Poor Data Explorer — interactive visualization of U.S. in
   <div class="container">
     <p class="hero-eyebrow">Interactive Visualization</p>
     <h1 id="explore-hero-title">Data Explorer</h1>
-    <p>Explore four decades-spanning measures of income inequality and poverty in the United States. Toggle series, filter by historical period, and overlay legislative milestones. All data sourced from peer-reviewed and government sources — see <a href="{{ site.baseurl }}/methodology" style="color:var(--light-blue);">Methodology</a> for full caveats.</p>
+    <p>Explore four decades-spanning measures of income inequality and poverty in the United States. Toggle series, filter by historical period, and overlay legislative milestones. All data sourced from peer-reviewed and government sources — see <a href="{{ '/methodology.html' | relative_url }}" style="color:var(--light-blue);">Methodology</a> for full caveats.</p>
   </div>
 </section>
 
@@ -72,7 +72,7 @@ description: Equally Poor Data Explorer — interactive visualization of U.S. in
     </div>
 
     <div class="caveat-box" id="pre1959-caveat" style="display:none;">
-      <strong>Warning — Unofficial Estimates:</strong> Pre-1959 poverty data are econometric backcasts with no underlying household survey. The 1947–1958 estimates (Fisher 1986) were withdrawn by their author in 1999. The 1914–1946 estimates (Plotnick et al. 2000) are highly uncertain. Do not use for quantitative analysis without reading the full <a href="{{ site.baseurl }}/methodology">methodology</a>.
+      <strong>Warning — Unofficial Estimates:</strong> Pre-1959 poverty data are econometric backcasts with no underlying household survey. The 1947–1958 estimates (Fisher 1986) were withdrawn by their author in 1999. The 1914–1946 estimates (Plotnick et al. 2000) are highly uncertain. Do not use for quantitative analysis without reading the full <a href="{{ '/methodology.html' | relative_url }}">methodology</a>.
     </div>
 
     <!-- Main Chart -->
@@ -83,7 +83,7 @@ description: Equally Poor Data Explorer — interactive visualization of U.S. in
         <svg id="explore-chart" role="img" aria-label="Multi-series inequality chart with interactive controls"></svg>
       </div>
       <div class="chart-legend" id="explore-legend" aria-label="Chart series legend"></div>
-      <p class="chart-source">Sources: Piketty &amp; Saez (2024); Census Bureau CPS ASEC; Shrider, P60-287 (2025); Plotnick et al. (2000) [pre-1959, unofficial]. <a href="{{ site.baseurl }}/methodology">Full methodology &rarr;</a></p>
+      <p class="chart-source">Sources: Piketty &amp; Saez (2024); Census Bureau CPS ASEC; Shrider, P60-287 (2025); Plotnick et al. (2000) [pre-1959, unofficial]. <a href="{{ '/methodology.html' | relative_url }}">Full methodology &rarr;</a></p>
     </div>
 
     <!-- Data Table -->
@@ -172,7 +172,7 @@ description: Equally Poor Data Explorer — interactive visualization of U.S. in
 <div class="chart-tooltip" id="explore-tip"></div>
 
 <script src="https://d3js.org/d3.v7.min.js"></script>
-<script src="{{ site.baseurl }}/assets/js/shared-data.js"></script>
+<script src="{{ '/assets/js/shared-data.js' | relative_url }}"></script>
 <script>
 (function() {
   // ── State ──

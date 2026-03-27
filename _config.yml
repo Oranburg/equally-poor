@@ -3,4 +3,3 @@ description: "Visualizing wealth, inequality & law in America"
 baseurl: "/equally-poor"
 url: "https://oranburg.law"
 markdown: kramdown
-permalink: pretty
