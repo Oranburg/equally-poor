@@ -1,12 +1,8 @@
-
 ---
 layout: default
 title: Home
 description: Equally Poor — a scholarly research platform visualizing wealth, inequality, and law in America.
 ---
-
-<!-- Main Content -->
-<main id="main-content" role="main">
 
     <!-- Hero -->
     <section class="hero" aria-labelledby="hero-title">
@@ -15,8 +11,8 @@ description: Equally Poor — a scholarly research platform visualizing wealth, 
         <h1 id="hero-title">Wealth, Inequality &amp; Law<br>in America</h1>
         <p>A scholarly platform for visualizing and analyzing the relationship between economic inequality, poverty, and legal structures — for lawyers, economists, and social scientists. Built on primary data from Piketty-Saez, the U.S. Census Bureau, and the Federal Reserve.</p>
         <div class="btn-group">
-          <a href="{{ site.baseurl }}/explore" class="btn btn-primary">Explore the Data</a>
-          <a href="{{ site.baseurl }}/legal" class="btn btn-secondary">Legal Landscape</a>
+          <a href="{{ '/explore.html' | relative_url }}" class="btn btn-primary">Explore the Data</a>
+          <a href="{{ '/legal.html' | relative_url }}" class="btn btn-secondary">Legal Landscape</a>
         </div>
       </div>
     </section>
@@ -49,9 +45,55 @@ description: Equally Poor — a scholarly research platform visualizing wealth, 
           </div>
         </div>
       </div>
-    </main>
+    </section>
+
+    <!-- Quick Chart -->
+    <section aria-labelledby="overview-chart-title" style="background:var(--white);">
+      <div class="container">
+        <div class="section-header">
+          <p class="section-eyebrow">Data Overview</p>
+          <h2 class="section-title" id="overview-chart-title">Three Measures of Inequality, 1967–2024</h2>
+          <p class="section-desc">The overlapping period for all three primary series. Top 10% income share (left axis) has nearly returned to Gilded Age levels. The Gini coefficient has risen steadily. Poverty has fallen substantially since the 1960s but remains persistently above 10%.</p>
+        </div>
+        <div class="chart-container">
+          <div class="chart-title">Income Share, Gini &amp; Poverty — 1967 to 2024</div>
+          <div class="chart-subtitle">Left axis: Top 10% income share &amp; official poverty rate (as %). Right axis: Gini coefficient (0–1 scale).</div>
+          <div class="chart-wrapper" id="home-chart-wrapper">
+            <svg id="home-chart" aria-label="Line chart showing three inequality measures from 1967 to 2024" role="img"></svg>
+          </div>
+          <div class="chart-legend" id="home-legend" aria-label="Chart legend"></div>
+          <p class="chart-source">Sources: Piketty &amp; Saez (2024 update); Census Bureau CPS ASEC (FRED GINIALLRH); Shrider et al., P60-287 (2025). See <a href="{{ '/methodology.html' | relative_url }}">Methodology</a> for caveats.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Platform Tools Grid -->
+    <section aria-labelledby="tools-title" style="background:var(--off-white);">
+      <div class="container">
+        <div class="section-header">
+          <p class="section-eyebrow">Platform Tools</p>
+          <h2 class="section-title" id="tools-title">Explore the Platform</h2>
+        </div>
+        <div class="grid-4">
+          <a href="{{ '/explore.html' | relative_url }}" class="card card--red" style="text-decoration:none;" aria-label="Data Explorer — interactive visualization tool">
+            <div style="font-size:1.8rem;margin-bottom:0.6rem;">&#x1F4CA;</div>
+            <div class="card-title">Data Explorer</div>
+            <p class="card-text">Interactive time-series visualization of inequality metrics from 1913 to today. Toggle series, filter by era, and export data.</p>
+            <span class="card-link">Open Explorer &rarr;</span>
           </a>
-          <a href="/about.html" class="card card--green" style="text-decoration:none;" aria-label="About — platform mission and goals">
+          <a href="{{ '/legal.html' | relative_url }}" class="card card--blue" style="text-decoration:none;" aria-label="Legal Landscape — legislation and inequality">
+            <div style="font-size:1.8rem;margin-bottom:0.6rem;">&#x2696;&#xFE0F;</div>
+            <div class="card-title">Legal Landscape</div>
+            <p class="card-text">Explore how major legislation shaped inequality trends over 110 years. Interactive timeline with D3 overlay chart.</p>
+            <span class="card-link">View Timeline &rarr;</span>
+          </a>
+          <a href="{{ '/methodology.html' | relative_url }}" class="card card--yellow" style="text-decoration:none;" aria-label="Methodology — data sources and limitations">
+            <div style="font-size:1.8rem;margin-bottom:0.6rem;">&#x1F4D0;</div>
+            <div class="card-title">Methodology</div>
+            <p class="card-text">Data sources, measurement approaches, series breaks, and known limitations. Scholarly transparency is central to this platform.</p>
+            <span class="card-link">Read Methods &rarr;</span>
+          </a>
+          <a href="{{ '/about.html' | relative_url }}" class="card card--green" style="text-decoration:none;" aria-label="About — platform mission and goals">
             <div style="font-size:1.8rem;margin-bottom:0.6rem;">&#x1F3DB;&#xFE0F;</div>
             <div class="card-title">About</div>
             <p class="card-text">About this research platform, its scholarly mission, intended audience, and the core research questions it addresses.</p>
@@ -74,53 +116,8 @@ description: Equally Poor — a scholarly research platform visualizing wealth, 
       </div>
     </section>
 
-  </main>
-
-  <!-- Footer -->
-  <footer class="site-footer" role="contentinfo">
-    <div class="footer-container">
-      <div class="footer-grid">
-        <div class="footer-brand">
-          <div class="footer-logo">EQUALLY POOR</div>
-          <p class="footer-tagline">Visualizing wealth, inequality &amp; law in America — a scholarly research platform at the intersection of economics, law, and social policy.</p>
-        </div>
-        <div class="footer-links">
-          <h3 class="footer-heading">Platform</h3>
-          <ul class="footer-nav" role="list">
-            <li><a href="/index.html">Home</a></li>
-            <li><a href="/explore.html">Data Explorer</a></li>
-            <li><a href="/legal.html">Legal Landscape</a></li>
-            <li><a href="/methodology.html">Methodology</a></li>
-            <li><a href="/about.html">About</a></li>
-          </ul>
-        </div>
-        <div class="footer-sources">
-          <h3 class="footer-heading">Primary Sources</h3>
-          <ul class="footer-nav" role="list">
-            <li><a href="https://gabriel-zucman.eu/usdina/" target="_blank" rel="noopener noreferrer">Piketty-Saez Data</a></li>
-            <li><a href="https://fred.stlouisfed.org/series/GINIALLRH" target="_blank" rel="noopener noreferrer">Census Gini (FRED)</a></li>
-            <li><a href="https://www.census.gov/topics/income-poverty/poverty.html" target="_blank" rel="noopener noreferrer">Census Poverty Data</a></li>
-            <li><a href="/methodology.html">Methodology &amp; Caveats</a></li>
-          </ul>
-        </div>
-        <div class="footer-affiliation">
-          <h3 class="footer-heading">Affiliation</h3>
-          <p>A research initiative in the tradition of law-and-economics scholarship. Data updated through 2024. All visualizations subject to the methodological limitations documented in the <a href="/methodology.html">Methodology</a> section.</p>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <p class="footer-attribution">
-          Data sources: Piketty &amp; Saez (updated 2024); U.S. Census Bureau CPS ASEC; FRED.
-          Charts built with <a href="https://d3js.org" target="_blank" rel="noopener noreferrer">D3.js v7</a>.
-          Not legal or financial advice.
-        </p>
-        <p class="footer-copyright">&copy; Equally Poor Research Platform. For scholarly and educational use.</p>
-      </div>
-    </div>
-  </footer>
-
   <script src="https://d3js.org/d3.v7.min.js"></script>
-  <script src="/assets/js/shared-data.js"></script>
+  <script src="{{ '/assets/js/shared-data.js' | relative_url }}"></script>
   <script>
 (function() {
   const wrapper = document.getElementById('home-chart-wrapper');
@@ -174,9 +171,7 @@ description: Equally Poor — a scholarly research platform visualizing wealth, 
 
     // Scales
     const xScale = d3.scaleLinear().domain([startY, endY]).range([0, W]);
-    // Left axis: 0–0.6 (covers poverty 0.1-0.22 and income share 0.33-0.51)
     const yLeft  = d3.scaleLinear().domain([0.05, 0.60]).range([H, 0]);
-    // Right axis: Gini 0.35–0.55
     const yRight = d3.scaleLinear().domain([0.35, 0.55]).range([H, 0]);
 
     // Grid
@@ -305,19 +300,3 @@ description: Equally Poor — a scholarly research platform visualizing wealth, 
   });
 })();
   </script>
-
-  <script>
-    // Mobile nav toggle
-    const navToggle = document.querySelector('.nav-toggle');
-    const navMenu = document.querySelector('.nav-menu');
-    if (navToggle && navMenu) {
-      navToggle.addEventListener('click', function() {
-        const expanded = this.getAttribute('aria-expanded') === 'true';
-        this.setAttribute('aria-expanded', !expanded);
-        navMenu.classList.toggle('open');
-      });
-    }
-  </script>
-
-</body>
-</html>

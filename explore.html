@@ -1,18 +1,14 @@
-
 ---
 layout: default
 title: Data Explorer
-description: Equally Poor Data Explorer — interactive visualization of U.S. income inequality and poverty, 1913–2024.
+description: Interactive visualization of U.S. income inequality and poverty data from 1913 to 2024.
 ---
-
-<!-- Main Content -->
-<main id="main-content" role="main">
 
     <section class="hero hero--short" aria-labelledby="explore-hero-title">
       <div class="container">
         <p class="hero-eyebrow">Interactive Visualization</p>
         <h1 id="explore-hero-title">Data Explorer</h1>
-        <p>Explore four decades-spanning measures of income inequality and poverty in the United States. Toggle series, filter by historical period, and overlay legislative milestones. All data sourced from peer-reviewed and government sources — see <a href="{{ site.baseurl }}/methodology" style="color:var(--light-blue);">Methodology</a> for full caveats.</p>
+        <p>Explore four decades-spanning measures of income inequality and poverty in the United States. Toggle series, filter by historical period, and overlay legislative milestones. All data sourced from peer-reviewed and government sources — see <a href="{{ '/methodology.html' | relative_url }}" style="color:var(--light-blue);">Methodology</a> for full caveats.</p>
       </div>
     </section>
 
@@ -67,7 +63,7 @@ description: Equally Poor Data Explorer — interactive visualization of U.S. in
         </div>
 
         <div class="caveat-box" id="pre1959-caveat" style="display:none;">
-          <strong>Warning — Unofficial Estimates:</strong> Pre-1959 poverty data are econometric backcasts with no underlying household survey. The 1947–1958 estimates (Fisher 1986) were withdrawn by their author in 1999. The 1914–1946 estimates (Plotnick et al. 2000) are highly uncertain. Do not use for quantitative analysis without reading the full <a href="/methodology.html">methodology</a>.
+          <strong>Warning — Unofficial Estimates:</strong> Pre-1959 poverty data are econometric backcasts with no underlying household survey. The 1947–1958 estimates (Fisher 1986) were withdrawn by their author in 1999. The 1914–1946 estimates (Plotnick et al. 2000) are highly uncertain. Do not use for quantitative analysis without reading the full <a href="{{ '/methodology.html' | relative_url }}">methodology</a>.
         </div>
 
         <!-- Main Chart -->
@@ -78,7 +74,7 @@ description: Equally Poor Data Explorer — interactive visualization of U.S. in
             <svg id="explore-chart" role="img" aria-label="Multi-series inequality chart with interactive controls"></svg>
           </div>
           <div class="chart-legend" id="explore-legend" aria-label="Chart series legend"></div>
-          <p class="chart-source">Sources: Piketty &amp; Saez (2024); Census Bureau CPS ASEC; Shrider, P60-287 (2025); Plotnick et al. (2000) [pre-1959, unofficial]. <a href="/methodology.html">Full methodology &rarr;</a></p>
+          <p class="chart-source">Sources: Piketty &amp; Saez (2024); Census Bureau CPS ASEC; Shrider, P60-287 (2025); Plotnick et al. (2000) [pre-1959, unofficial]. <a href="{{ '/methodology.html' | relative_url }}">Full methodology &rarr;</a></p>
         </div>
 
         <!-- Data Table -->
@@ -164,61 +160,62 @@ description: Equally Poor Data Explorer — interactive visualization of U.S. in
       </div>
     </section>
 
-  </main>
-
-  <!-- Footer -->
-  <footer class="site-footer" role="contentinfo">
-    <div class="footer-container">
-      <div class="footer-grid">
-        <div class="footer-brand">
-          <div class="footer-logo">EQUALLY POOR</div>
-          <p class="footer-tagline">Visualizing wealth, inequality &amp; law in America — a scholarly research platform at the intersection of economics, law, and social policy.</p>
-        </div>
-        <div class="footer-links">
-          <h3 class="footer-heading">Platform</h3>
-          <ul class="footer-nav" role="list">
-            <li><a href="/index.html">Home</a></li>
-            <li><a href="/explore.html">Data Explorer</a></li>
-            <li><a href="/legal.html">Legal Landscape</a></li>
-            <li><a href="/methodology.html">Methodology</a></li>
-            <li><a href="/about.html">About</a></li>
-          </ul>
-        </div>
-        <div class="footer-sources">
-          <h3 class="footer-heading">Primary Sources</h3>
-          <ul class="footer-nav" role="list">
-            <li><a href="https://gabriel-zucman.eu/usdina/" target="_blank" rel="noopener noreferrer">Piketty-Saez Data</a></li>
-            <li><a href="https://fred.stlouisfed.org/series/GINIALLRH" target="_blank" rel="noopener noreferrer">Census Gini (FRED)</a></li>
-            <li><a href="https://www.census.gov/topics/income-poverty/poverty.html" target="_blank" rel="noopener noreferrer">Census Poverty Data</a></li>
-            <li><a href="/methodology.html">Methodology &amp; Caveats</a></li>
-          </ul>
-        </div>
-        <div class="footer-affiliation">
-          <h3 class="footer-heading">Affiliation</h3>
-          <p>A research initiative in the tradition of law-and-economics scholarship. Data updated through 2024. All visualizations subject to the methodological limitations documented in the <a href="/methodology.html">Methodology</a> section.</p>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <p class="footer-attribution">
-          Data sources: Piketty &amp; Saez (updated 2024); U.S. Census Bureau CPS ASEC; FRED.
-          Charts built with <a href="https://d3js.org" target="_blank" rel="noopener noreferrer">D3.js v7</a>.
-          Not legal or financial advice.
-        </p>
-        <p class="footer-copyright">&copy; Equally Poor Research Platform. For scholarly and educational use.</p>
-      </div>
-    </div>
-  </footer>
-
   <div class="chart-tooltip" id="explore-tip"></div>
 
   <script src="https://d3js.org/d3.v7.min.js"></script>
-  <script src="/assets/js/shared-data.js"></script>
+  <script src="{{ '/assets/js/shared-data.js' | relative_url }}"></script>
   <script>
 (function() {
   // ── State ──
   const state = {
     active: { top10: true, top1: true, gini: true, poverty: true, povertyPre: false },
-    </main>
+    startYear: 1913,
+    endYear: 2024,
+    showAnnotations: true,
+    giniRightAxis: true,
+  };
+
+  const COLORS = {
+    top10:      '#B21F2C',
+    top1:       '#E96955',
+    gini:       '#2459A9',
+    poverty:    '#0A3255',
+    povertyPre: '#6DACDE',
+  };
+
+  const LABELS = {
+    top10:      'Top 10% Income Share (excl. cap gains)',
+    top1:       'Top 1% Income Share (incl. cap gains)',
+    gini:       'Gini Coefficient',
+    poverty:    'Official Poverty Rate',
+    povertyPre: 'Pre-1959 Estimates (unofficial)',
+  };
+
+  const MARGIN = { top: 24, right: 80, bottom: 45, left: 65 };
+  const wrapper = document.getElementById('explore-chart-wrapper');
+  const svgEl   = document.getElementById('explore-chart');
+  const legendEl = document.getElementById('explore-legend');
+
+  // Tooltip
+  const tip = document.getElementById('explore-tip');
+  function showTip(html, ev) {
+    tip.innerHTML = html;
+    tip.classList.add('visible');
+    moveTip(ev);
+  }
+  function moveTip(ev) {
+    tip.style.left = Math.min(ev.clientX + 14, window.innerWidth - 240) + 'px';
+    tip.style.top  = (ev.clientY - 28) + 'px';
+  }
+  function hideTip() { tip.classList.remove('visible'); }
+
+  function getSeriesData(key) {
+    const sy = state.startYear, ey = state.endYear;
+    switch(key) {
+      case 'top10':      return top10Data.filter(d => d.year >= sy && d.year <= ey);
+      case 'top1':       return top1Data.filter(d => d.year >= sy && d.year <= ey);
+      case 'gini':       return giniData.filter(d => d.year >= sy && d.year <= ey);
+      case 'poverty':    return povertyData.filter(d => d.year >= sy && d.year <= ey);
       case 'povertyPre': return povertyPre.filter(d => d.year >= sy && d.year <= ey);
       default: return [];
     }
@@ -239,7 +236,6 @@ description: Equally Poor Data Explorer — interactive visualization of U.S. in
     const g = svg.append('g')
       .attr('transform', `translate(${MARGIN.left},${MARGIN.top})`);
 
-    // Collect all active data for domain calc
     const activeKeys = Object.keys(state.active).filter(k => state.active[k]);
 
     // X scale
@@ -250,11 +246,9 @@ description: Equally Poor Data Explorer — interactive visualization of U.S. in
       .domain([Math.min(...allYears), Math.max(...allYears)])
       .range([0, W]);
 
-    // Separate gini from others for dual axis
     const nonGiniKeys = activeKeys.filter(k => k !== 'gini');
     const giniActive  = activeKeys.includes('gini') && state.giniRightAxis;
 
-    // Left y-scale: income share + poverty (0-0.7)
     let leftMin = 0.05, leftMax = 0.6;
     nonGiniKeys.forEach(k => {
       getSeriesData(k).forEach(d => {
@@ -269,8 +263,6 @@ description: Equally Poor Data Explorer — interactive visualization of U.S. in
       });
     }
     const yLeft = d3.scaleLinear().domain([leftMin, leftMax]).range([H, 0]).nice();
-
-    // Right y-scale: Gini
     const yRight = d3.scaleLinear().domain([0.35, 0.55]).range([H, 0]);
 
     // Gridlines
@@ -282,7 +274,6 @@ description: Equally Poor Data Explorer — interactive visualization of U.S. in
         .attr('y1', d => yLeft(d)).attr('y2', d => yLeft(d))
         .attr('stroke', '#e8e8e8').attr('stroke-dasharray', '3 3');
 
-    // Vertical decade ticks
     const decadeTicks = d3.range(
       Math.ceil(state.startYear / 10) * 10,
       state.endYear + 1, 10
@@ -454,7 +445,6 @@ description: Equally Poor Data Explorer — interactive visualization of U.S. in
 
   // ── Controls ──
 
-  // Series toggles
   document.querySelectorAll('.toggle-btn[data-series]').forEach(btn => {
     btn.addEventListener('click', function() {
       const key = this.dataset.series;
@@ -470,7 +460,6 @@ description: Equally Poor Data Explorer — interactive visualization of U.S. in
       buildChart();
       buildTable();
     });
-    // Initial style for active
     if (state.active[btn.dataset.series]) {
       const key = btn.dataset.series;
       btn.style.background  = COLORS[key];
@@ -479,7 +468,6 @@ description: Equally Poor Data Explorer — interactive visualization of U.S. in
     }
   });
 
-  // Preset period buttons
   document.querySelectorAll('.preset-btn').forEach(btn => {
     btn.addEventListener('click', function() {
       document.querySelectorAll('.preset-btn').forEach(b => b.classList.remove('active'));
@@ -495,7 +483,6 @@ description: Equally Poor Data Explorer — interactive visualization of U.S. in
     });
   });
 
-  // Range sliders
   const startSlider = document.getElementById('year-start');
   const endSlider   = document.getElementById('year-end');
   const startVal    = document.getElementById('year-start-val');
@@ -519,7 +506,6 @@ description: Equally Poor Data Explorer — interactive visualization of U.S. in
     buildChart(); buildTable();
   });
 
-  // Annotations toggle
   document.getElementById('annot-toggle').addEventListener('click', function() {
     state.showAnnotations = !state.showAnnotations;
     this.classList.toggle('active', state.showAnnotations);
@@ -531,11 +517,9 @@ description: Equally Poor Data Explorer — interactive visualization of U.S. in
     }
     buildChart();
   });
-  // Initial style for annot
   const annotBtn = document.getElementById('annot-toggle');
   annotBtn.style.background = '#0A3255'; annotBtn.style.color = '#fff'; annotBtn.style.borderColor = '#0A3255';
 
-  // Gini axis toggle
   document.getElementById('gini-axis-toggle').addEventListener('click', function() {
     state.giniRightAxis = !state.giniRightAxis;
     this.classList.toggle('active', state.giniRightAxis);
@@ -550,7 +534,6 @@ description: Equally Poor Data Explorer — interactive visualization of U.S. in
   const giniAxisBtn = document.getElementById('gini-axis-toggle');
   giniAxisBtn.style.background = '#0A3255'; giniAxisBtn.style.color = '#fff'; giniAxisBtn.style.borderColor = '#0A3255';
 
-  // Accordion
   document.querySelectorAll('.accordion-trigger').forEach(trigger => {
     trigger.addEventListener('click', function() {
       const bodyId = this.getAttribute('aria-controls');
@@ -602,7 +585,6 @@ description: Equally Poor Data Explorer — interactive visualization of U.S. in
     buildTable(this.value);
   });
 
-  // Download CSV
   document.getElementById('download-csv').addEventListener('click', function() {
     const years = getAllYears();
     let csv = 'Year,Top10PctShare,Top1PctShare,GiniCoefficient,PovertyRate\n';
@@ -633,19 +615,3 @@ description: Equally Poor Data Explorer — interactive visualization of U.S. in
   });
 })();
   </script>
-
-  <script>
-    // Mobile nav toggle
-    const navToggle = document.querySelector('.nav-toggle');
-    const navMenu = document.querySelector('.nav-menu');
-    if (navToggle && navMenu) {
-      navToggle.addEventListener('click', function() {
-        const expanded = this.getAttribute('aria-expanded') === 'true';
-        this.setAttribute('aria-expanded', !expanded);
-        navMenu.classList.toggle('open');
-      });
-    }
-  </script>
-
-</body>
-</html>
