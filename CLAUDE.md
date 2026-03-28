@@ -76,7 +76,10 @@ src/
       layout.tsx            # Legal page metadata
       page.tsx              # Legal Landscape ("use client")
     methodology/page.tsx    # Methodology (server component)
-    about/page.tsx          # About (server component)
+    about/page.tsx          # About (server component) — creator attribution, data sources
+    contact/
+      layout.tsx            # Contact page metadata
+      page.tsx              # Contact form ("use client" — mailto: obfuscation)
   components/
     charts/
       useD3.ts              # Custom hook: wraps D3 selections on SVG ref
@@ -132,7 +135,7 @@ src/
 ### Completed
 
 - [x] Full Next.js rebuild replacing Jekyll
-- [x] All 5 pages implemented (Home, Explore, Legal, Methodology, About)
+- [x] All 6 pages implemented (Home, Explore, Legal, Methodology, About, Contact)
 - [x] Home page chart (3-series dual-axis with tooltips)
 - [x] Data Explorer (5-series chart, control panel, period presets, data table, CSV download)
 - [x] Legal Landscape (timeline, chart with legislation markers, SCOTUS table, concept cards)
@@ -142,6 +145,10 @@ src/
 - [x] PR #6 merged to main
 - [x] All data ported to typed TypeScript modules
 - [x] `gh` CLI authenticated for repo operations
+- [x] Creator attribution (Seth C. Oranburg) on About page, Footer, and copyright
+- [x] Contact page with obfuscated mailto: form (sends to seth@oranburg.law)
+- [x] Data sources section on About page (WID, Census, FRED, ACS)
+- [x] Footer updated with oranburg.law link, all 4 data sources, correct copyright
 
 ### Not Yet Done / Known Gaps
 

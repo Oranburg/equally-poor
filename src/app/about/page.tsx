@@ -79,6 +79,107 @@ export default function AboutPage() {
         </div>
       </section>
 
+      {/* Creator */}
+      <section aria-labelledby="creator-title">
+        <div className="container--narrow">
+          <div className="section-header">
+            <p className="section-eyebrow">Creator</p>
+            <h2 className="section-title" id="creator-title">
+              Created by Seth C. Oranburg
+            </h2>
+          </div>
+          <p>
+            Equally Poor was created by{" "}
+            <a href="https://oranburg.law" target="_blank" rel="noopener noreferrer">
+              Seth C. Oranburg
+            </a>
+            , a legal scholar whose work sits at the intersection of law, economics, and empirical
+            research. The platform reflects a conviction that the data on American inequality —
+            scattered across government agencies, academic datasets, and research archives — needed
+            to be brought together in one place, presented with full methodological transparency, and
+            mapped against the legal history that shaped it.
+          </p>
+          <p>
+            Building Equally Poor required assembling and harmonizing data from multiple independent
+            sources spanning more than a century: the Piketty-Saez top income share series from the
+            World Inequality Database, Gini coefficients and poverty rates from the U.S. Census
+            Bureau&apos;s Current Population Survey, economic indicators from the Federal Reserve Bank
+            of St. Louis (FRED), and detailed microdata from the American Community Survey. Each
+            source uses different methodologies, covers different time periods, and measures different
+            aspects of inequality and poverty. The power of this platform lies in bringing them
+            together — making it possible to see, in a single interactive view, how income
+            concentration, distributional inequality, and poverty have moved together (and apart) in
+            response to legal and policy changes.
+          </p>
+          <p>
+            The platform is independent — unaffiliated with any political party, advocacy
+            organization, or government agency. It is maintained as a scholarly resource and is free
+            to use for research and educational purposes.
+          </p>
+        </div>
+      </section>
+
+      {/* Data Sources */}
+      <section aria-labelledby="sources-title" style={{ background: "var(--bg-secondary)" }}>
+        <div className="container--narrow">
+          <div className="section-header">
+            <p className="section-eyebrow">Data Integration</p>
+            <h2 className="section-title" id="sources-title">
+              Bringing the Data Together
+            </h2>
+            <p className="section-desc">
+              One of the core contributions of this platform is integrating data from multiple
+              independent sources that are rarely presented side by side.
+            </p>
+          </div>
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "1fr 1fr",
+              gap: "1.25rem",
+            }}
+          >
+            <div className="card card--red">
+              <div className="card-title">World Inequality Database</div>
+              <p className="card-text">
+                Top 10% and Top 1% income share series from Piketty &amp; Saez, covering
+                1917&ndash;2022. The longest continuous measure of income concentration in the
+                United States.
+              </p>
+            </div>
+            <div className="card card--blue">
+              <div className="card-title">U.S. Census Bureau</div>
+              <p className="card-text">
+                Gini coefficients (1967&ndash;2024), official poverty rates (1959&ndash;2024), and
+                the Supplemental Poverty Measure from the Current Population Survey (CPS ASEC).
+                Geographic breakdowns via the American Community Survey.
+              </p>
+            </div>
+            <div className="card card--yellow">
+              <div className="card-title">Federal Reserve (FRED)</div>
+              <p className="card-text">
+                Pre-computed time series for poverty rates by demographic group, real median
+                household income, Gini ratios, and labor&apos;s share of gross domestic income —
+                all from the St. Louis Fed&apos;s research database.
+              </p>
+            </div>
+            <div className="card card--green">
+              <div className="card-title">Academic Research</div>
+              <p className="card-text">
+                Pre-1959 poverty estimates from Smolensky (1965) and Fisher (1986), historical
+                annotations, and a comprehensive catalog of federal legislation and Supreme Court
+                decisions affecting economic equality.
+              </p>
+            </div>
+          </div>
+          <style>{`
+            @media (max-width: 768px) {
+              .about-sources-grid { grid-template-columns: 1fr !important; }
+            }
+          `}</style>
+        </div>
+      </section>
+
       {/* Mission */}
       <section aria-labelledby="mission-title">
         <div className="container--narrow">
@@ -268,9 +369,9 @@ export default function AboutPage() {
                 welcome — the goal is accuracy, not advocacy.
               </p>
               <p style={{ marginTop: "1rem" }}>
-                <a href="mailto:research@equallypoor.org" className="btn btn-outline btn-sm">
-                  research@equallypoor.org
-                </a>
+                <Link href="/contact" className="btn btn-primary btn-sm">
+                  Contact Us &rarr;
+                </Link>
               </p>
             </div>
             <div>
@@ -308,7 +409,7 @@ export default function AboutPage() {
               platform constitutes legal, financial, tax, or investment advice. Data visualizations
               are provided as-is; users should consult primary sources before relying on any figure
               for research or policy purposes. The platform is affiliated with no political party,
-              advocacy organization, or government agency. All errors remain our own.
+              advocacy organization, or government agency. All errors remain the author&apos;s own.
             </p>
           </div>
         </div>

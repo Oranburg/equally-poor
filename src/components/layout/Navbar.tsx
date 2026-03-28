@@ -11,6 +11,7 @@ const NAV_LINKS = [
   { href: "/legal", label: "Legal Landscape" },
   { href: "/methodology", label: "Methodology" },
   { href: "/about", label: "About" },
+  { href: "/contact", label: "Contact" },
 ];
 
 export default function Navbar() {

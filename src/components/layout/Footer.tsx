@@ -10,7 +10,16 @@ export default function Footer() {
             <div className="footer-logo">EQUALLY POOR</div>
             <p className="footer-tagline">
               A scholarly research platform visualizing wealth, inequality &amp; law in America.
-              Built on peer-reviewed data with full methodological transparency.
+              Created by{" "}
+              <a
+                href="https://oranburg.law"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{ color: "rgba(255,255,255,0.85)", textDecoration: "underline" }}
+              >
+                Seth C. Oranburg
+              </a>
+              . Built on peer-reviewed data with full methodological transparency.
             </p>
           </div>
 
@@ -23,41 +32,57 @@ export default function Footer() {
               <li><Link href="/legal">Legal Landscape</Link></li>
               <li><Link href="/methodology">Methodology</Link></li>
               <li><Link href="/about">About</Link></li>
+              <li><Link href="/contact">Contact</Link></li>
             </ul>
           </div>
 
           {/* Primary Sources */}
           <div>
-            <h4 className="footer-heading">Primary Sources</h4>
+            <h4 className="footer-heading">Data Sources</h4>
             <ul className="footer-nav">
               <li>
                 <a href="https://gabriel-zucman.eu/usdina/" target="_blank" rel="noopener noreferrer">
-                  Piketty-Saez Series
+                  World Inequality Database
                 </a>
               </li>
               <li>
-                <a href="https://fred.stlouisfed.org/series/GINIALLRH" target="_blank" rel="noopener noreferrer">
-                  FRED: Census Gini
+                <a href="https://www.census.gov/programs-surveys/cps.html" target="_blank" rel="noopener noreferrer">
+                  U.S. Census Bureau (CPS)
                 </a>
               </li>
               <li>
-                <a href="https://www.census.gov/library/publications/2025/demo/p60-287.html" target="_blank" rel="noopener noreferrer">
-                  Census Poverty Data
+                <a href="https://fred.stlouisfed.org/" target="_blank" rel="noopener noreferrer">
+                  Federal Reserve (FRED)
+                </a>
+              </li>
+              <li>
+                <a href="https://www.census.gov/programs-surveys/acs" target="_blank" rel="noopener noreferrer">
+                  American Community Survey
                 </a>
               </li>
             </ul>
           </div>
 
-          {/* Affiliation */}
+          {/* Creator & Affiliation */}
           <div>
-            <h4 className="footer-heading">Affiliation</h4>
+            <h4 className="footer-heading">Creator</h4>
             <ul className="footer-nav">
+              <li>
+                <a
+                  href="https://oranburg.law"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{ color: "rgba(255,255,255,0.75)" }}
+                >
+                  Seth C. Oranburg
+                </a>
+              </li>
               <li>Independent scholarly platform</li>
               <li>No political affiliation</li>
               <li>
-                <a href="mailto:research@equallypoor.org" style={{ color: "rgba(255,255,255,0.75)" }}>
-                  research@equallypoor.org
-                </a>
+                <Link href="/contact" style={{ color: "rgba(255,255,255,0.75)" }}>
+                  Contact Us
+                </Link>
               </li>
             </ul>
           </div>
@@ -67,20 +92,24 @@ export default function Footer() {
           <p className="footer-attribution">
             Data sourced from{" "}
             <a href="https://gabriel-zucman.eu/usdina/" target="_blank" rel="noopener noreferrer">
-              Piketty &amp; Saez (2024 update)
+              Piketty &amp; Saez (World Inequality Database)
             </a>
             ;{" "}
-            <a href="https://fred.stlouisfed.org/series/GINIALLRH" target="_blank" rel="noopener noreferrer">
+            <a href="https://www.census.gov/programs-surveys/cps.html" target="_blank" rel="noopener noreferrer">
               U.S. Census Bureau CPS ASEC
             </a>
             ;{" "}
-            <a href="https://www.census.gov/library/publications/2025/demo/p60-287.html" target="_blank" rel="noopener noreferrer">
-              Shrider, <em>Poverty in the United States: 2024</em>, P60-287 (2025)
+            <a href="https://fred.stlouisfed.org/" target="_blank" rel="noopener noreferrer">
+              Federal Reserve Bank of St. Louis (FRED)
+            </a>
+            ;{" "}
+            <a href="https://www.census.gov/programs-surveys/acs" target="_blank" rel="noopener noreferrer">
+              American Community Survey
             </a>
             .
           </p>
           <p className="footer-copyright">
-            &copy; {new Date().getFullYear()} Equally Poor. All rights reserved. For scholarly and educational use only.
+            &copy; {new Date().getFullYear()} Seth C. Oranburg. All rights reserved. For scholarly and educational use only.
           </p>
         </div>
       </div>
