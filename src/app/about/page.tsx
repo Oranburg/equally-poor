@@ -314,7 +314,7 @@ export default function AboutPage() {
                     fontFamily: "var(--font-headline)",
                     fontSize: "1.5rem",
                     fontWeight: 700,
-                    color: "var(--catholic-red)",
+                    color: "var(--red-deep)",
                     lineHeight: 1,
                     flexShrink: 0,
                     width: "2rem",
@@ -326,7 +326,7 @@ export default function AboutPage() {
                 <div>
                   <strong
                     style={{
-                      fontFamily: "var(--font-ui)",
+                      fontFamily: "var(--font-body)",
                       fontSize: "0.95rem",
                       color: "var(--text-heading)",
                       display: "block",

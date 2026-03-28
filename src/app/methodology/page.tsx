@@ -371,7 +371,7 @@ export default function MethodologyPage() {
             <h3 id="pre1959-title">Pre-1959 Poverty Estimates</h3>
             <div className="method-meta">
               Coverage: 1914–1958 &nbsp;|&nbsp; Status:{" "}
-              <strong style={{ color: "var(--catholic-red)" }}>
+              <strong style={{ color: "var(--red-deep)" }}>
                 Unofficial — not suitable for quantitative analysis
               </strong>
             </div>

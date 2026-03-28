@@ -70,7 +70,7 @@ export default function Navbar() {
           </span>
           <span
             style={{
-              fontFamily: "var(--font-ui)",
+              fontFamily: "var(--font-body)",
               fontSize: "0.62rem",
               color: "rgba(255,255,255,0.55)",
               letterSpacing: "0.12em",
@@ -95,7 +95,7 @@ export default function Navbar() {
               key={link.href}
               href={link.href}
               style={{
-                fontFamily: "var(--font-ui)",
+                fontFamily: "var(--font-body)",
                 fontSize: "0.82rem",
                 fontWeight: isActive(link.href) ? 700 : 500,
                 color: isActive(link.href)
@@ -230,7 +230,7 @@ export default function Navbar() {
               href={link.href}
               onClick={() => setMobileOpen(false)}
               style={{
-                fontFamily: "var(--font-ui)",
+                fontFamily: "var(--font-body)",
                 fontSize: "0.92rem",
                 fontWeight: isActive(link.href) ? 700 : 400,
                 color: isActive(link.href)

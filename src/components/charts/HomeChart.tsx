@@ -135,7 +135,7 @@ export default function HomeChart() {
         .attr("y", -MARGIN.left + 14)
         .attr("x", -innerHeight / 2)
         .attr("text-anchor", "middle")
-        .attr("font-family", "var(--font-ui)")
+        .attr("font-family", "var(--font-body)")
         .attr("font-size", "11px")
         .attr("fill", chartText)
         .text("Percentage (%)");
@@ -160,7 +160,7 @@ export default function HomeChart() {
         .attr("y", -(width - MARGIN.left) + 14)
         .attr("x", innerHeight / 2)
         .attr("text-anchor", "middle")
-        .attr("font-family", "var(--font-ui)")
+        .attr("font-family", "var(--font-body)")
         .attr("font-size", "11px")
         .attr("fill", chartText)
         .text("Gini Coefficient");

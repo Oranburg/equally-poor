@@ -96,7 +96,7 @@ export default function ContactPage() {
                       htmlFor="contact-name"
                       style={{
                         display: "block",
-                        fontFamily: "var(--font-ui)",
+                        fontFamily: "var(--font-body)",
                         fontSize: "0.85rem",
                         fontWeight: 600,
                         marginBottom: "0.35rem",
@@ -130,7 +130,7 @@ export default function ContactPage() {
                       htmlFor="contact-email"
                       style={{
                         display: "block",
-                        fontFamily: "var(--font-ui)",
+                        fontFamily: "var(--font-body)",
                         fontSize: "0.85rem",
                         fontWeight: 600,
                         marginBottom: "0.35rem",
@@ -164,7 +164,7 @@ export default function ContactPage() {
                       htmlFor="contact-subject"
                       style={{
                         display: "block",
-                        fontFamily: "var(--font-ui)",
+                        fontFamily: "var(--font-body)",
                         fontSize: "0.85rem",
                         fontWeight: 600,
                         marginBottom: "0.35rem",
@@ -201,7 +201,7 @@ export default function ContactPage() {
                       htmlFor="contact-message"
                       style={{
                         display: "block",
-                        fontFamily: "var(--font-ui)",
+                        fontFamily: "var(--font-body)",
                         fontSize: "0.85rem",
                         fontWeight: 600,
                         marginBottom: "0.35rem",
@@ -250,7 +250,7 @@ export default function ContactPage() {
               >
                 <h3
                   style={{
-                    fontFamily: "var(--font-ui)",
+                    fontFamily: "var(--font-body)",
                     fontSize: "1rem",
                     fontWeight: 700,
                     marginBottom: "1rem",
@@ -290,7 +290,7 @@ export default function ContactPage() {
                         style={{
                           position: "absolute",
                           left: 0,
-                          color: "var(--catholic-red)",
+                          color: "var(--red-deep)",
                           fontWeight: 700,
                         }}
                       >
@@ -318,7 +318,7 @@ export default function ContactPage() {
                     href="/about"
                     style={{
                       fontSize: "0.85rem",
-                      color: "var(--catholic-blue)",
+                      color: "var(--blue-deep)",
                       fontWeight: 600,
                     }}
                   >

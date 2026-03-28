@@ -53,7 +53,7 @@ export function OverlayControls() {
               display: "flex",
               alignItems: "center",
               gap: "0.5rem",
-              fontFamily: "var(--font-ui)",
+              fontFamily: "var(--font-body)",
               fontSize: "0.78rem",
               cursor: "pointer",
             }}
@@ -74,7 +74,7 @@ export function OverlayControls() {
               display: "flex",
               alignItems: "center",
               gap: "0.5rem",
-              fontFamily: "var(--font-ui)",
+              fontFamily: "var(--font-body)",
               fontSize: "0.78rem",
               cursor: "pointer",
             }}
@@ -126,7 +126,7 @@ export function OverlayControls() {
                 display: "flex",
                 alignItems: "center",
                 gap: "0.5rem",
-                fontFamily: "var(--font-ui)",
+                fontFamily: "var(--font-body)",
                 fontSize: "0.72rem",
                 cursor: "pointer",
               }}

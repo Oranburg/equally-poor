@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Oswald, Crimson_Text, Roboto } from "next/font/google";
+import { Oswald, Crimson_Text, Roboto, Roboto_Mono } from "next/font/google";
 import "./globals.css";
 import ThemeProvider from "@/components/layout/ThemeProvider";
 import Navbar from "@/components/layout/Navbar";
@@ -7,7 +7,7 @@ import Footer from "@/components/layout/Footer";
 
 const oswald = Oswald({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+  weight: ["700"],
   variable: "--font-headline",
   display: "swap",
 });
@@ -16,14 +16,21 @@ const crimsonText = Crimson_Text({
   subsets: ["latin"],
   weight: ["400", "600"],
   style: ["normal", "italic"],
-  variable: "--font-body",
+  variable: "--font-accent",
   display: "swap",
 });
 
 const roboto = Roboto({
   subsets: ["latin"],
-  weight: ["300", "400", "500", "700"],
-  variable: "--font-ui",
+  weight: ["400", "500"],
+  variable: "--font-body",
+  display: "swap",
+});
+
+const robotoMono = Roboto_Mono({
+  subsets: ["latin"],
+  weight: ["400"],
+  variable: "--font-mono",
   display: "swap",
 });
 
@@ -44,8 +51,9 @@ export default function RootLayout({
       suppressHydrationWarning
       style={{
         ["--font-headline" as string]: oswald.style.fontFamily,
-        ["--font-body" as string]: crimsonText.style.fontFamily,
-        ["--font-ui" as string]: roboto.style.fontFamily,
+        ["--font-accent" as string]: crimsonText.style.fontFamily,
+        ["--font-body" as string]: roboto.style.fontFamily,
+        ["--font-mono" as string]: robotoMono.style.fontFamily,
       }}
     >
       <head>
@@ -68,7 +76,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className={`${oswald.variable} ${crimsonText.variable} ${roboto.variable}`}>
+      <body className={`${oswald.variable} ${crimsonText.variable} ${roboto.variable} ${robotoMono.variable}`}>
         <ThemeProvider>
           <Navbar />
           <main>{children}</main>

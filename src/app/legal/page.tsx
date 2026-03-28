@@ -312,7 +312,7 @@ export default function LegalPage() {
                     display: "flex",
                     alignItems: "center",
                     gap: "0.4rem",
-                    fontFamily: "var(--font-ui)",
+                    fontFamily: "var(--font-body)",
                     fontSize: "0.82rem",
                   }}
                 >
@@ -341,7 +341,7 @@ export default function LegalPage() {
                 className={`toggle-btn${timelineFilter === "all" ? " active" : ""}`}
                 style={
                   timelineFilter === "all"
-                    ? { background: "var(--catholic-blue)", color: "#fff", borderColor: "var(--catholic-blue)" }
+                    ? { background: "var(--blue-deep)", color: "#fff", borderColor: "var(--blue-deep)" }
                     : {}
                 }
                 onClick={() => setTimelineFilter("all")}
@@ -436,7 +436,7 @@ export default function LegalPage() {
                 flexWrap: "wrap",
                 gap: "0.75rem 1.5rem",
                 marginTop: "0.75rem",
-                fontFamily: "var(--font-ui)",
+                fontFamily: "var(--font-body)",
                 fontSize: "0.82rem",
               }}
             >
@@ -445,7 +445,7 @@ export default function LegalPage() {
                   style={{
                     width: "20px",
                     height: "3px",
-                    background: "var(--catholic-red)",
+                    background: "var(--red-deep)",
                     display: "inline-block",
                   }}
                 />{" "}
@@ -456,9 +456,9 @@ export default function LegalPage() {
                   style={{
                     width: "20px",
                     height: "2px",
-                    background: "var(--catholic-red)",
+                    background: "var(--red-deep)",
                     display: "inline-block",
-                    borderTop: "2px dashed var(--catholic-red)",
+                    borderTop: "2px dashed var(--red-deep)",
                   }}
                 />{" "}
                 Tax Cut / Regressive
@@ -468,9 +468,9 @@ export default function LegalPage() {
                   style={{
                     width: "20px",
                     height: "2px",
-                    background: "var(--bright-blue)",
+                    background: "var(--blue-bright)",
                     display: "inline-block",
-                    borderTop: "2px dashed var(--bright-blue)",
+                    borderTop: "2px dashed var(--blue-bright)",
                   }}
                 />{" "}
                 Progressive Tax / Social Program
