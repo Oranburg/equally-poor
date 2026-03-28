@@ -180,8 +180,72 @@ export default function AboutPage() {
         </div>
       </section>
 
+      {/* Why Both Measures */}
+      <section aria-labelledby="distinction-title">
+        <div className="container--narrow">
+          <div className="section-header">
+            <p className="section-eyebrow">Analytical Framework</p>
+            <h2 className="section-title" id="distinction-title">
+              Why Poverty and Inequality Appear on the Same Chart
+            </h2>
+          </div>
+          <p>
+            Poverty and inequality are often discussed as though they were the same thing. They are
+            not. Poverty measures whether individuals or families fall below a threshold of material
+            adequacy — it is an absolute concept. Inequality measures how income or wealth is
+            distributed across the entire population — it is a relative concept. A legal
+            intervention can reduce one without affecting the other, or even move them in opposite
+            directions. This platform presents both together precisely because their divergences are
+            as informative as their convergences.
+          </p>
+          <p>
+            Consider the historical record. During the 1980s and 1990s, the official poverty rate
+            declined modestly even as the Gini coefficient and top income shares rose sharply. The
+            Economic Recovery Tax Act of 1981 and the Tax Reform Act of 1986 concentrated pre-tax
+            income at the top while economic growth reduced the poverty headcount. The Earned Income
+            Tax Credit — expanded significantly in 1990 and 1993 — is perhaps the clearest example
+            of this divergence: it lifts millions of families above the poverty line each year yet has
+            essentially no effect on top income shares or the Gini coefficient. Conversely, a
+            progressive estate tax might compress wealth concentration at the top while doing nothing
+            for families at the bottom. Legal scholars who describe a policy as &ldquo;reducing
+            inequality&rdquo; without specifying which measure they mean are making an imprecise
+            claim. This platform makes the distinction visible.
+          </p>
+          <p>
+            The historical periods overlaid on the charts add a further dimension. Economic history
+            reveals recurring cycles in the social tolerance for inequality. The Gilded Age
+            (1870&ndash;1900) produced wealth concentration that triggered the Progressive Era&apos;s
+            antitrust laws, income taxation, and labor protections. The postwar Golden Age
+            (1947&ndash;1973) combined strong union density, highly progressive taxation, the GI
+            Bill, and tight labor markets to achieve something historically rare: simultaneously low
+            poverty <em>and</em> compressed inequality. That alignment unraveled after 1980 as top
+            tax rates fell, union membership declined, financial deregulation concentrated returns to
+            capital, and trade liberalization shifted the wage distribution. Branko Milanovic has
+            described these as &ldquo;Kuznets waves&rdquo; — recurring cycles of compression and
+            divergence shaped by political and legal choices.
+          </p>
+          <p>
+            There is a genuine analytical tension here that this platform does not attempt to resolve.
+            Some degree of income inequality may reflect productive incentives — returns to
+            entrepreneurial risk-taking, to innovation, to the deployment of capital in its most
+            productive uses. The complete elimination of inequality, as attempted in command
+            economies, removes the price signals and incentive structures on which market economies
+            depend. At the same time, extreme concentration generates its own pathologies: it distorts
+            political institutions, restricts intergenerational mobility, and — as the historical
+            record suggests — eventually produces the political instability that demands legal
+            correction. Where the balance lies is a normative question that this platform does not
+            answer. What it does is present the empirical record clearly enough that legal scholars,
+            economists, and policymakers can engage that question with precision rather than with
+            slogans.
+          </p>
+        </div>
+      </section>
+
       {/* Mission */}
-      <section aria-labelledby="mission-title">
+      <section
+        aria-labelledby="mission-title"
+        style={{ background: "var(--bg-secondary)" }}
+      >
         <div className="container--narrow">
           <div className="section-header">
             <p className="section-eyebrow">Mission</p>
@@ -193,21 +257,25 @@ export default function AboutPage() {
             Equally Poor was built on a conviction that understanding the relationship between law and
             economic distribution requires something that neither legal scholarship nor economics
             alone typically provides: a single, carefully sourced, methodologically honest platform
-            that places the best available long-run inequality data alongside the legal history that
-            shaped it. Tax lawyers advising clients on estate planning, labor economists studying the
-            minimum wage, sociologists analyzing poverty trends, and constitutional scholars debating
-            the scope of Congress&apos;s taxing power are all reasoning, implicitly or explicitly,
-            about the same underlying empirical reality. That reality deserves to be visualized
-            clearly and cited accurately.
+            that places the best available long-run data on both poverty and inequality alongside the
+            legal history that shaped them. Tax lawyers advising clients on estate planning, labor
+            economists studying the minimum wage, sociologists analyzing poverty trends, and
+            constitutional scholars debating the scope of Congress&apos;s taxing power are all
+            reasoning, implicitly or explicitly, about the same underlying empirical reality. That
+            reality deserves to be visualized clearly, with the right distinctions drawn, and cited
+            accurately.
           </p>
           <p>
-            The platform takes no position on what the appropriate level of inequality is — that is a
-            question for democratic deliberation informed by values that data alone cannot supply. It
-            does insist on methodological honesty. Each series displayed here has known limitations,
-            documented series breaks, and contested interpretations. The pre-1959 poverty estimates
-            are labeled unofficial because they are; the income-timing artifacts in the Piketty-Saez
-            series are explained because they matter for interpretation; the Auten-Splinter critique
-            is acknowledged because it represents a serious scholarly challenge. The goal is to give
+            The platform takes no position on what the appropriate level of inequality or poverty
+            is — those are questions for democratic deliberation informed by values that data alone
+            cannot supply. It does insist on two things: methodological honesty and terminological
+            precision. Each series displayed here has known limitations, documented series breaks,
+            and contested interpretations. The pre-1959 poverty estimates are labeled unofficial
+            because they are; the income-timing artifacts in the Piketty-Saez series are explained
+            because they matter for interpretation; the Auten-Splinter critique is acknowledged
+            because it represents a serious scholarly challenge. And when a legal intervention
+            &ldquo;reduces inequality,&rdquo; this platform shows <em>which</em> inequality — and
+            whether poverty moved with it, against it, or not at all. The goal is to give
             researchers and practitioners the full picture, including the uncertainties, so they can
             reason from evidence rather than from uncritical acceptance of headline numbers.
           </p>
