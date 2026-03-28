@@ -3,14 +3,12 @@
 import { useState, useRef, useEffect, useCallback } from "react";
 import Link from "next/link";
 import * as d3 from "d3";
-import { top10Data, keyLegislation, scotusCases, annotations } from "@/data";
-import type { DataPoint, Legislation } from "@/data";
+import { top10Data, legalEvents, scotusCases, annotations, LEGAL_CATEGORY_COLORS, LEGAL_CATEGORY_LABELS } from "@/data";
+import type { DataPoint, LegalEvent, LegalCategory } from "@/data";
 
 export default function LegalPage() {
   // ── Timeline filter state ──
-  const [timelineFilter, setTimelineFilter] = useState<
-    "all" | "tax" | "welfare" | "labor"
-  >("all");
+  const [timelineFilter, setTimelineFilter] = useState<"all" | LegalCategory>("all");
 
   // ── Chart refs ──
   const chartWrapperRef = useRef<HTMLDivElement>(null);
@@ -23,16 +21,10 @@ export default function LegalPage() {
       .trim();
   }
 
-  const TYPE_COLORS: Record<string, string> = {
-    tax: "var(--catholic-red)",
-    welfare: "var(--bright-blue)",
-    labor: "#8a6500",
-  };
-
   const filteredLegislation =
     timelineFilter === "all"
-      ? keyLegislation
-      : keyLegislation.filter((l) => l.type === timelineFilter);
+      ? legalEvents
+      : legalEvents.filter((l: LegalEvent) => l.category === timelineFilter);
 
   // ── Legislation Chart ──
   const buildChart = useCallback(() => {
@@ -105,16 +97,11 @@ export default function LegalPage() {
 
     // Legislation vertical lines
     const tip = tipRef.current;
-    keyLegislation.forEach((leg) => {
+    legalEvents.forEach((leg: LegalEvent) => {
       if (leg.year < 1917 || leg.year > 2022) return;
       const x = xScale(leg.year);
-      const lineColor =
-        leg.type === "tax"
-          ? "#B21F2C"
-          : leg.type === "welfare"
-            ? "#2459A9"
-            : "#8a6500";
-      const opacity = leg.effect === "increase" ? 0.7 : 0.7;
+      const lineColor = LEGAL_CATEGORY_COLORS[leg.category] || "#666";
+      const opacity = 0.7;
 
       g.append("line")
         .attr("x1", x)
@@ -318,66 +305,29 @@ export default function LegalPage() {
               role="list"
               aria-label="Legend"
             >
-              <span
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  gap: "0.4rem",
-                  fontFamily: "var(--font-ui)",
-                  fontSize: "0.82rem",
-                }}
-              >
+              {(Object.keys(LEGAL_CATEGORY_COLORS) as LegalCategory[]).map((cat) => (
                 <span
+                  key={cat}
                   style={{
-                    width: "12px",
-                    height: "12px",
-                    borderRadius: "50%",
-                    background: "var(--catholic-red)",
-                    display: "inline-block",
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "0.4rem",
+                    fontFamily: "var(--font-ui)",
+                    fontSize: "0.82rem",
                   }}
-                />{" "}
-                Tax Legislation
-              </span>
-              <span
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  gap: "0.4rem",
-                  fontFamily: "var(--font-ui)",
-                  fontSize: "0.82rem",
-                }}
-              >
-                <span
-                  style={{
-                    width: "12px",
-                    height: "12px",
-                    borderRadius: "50%",
-                    background: "var(--bright-blue)",
-                    display: "inline-block",
-                  }}
-                />{" "}
-                Welfare &amp; Social Policy
-              </span>
-              <span
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  gap: "0.4rem",
-                  fontFamily: "var(--font-ui)",
-                  fontSize: "0.82rem",
-                }}
-              >
-                <span
-                  style={{
-                    width: "12px",
-                    height: "12px",
-                    borderRadius: "50%",
-                    background: "#8a6500",
-                    display: "inline-block",
-                  }}
-                />{" "}
-                Labor Law
-              </span>
+                >
+                  <span
+                    style={{
+                      width: "12px",
+                      height: "12px",
+                      borderRadius: "50%",
+                      background: LEGAL_CATEGORY_COLORS[cat],
+                      display: "inline-block",
+                    }}
+                  />{" "}
+                  {LEGAL_CATEGORY_LABELS[cat]}
+                </span>
+              ))}
             </div>
 
             {/* Filter buttons */}
@@ -385,31 +335,31 @@ export default function LegalPage() {
               className="toggle-group"
               style={{ marginTop: "1rem" }}
               role="group"
-              aria-label="Filter timeline by type"
+              aria-label="Filter timeline by category"
             >
-              {(
-                [
-                  ["all", "All"],
-                  ["tax", "Tax"],
-                  ["welfare", "Welfare"],
-                  ["labor", "Labor"],
-                ] as [typeof timelineFilter, string][]
-              ).map(([value, label]) => (
+              <button
+                className={`toggle-btn${timelineFilter === "all" ? " active" : ""}`}
+                style={
+                  timelineFilter === "all"
+                    ? { background: "var(--catholic-blue)", color: "#fff", borderColor: "var(--catholic-blue)" }
+                    : {}
+                }
+                onClick={() => setTimelineFilter("all")}
+              >
+                All
+              </button>
+              {(Object.keys(LEGAL_CATEGORY_LABELS) as LegalCategory[]).map((cat) => (
                 <button
-                  key={value}
-                  className={`toggle-btn${timelineFilter === value ? " active" : ""}`}
+                  key={cat}
+                  className={`toggle-btn${timelineFilter === cat ? " active" : ""}`}
                   style={
-                    timelineFilter === value
-                      ? {
-                          background: "var(--catholic-blue)",
-                          color: "#fff",
-                          borderColor: "var(--catholic-blue)",
-                        }
+                    timelineFilter === cat
+                      ? { background: LEGAL_CATEGORY_COLORS[cat], color: "#fff", borderColor: LEGAL_CATEGORY_COLORS[cat] }
                       : {}
                   }
-                  onClick={() => setTimelineFilter(value)}
+                  onClick={() => setTimelineFilter(cat)}
                 >
-                  {label}
+                  {LEGAL_CATEGORY_LABELS[cat]}
                 </button>
               ))}
             </div>
@@ -420,19 +370,27 @@ export default function LegalPage() {
             className="timeline"
             aria-label="Legislative timeline"
           >
-            {filteredLegislation.map((leg, i) => (
+            {filteredLegislation.map((leg: LegalEvent, i: number) => (
               <div
                 className="timeline-item"
                 key={i}
-                data-type={leg.type}
+                data-type={leg.category}
               >
                 <div className="timeline-year">{leg.year}</div>
                 <div className="timeline-title">
                   {leg.title}
                   <span
-                    className={`timeline-badge timeline-badge--${leg.type} timeline-badge--${leg.effect}`}
+                    className={`timeline-badge`}
+                    style={{
+                      background: LEGAL_CATEGORY_COLORS[leg.category],
+                      color: "#fff",
+                      padding: "0.1rem 0.4rem",
+                      borderRadius: "3px",
+                      fontSize: "0.7rem",
+                      marginLeft: "0.5rem",
+                    }}
                   >
-                    {leg.type} &middot; {leg.effect}
+                    {LEGAL_CATEGORY_LABELS[leg.category]} &middot; {leg.direction}
                   </span>
                 </div>
                 <div className="timeline-desc">{leg.description}</div>

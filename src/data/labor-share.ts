@@ -1,0 +1,38 @@
+import type { DataPoint } from "./types";
+
+// Labor Share of Gross Domestic Income (Employee Compensation as % of GDI)
+// Source: Bureau of Economic Analysis via FRED; Series A4002E1A156NBEA
+export const laborShareData: DataPoint[] = [
+  {year:1929,value:0.495},{year:1930,value:0.519},{year:1931,value:0.535},
+  {year:1932,value:0.554},{year:1933,value:0.544},{year:1934,value:0.528},
+  {year:1935,value:0.516},{year:1936,value:0.519},{year:1937,value:0.523},
+  {year:1938,value:0.530},{year:1939,value:0.521},{year:1940,value:0.515},
+  {year:1941,value:0.499},{year:1942,value:0.498},{year:1943,value:0.509},
+  {year:1944,value:0.513},{year:1945,value:0.507},{year:1946,value:0.492},
+  {year:1947,value:0.495},{year:1948,value:0.497},{year:1949,value:0.504},
+  {year:1950,value:0.495},{year:1951,value:0.504},{year:1952,value:0.515},
+  {year:1953,value:0.524},{year:1954,value:0.523},{year:1955,value:0.516},
+  {year:1956,value:0.527},{year:1957,value:0.530},{year:1958,value:0.530},
+  {year:1959,value:0.525},{year:1960,value:0.531},{year:1961,value:0.527},
+  {year:1962,value:0.525},{year:1963,value:0.522},{year:1964,value:0.522},
+  {year:1965,value:0.518},{year:1966,value:0.522},{year:1967,value:0.529},
+  {year:1968,value:0.533},{year:1969,value:0.543},{year:1970,value:0.551},
+  {year:1971,value:0.541},{year:1972,value:0.541},{year:1973,value:0.541},
+  {year:1974,value:0.547},{year:1975,value:0.541},{year:1976,value:0.540},
+  {year:1977,value:0.539},{year:1978,value:0.540},{year:1979,value:0.544},
+  {year:1980,value:0.547},{year:1981,value:0.543},{year:1982,value:0.548},
+  {year:1983,value:0.540},{year:1984,value:0.535},{year:1985,value:0.533},
+  {year:1986,value:0.535},{year:1987,value:0.535},{year:1988,value:0.534},
+  {year:1989,value:0.530},{year:1990,value:0.534},{year:1991,value:0.535},
+  {year:1992,value:0.536},{year:1993,value:0.534},{year:1994,value:0.530},
+  {year:1995,value:0.530},{year:1996,value:0.527},{year:1997,value:0.528},
+  {year:1998,value:0.534},{year:1999,value:0.536},{year:2000,value:0.539},
+  {year:2001,value:0.537},{year:2002,value:0.531},{year:2003,value:0.524},
+  {year:2004,value:0.518},{year:2005,value:0.514},{year:2006,value:0.512},
+  {year:2007,value:0.518},{year:2008,value:0.524},{year:2009,value:0.520},
+  {year:2010,value:0.510},{year:2011,value:0.509},{year:2012,value:0.506},
+  {year:2013,value:0.505},{year:2014,value:0.510},{year:2015,value:0.517},
+  {year:2016,value:0.521},{year:2017,value:0.522},{year:2018,value:0.524},
+  {year:2019,value:0.527},{year:2020,value:0.535},{year:2021,value:0.527},
+  {year:2022,value:0.521},{year:2023,value:0.524},{year:2024,value:0.519},
+];

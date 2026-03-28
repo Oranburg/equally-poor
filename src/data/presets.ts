@@ -1,0 +1,58 @@
+import type { ExplorerPreset } from "./types";
+
+export const EXPLORER_PRESETS: ExplorerPreset[] = [
+  {
+    id: "overview",
+    label: "Overview",
+    description: "Top 10% income share, Gini coefficient, and overall poverty rate — the three core measures.",
+    series: ["top10", "giniHouseholds", "poverty"],
+    legalCategories: [],
+    showAnnotations: true,
+    yearRange: [1913, 2024],
+  },
+  {
+    id: "povertyDeep",
+    label: "Poverty Deep Dive",
+    description: "All poverty measures by demographic group with safety net legislation markers.",
+    series: ["poverty", "childPoverty", "elderlyPoverty", "femaleHeadedPoverty"],
+    legalCategories: ["safetyNet"],
+    showAnnotations: true,
+    yearRange: [1959, 2024],
+  },
+  {
+    id: "taxConcentration",
+    label: "Tax & Concentration",
+    description: "Top income shares with major tax legislation markers.",
+    series: ["top10", "top1"],
+    legalCategories: ["tax"],
+    showAnnotations: true,
+    yearRange: [1913, 2024],
+  },
+  {
+    id: "laborWages",
+    label: "Labor & Wages",
+    description: "Labor's share of national income, median household income, and inequality with labor law markers.",
+    series: ["laborShare", "medianIncome", "giniHouseholds"],
+    legalCategories: ["labor"],
+    showAnnotations: true,
+    yearRange: [1947, 2024],
+  },
+  {
+    id: "greatDivergence",
+    label: "The Great Divergence",
+    description: "How inequality and poverty diverged after 1973 — the central puzzle of American political economy.",
+    series: ["top10", "poverty", "giniHouseholds"],
+    legalCategories: [],
+    showAnnotations: true,
+    yearRange: [1973, 2024],
+  },
+  {
+    id: "gildedAges",
+    label: "Two Gilded Ages",
+    description: "Comparing early-20th-century and post-1980 income concentration with tax and SCOTUS markers.",
+    series: ["top10", "top1", "povertyPre"],
+    legalCategories: ["tax", "scotus"],
+    showAnnotations: true,
+    yearRange: [1913, 2024],
+  },
+];

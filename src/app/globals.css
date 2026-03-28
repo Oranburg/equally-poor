@@ -648,3 +648,180 @@ section {
   .data-table { font-size: 0.72rem; }
   .data-table th, .data-table td { padding: 0.35rem 0.5rem; }
 }
+
+/* ── Explorer: Control Sections ── */
+.control-section {
+  border: 1px solid var(--border-color);
+  border-radius: var(--card-radius);
+  padding: 0.75rem 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.control-section__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+
+.control-section__title {
+  font-family: var(--font-ui);
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+}
+
+.control-section__actions {
+  display: flex;
+  gap: 0.25rem;
+}
+
+.control-section__actions button {
+  font-family: var(--font-ui);
+  font-size: 0.65rem;
+  padding: 0.15rem 0.5rem;
+  border: 1px solid var(--border-color);
+  border-radius: 3px;
+  background: transparent;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.control-section__actions button:hover {
+  border-color: var(--catholic-blue);
+  color: var(--text-heading);
+}
+
+/* ── Explorer: Preset Bar ── */
+.preset-bar {
+  display: flex;
+  gap: 0.35rem;
+  flex-wrap: wrap;
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.preset-pill {
+  font-family: var(--font-ui);
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 0.3rem 0.75rem;
+  border: 1.5px solid var(--border-color);
+  border-radius: 20px;
+  background: transparent;
+  color: var(--text-body);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  white-space: nowrap;
+}
+
+.preset-pill:hover {
+  border-color: var(--catholic-blue);
+}
+
+.preset-pill.active {
+  background: var(--catholic-blue);
+  border-color: var(--catholic-blue);
+  color: white;
+}
+
+.preset-pill--custom {
+  font-style: italic;
+  opacity: 0.7;
+}
+
+/* ── Explorer: Overlay Section ── */
+.overlay-section {
+  border: 1px solid var(--border-color);
+  border-radius: var(--card-radius);
+  margin-bottom: 0.5rem;
+  overflow: hidden;
+}
+
+.overlay-section__trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0.6rem 1rem;
+  background: var(--bg-secondary);
+  border: none;
+  cursor: pointer;
+  font-family: var(--font-ui);
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-heading);
+  transition: background var(--transition-fast);
+}
+
+.overlay-section__trigger:hover {
+  background: var(--bg-primary);
+}
+
+.overlay-section__body {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.25s ease-out;
+  padding: 0 1rem;
+}
+
+.overlay-section__body.open {
+  max-height: 300px;
+  padding: 0.75rem 1rem;
+}
+
+/* ── Explorer: Legal Category Toggles ── */
+.legal-toggle {
+  font-family: var(--font-ui);
+  font-size: 0.68rem;
+  padding: 0.2rem 0.55rem;
+  border: 1.5px solid var(--border-color);
+  border-radius: 3px;
+  background: transparent;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.legal-toggle.active {
+  color: white;
+}
+
+/* ── Explorer: Axis Info Banner ── */
+.axis-info-banner {
+  font-family: var(--font-ui);
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--card-radius);
+  padding: 0.4rem 0.75rem;
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+/* ── Explorer: Mobile Overrides ── */
+@media (max-width: 768px) {
+  .preset-bar { display: none; }
+  .preset-select {
+    display: block;
+    width: 100%;
+    padding: 0.5rem;
+    margin-bottom: 0.5rem;
+    font-family: var(--font-ui);
+    font-size: 0.85rem;
+    border: 1px solid var(--border-color);
+    border-radius: var(--card-radius);
+    background: var(--bg-primary);
+    color: var(--text-body);
+  }
+  .control-section .toggle-group { flex-wrap: wrap; }
+}
+
+@media (min-width: 769px) {
+  .preset-select { display: none; }
+}
