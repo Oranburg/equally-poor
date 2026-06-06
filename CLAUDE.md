@@ -1,5 +1,17 @@
 # Equally Poor — Project Documentation
 
+## Voice and tooling rules: see LawJ/CLAUDE.md
+
+This repo is part of Seth Oranburg's writing ecosystem. The authoritative voice rules and tooling conventions live at:
+
+`/Users/sco/Library/Mobile Documents/com~apple~CloudDocs/Repos/LawJ/LawJ/CLAUDE.md`
+
+Read it before drafting, editing, exporting, or scaffolding anything in this repo. The Markdown Checklist there governs voice rules across all of Seth's prose work (no em dashes, no AI prose patterns, no "load-bearing," no cadence-as-AI-tell, no meta-negation, no signposted insight or stakes-elevation closers, voids not vapidity, full sentences always).
+
+Mechanical enforcement: a global PostToolUse hook at `~/.claude/hooks/voice-check.sh` flags forbidden patterns on every Write/Edit regardless of which repo is the CWD. The canonical pattern inventory lives at `~/.claude/hooks/forbidden-patterns.txt`.
+
+The shared toolchain (lawj CLI, export pipelines, graphics, citation verification) also lives in LawJ. Before reaching for an agent or hand-written utility, check whether a `lawj` script already does what is needed. Scripts over agents: mechanical work belongs in a versioned, tested script.
+
 ## Overview
 
 **Equally Poor** is a data visualization site exploring U.S. economic inequality and poverty through interactive D3 charts. It presents income concentration (Top 10%, Top 1%), the Gini coefficient, and poverty rate data from 1917–2024, alongside a legal landscape analysis of federal legislation and Supreme Court decisions affecting economic equality.
