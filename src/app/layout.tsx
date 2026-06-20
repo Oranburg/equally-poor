@@ -1,9 +1,12 @@
 import type { Metadata } from "next";
 import { Oswald, Crimson_Text, Roboto, Roboto_Mono } from "next/font/google";
 import "./globals.css";
+import "@/components/og-tokens.css";
 import ThemeProvider from "@/components/layout/ThemeProvider";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
+import OgBreadcrumb from "@/components/Breadcrumb";
+import OgFooter from "@/components/Footer";
 
 const oswald = Oswald({
   subsets: ["latin"],
@@ -79,8 +82,20 @@ export default function RootLayout({
       <body className={`${oswald.variable} ${crimsonText.variable} ${roboto.variable} ${robotoMono.variable}`}>
         <ThemeProvider>
           <Navbar />
+          <OgBreadcrumb
+            trail={[{ label: "Home", href: "https://oranburg.law" }]}
+            current="Equally Poor"
+          />
           <main>{children}</main>
           <Footer />
+          <OgFooter
+            links={[
+              { label: "Home", href: "https://oranburg.law" },
+              { label: "Equally Poor", href: "https://equally-poor.oranburg.law" },
+              { label: "Contact", href: "/contact" },
+            ]}
+            copyright={`© ${new Date().getFullYear()} Seth C. Oranburg. All rights reserved.`}
+          />
         </ThemeProvider>
       </body>
     </html>
