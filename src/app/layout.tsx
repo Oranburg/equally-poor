@@ -4,7 +4,6 @@ import "./globals.css";
 import "@/components/og-tokens.css";
 import ThemeProvider from "@/components/layout/ThemeProvider";
 import Navbar from "@/components/layout/Navbar";
-import Footer from "@/components/layout/Footer";
 import OgBreadcrumb from "@/components/Breadcrumb";
 import OgFooter from "@/components/Footer";
 
@@ -87,7 +86,6 @@ export default function RootLayout({
             current="Equally Poor"
           />
           <main>{children}</main>
-          <Footer />
           <OgFooter
             links={[
               { label: "Home", href: "https://oranburg.law" },
