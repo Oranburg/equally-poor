@@ -35,8 +35,8 @@ The shared toolchain (lawj CLI, export pipelines, graphics, citation verificatio
 
 | Service | Key | Docs |
 |---------|-----|------|
-| US Census Bureau | `779c5258381f386feb742e39c6b69e5ffd72ab09` | https://www.census.gov/data/developers.html |
-| FRED (St. Louis Fed) | `4b1ccd7eddda4ba44b671d12f93ef972` | https://fred.stlouisfed.org/docs/api/fred/ |
+| US Census Bureau | `(set via env, not stored in repo)` | https://www.census.gov/data/developers.html |
+| FRED (St. Louis Fed) | `(set via env, not stored in repo)` | https://fred.stlouisfed.org/docs/api/fred/ |
 
 **Note:** These keys are for build-time data fetching or one-time data pulls. The site is statically exported — no runtime API calls. Do NOT commit these to `.env` files (a previous `.env` with a FRED key was accidentally committed and should be rotated).
 
@@ -171,7 +171,7 @@ src/
 
 #### Repo Hygiene
 - [ ] **Large files in git history** — 4.9GB WID dataset + 68MB Excel file removed from working tree but in history. Use `git filter-repo` or BFG to purge
-- [ ] **Exposed API key in history** — `.env` with `FRED_API_KEY` was committed. Rotate the key
+- [ ] **Exposed API key** removed from code (now read from env). Rotate FRED and Census keys to fully purge git history (low priority, read-only public-data keys).
 
 #### Features / Polish
 - [ ] **ESLint not configured** — No linting

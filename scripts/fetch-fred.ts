@@ -7,7 +7,8 @@
  * Do NOT call the FRED API at runtime — the site is statically exported.
  */
 
-const API_KEY = "4b1ccd7eddda4ba44b671d12f93ef972";
+const API_KEY = process.env.FRED_API_KEY ?? "";
+if (!API_KEY) throw new Error("Set the FRED_API_KEY environment variable before running this script.");
 const BASE = "https://api.stlouisfed.org/fred/series/observations";
 
 interface FredObs {
